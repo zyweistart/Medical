@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 背景 -->
+   	<color name="activity_gb">#f3f3f3</color>
+	
+</resources>
