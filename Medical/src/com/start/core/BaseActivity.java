@@ -54,6 +54,7 @@ public abstract class BaseActivity extends Activity implements HandleContextList
 	public HandleContext getHandleContext() {
 		if(mHandleContext==null){
 			mHandleContext=new HandleContext(this);
+			mHandleContext.setListener(this);
 		}
 		return mHandleContext;
 	}
