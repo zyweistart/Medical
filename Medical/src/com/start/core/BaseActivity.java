@@ -39,9 +39,9 @@ public abstract class BaseActivity extends Activity implements HandleContextList
 	
 	@Override
 	protected void onDestroy() {
-		super.onDestroy();
 		// 结束Activity&从堆栈中移除
 		AppManager.getInstance().finishActivity(this);
+		super.onDestroy();
 	}
 	
 	public AppContext getAppContext() {
