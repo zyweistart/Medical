@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.provider.Settings;
 
 import com.start.core.AppManager;
 import com.start.medical.R;
@@ -48,6 +49,29 @@ public class UIHelper {
 					}
 				});
 		builder.show();
+	}
+	
+	/**
+	 * 弹出网络设置对话框
+	 */
+	public static void goSettingNetwork(final Context context){
+		AlertDialog.Builder aDialog = new AlertDialog.Builder(context);
+		aDialog.
+		setIcon(android.R.drawable.ic_dialog_info).
+		setTitle("提示").
+		setMessage("当前无法连接到网络，是否立即进行设置？").
+		setPositiveButton("取消", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+			}
+		}).setNeutralButton("设置", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				Intent netIntent=new Intent(Settings.ACTION_SETTINGS);
+				context.startActivity(netIntent);
+			}
+		}).show();
 	}
 	
 }

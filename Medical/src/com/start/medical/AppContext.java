@@ -3,17 +3,17 @@ package com.start.medical;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.app.Activity;
 import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 
 import com.start.core.AppException;
+import com.start.core.BaseActivity;
 import com.start.core.Constant;
 import com.start.service.Response;
+import com.start.service.UIHelper;
 import com.start.service.UIRunnable;
-import com.start.utils.CommonFn;
 import com.start.utils.HttpResponse;
 import com.start.utils.LogUtils;
 import com.start.utils.MD5;
@@ -44,13 +44,13 @@ public class AppContext extends Application {
 	/**
 	 * 请求获取单条记录数据
 	 */
-	public void sendRequestRefreshSingle(Activity activity,String url,final Map<String,String> headers,final Map<String,String> params,final UIRunnable runnable){
+	public void sendRequestRefreshSingle(BaseActivity activity,String url,final Map<String,String> headers,final Map<String,String> params,final UIRunnable runnable){
 		if(NetConnectManager.isNetworkConnected(activity)){
-			final ProgressDialog mProgressDialog =CommonFn.progressDialog(activity, getString(R.string.wait));
-			if(mProgressDialog!=null){
-				mProgressDialog.show();
-				mProgressDialog.setCancelable(false);
-			}
+			final ProgressDialog pDialog = new ProgressDialog(activity);
+			pDialog.setMessage(getString(R.string.wait));
+			pDialog.setIndeterminate(true);
+			pDialog.setCancelable(false);
+			pDialog.show();
 			new Thread(new Runnable() {
 				@Override
 				public void run() {
@@ -79,13 +79,13 @@ public class AppContext extends Application {
 						LogUtils.logError(e);
 						e.makeToast(AppContext.this);
 					}finally{
-						if (mProgressDialog != null) {
-							mProgressDialog.dismiss();
+						if (pDialog != null) {
+							pDialog.dismiss();
 						}
 					}
 				}}).start();
 		}else{
-			//TODO:设置网络对话框
+			UIHelper.goSettingNetwork(activity);
 		}
 		
 	}
