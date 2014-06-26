@@ -43,13 +43,6 @@ public final class Constant {
 	 */
 	public static final String ENCODE = "UTF-8";
 
-	public final static int LISTVIEW_DATA_MORE = 0x01;
-	public final static int LISTVIEW_DATA_LOADING = 0x02;
-	public final static int LISTVIEW_DATA_FULL = 0x03;
-	public final static int LISTVIEW_DATA_EMPTY = 0x04;
-
-	public final static int PAGESIZE = 8;
-
 	/**
 	 * SharedPreferences常量
 	 * 
