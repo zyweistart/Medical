@@ -10,6 +10,7 @@ import com.start.core.Constant;
  * @author Start
  */
 public class StringUtils {
+	
 	 /**
 	 * HmacSHA1签名
 	 */
@@ -20,6 +21,7 @@ public class StringUtils {
 			throw new RuntimeException(e.getMessage());
 		}
 	}
+	
 	 /**
      * DES加密
      */
@@ -30,6 +32,7 @@ public class StringUtils {
 			throw new RuntimeException(e.getMessage());
 		}
 	}
+    
     /**
      * DES解密
      */
@@ -40,12 +43,14 @@ public class StringUtils {
 			throw new RuntimeException(e.getMessage());
 		}
 	}
+	
 	/**
      * URL编码
      */
 	public static String encode(String str) {
 		return encode(str,Constant.ENCODE);
 	}
+	
 	/**
      * URL编码
      */
@@ -60,6 +65,7 @@ public class StringUtils {
 		}
 		return strEncode;
 	}
+	
 	/**
 	 * 字符串转整数
 	 * @param str
@@ -72,6 +78,7 @@ public class StringUtils {
 		}catch(Exception e){}
 		return defValue;
 	}
+	
 	/**
 	 * 对象转整数
 	 * @param obj
@@ -83,10 +90,22 @@ public class StringUtils {
 	}
 	
 	public static boolean isEmpty(String str){
-		if(str==null||"".equals(str)){
-			return true;
-		}
-		return false;
+		return str==null||"".equals(str);
+	}
+	
+	/**
+	 * 获取当前方法执行的信息，用于异常时保存信息
+	 */
+	public static String getTraceInfo() {
+		StringBuffer sb = new StringBuffer();
+		StackTraceElement stackTrace = new Throwable().getStackTrace()[1];
+		sb.append("{");
+		sb.append("ClassName:").append(stackTrace.getClassName());
+		sb.append(";FileName:").append(stackTrace.getFileName());
+		sb.append(";MethodName:").append(stackTrace.getMethodName());
+		sb.append(";LineNumber:").append(stackTrace.getLineNumber());
+		sb.append("}");
+		return sb.toString();
 	}
 	
 }

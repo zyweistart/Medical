@@ -66,7 +66,7 @@ import com.start.core.Constant;
 								try {
 									raf.close();
 								} catch (IOException e) {
-									LogUtils.logError(StackTraceInfo.getTraceInfo() + e.getMessage());
+									LogUtils.logError(StringUtils.getTraceInfo() + e.getMessage());
 								}finally{
 									raf = null;
 								}

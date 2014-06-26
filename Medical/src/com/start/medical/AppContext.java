@@ -14,7 +14,7 @@ import com.start.core.Constant;
 import com.start.service.Response;
 import com.start.service.UIHelper;
 import com.start.service.UIRunnable;
-import com.start.utils.HttpResponse;
+import com.start.utils.HttpServer;
 import com.start.utils.LogUtils;
 import com.start.utils.MD5;
 import com.start.utils.NetConnectManager;
@@ -69,7 +69,7 @@ public class AppContext extends Application {
 							requestHeader.put("sign","".equals(requestHeader.get("sign"))?
 									MD5.md5(requestContent):StringUtils.signatureHmacSHA1(MD5.md5(requestContent),requestHeader.get("sign")));
 						}
-						Response response=HttpResponse.resolve();
+						Response response=HttpServer.resolve();
 						if("10000".equals(response.getCode())){
 							runnable.run();
 						}else{

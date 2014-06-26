@@ -1,5 +1,6 @@
 package com.start.utils;
 
+import android.annotation.SuppressLint;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,6 +13,7 @@ import java.util.TimeZone;
  * 日期时间工具类
  * @author Start
  */
+@SuppressLint("SimpleDateFormat")
 public class TimeUtils {
 	
 	public final static String yyyyMMdd_C="yyyy年MM月dd日";
@@ -276,6 +278,24 @@ public class TimeUtils {
 
 	public static String getGMT8Time() {
 		return getGMTTime("GMT+08:00");
+	}
+	
+	private final static ThreadLocal<SimpleDateFormat> dateFormater2 = new ThreadLocal<SimpleDateFormat>() {
+		@Override
+		protected SimpleDateFormat initialValue() {
+			return new SimpleDateFormat("yyyy-MM-dd");
+		}
+	};
+	
+	/**
+	 * 返回long类型的今天的日期
+	 * @return
+	 */
+	public static long getToday() {
+		Calendar cal = Calendar.getInstance();
+		String curDate = dateFormater2.get().format(cal.getTime());
+		curDate = curDate.replace("-", "");
+		return Long.parseLong(curDate);
 	}
 	
 	public static void sleep(long time){

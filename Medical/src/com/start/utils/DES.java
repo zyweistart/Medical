@@ -11,6 +11,7 @@ import com.start.core.Constant;
 public class DES {
 	
 	public final static String ALGORITHM="DES";
+	
 	/**
 	 * 获取文件密钥
 	 */
@@ -36,6 +37,7 @@ public class DES {
 			}
 		}
 	}
+	
 	/**
 	 * DES加密
 	 */
@@ -45,6 +47,7 @@ public class DES {
 		byte[] buffer = cipher.doFinal(str.getBytes(Constant.ENCODE));
 		return new String(Base64.encode(buffer));
 	}
+	
 	/**
 	 * DES解密
 	 */

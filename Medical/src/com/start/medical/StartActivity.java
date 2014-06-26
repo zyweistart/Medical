@@ -1,6 +1,10 @@
 package com.start.medical;
 
+import java.io.File;
+import java.util.List;
+
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -9,6 +13,8 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.LinearLayout;
 
 import com.start.core.BaseActivity;
+import com.start.utils.FileUtils;
+import com.start.utils.TimeUtils;
 
 /**
  * 开始页
@@ -51,35 +57,36 @@ public class StartActivity extends BaseActivity{
      * 检查是否需要换图片
      * @param view
      */
-    private void check(LinearLayout view) {
-//	    	String path = FileUtils.getAppCache(this, "wellcomeback");
-//	    	List<File> files = FileUtils.listPathFiles(path);
-//	    	if (!files.isEmpty()) {
-//	    		File f = files.get(0);
-//	    		long time[] = getTime(f.getName());
-//	    		long today = StringUtils.getToday();
-//	    		if (today >= time[0] && today <= time[1]) {
-//	    			view.setBackgroundDrawable(Drawable.createFromPath(f.getAbsolutePath()));
-//	    		}
-//	    	}
+    @SuppressWarnings("deprecation")
+	private void check(LinearLayout view) {
+	    	String path = FileUtils.getAppCache(this, "wellcomeback");
+	    	List<File> files = FileUtils.listPathFiles(path);
+	    	if (!files.isEmpty()) {
+	    		File f = files.get(0);
+	    		long time[] = getTime(f.getName());
+	    		long today = TimeUtils.getToday();
+	    		if (today >= time[0] && today <= time[1]) {
+	    			view.setBackgroundDrawable(Drawable.createFromPath(f.getAbsolutePath()));
+	    		}
+	    	}
     }
     
     /**
      * 分析显示的时间
      */
-//    private long[] getTime(String time) {
-//	    	long res[] = new long[2];
-//	    	try {
-//	    		time = time.substring(0, time.indexOf("."));
-//	        	String t[] = time.split("-");
-//	        	res[0] = Long.parseLong(t[0]);
-//	        	if (t.length >= 2) {
-//	        		res[1] = Long.parseLong(t[1]);
-//	        	} else {
-//	        		res[1] = Long.parseLong(t[0]);
-//	        	}
-//			} catch (Exception e) {
-//			}
-//	    	return res;
-//    }
+    private long[] getTime(String time) {
+	    	long res[] = new long[2];
+	    	try {
+	    		time = time.substring(0, time.indexOf("."));
+	        	String t[] = time.split("-");
+	        	res[0] = Long.parseLong(t[0]);
+	        	if (t.length >= 2) {
+	        		res[1] = Long.parseLong(t[1]);
+	        	} else {
+	        		res[1] = Long.parseLong(t[0]);
+	        	}
+			} catch (Exception e) {
+			}
+	    	return res;
+    }
 }

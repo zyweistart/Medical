@@ -27,6 +27,7 @@ public class MD5 {
 		}
 		return str.toLowerCase();
 	}
+	
 	/**
 	 * 对字符进行MD5计算
 	 */
@@ -39,6 +40,7 @@ public class MD5 {
 			return input;
 		}
 	}
+	
 	/**
 	 * 对字符进行MD5计算
 	 * @param charsetName
@@ -53,6 +55,7 @@ public class MD5 {
 			return input;
 		}
 	}
+	
 	/**
 	 * 对文件进行MD5计算
 	 */
