@@ -3,5 +3,7 @@
 
     <!-- 背景 -->
    	<color name="activity_gb">#f3f3f3</color>
+   	<color name="module_top_bg">#0e75d4</color>
+   	<color name="module_bottom_bg">#0e75d4</color>
 	
 </resources>

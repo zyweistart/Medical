@@ -5,7 +5,7 @@
     android:paddingRight="0dip"
     android:paddingTop="@dimen/spacing_1"
     android:paddingBottom="@dimen/spacing_1"
-    android:background="#0e75d4">
+    android:background="@color/module_top_bg">
     
     <TextView
         android:id="@+id/module_top_title"
