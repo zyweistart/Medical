@@ -7,9 +7,11 @@ import android.text.TextUtils;
 import android.widget.Toast;
 
 /**
- * Handle容器处理类
- * @author start
- *
+ * @author Start   
+ * @Description: Handle容器处理类
+ * @ClassName: HandleContext.java   
+ * @date 2014年6月30日 上午9:16:59      
+ * @说明  代码版权归 杭州反盗版中心有限公司 所有
  */
 public class HandleContext {
 	
@@ -44,14 +46,14 @@ public class HandleContext {
 	}
 	
 	public void sendMessage(Message msg) {
-		handler.sendMessage(msg);
+		mHandler.sendMessage(msg);
 	}
 
 	public void sendEmptyMessage(int what) {
-		handler.sendEmptyMessage(what);
+		mHandler.sendEmptyMessage(what);
 	}
 	
-	public Handler handler = new Handler() {
+	private Handler mHandler = new Handler() {
 		
 		@Override
 		public void handleMessage(Message msg) {
@@ -71,6 +73,14 @@ public class HandleContext {
 		}
 		
 	};
+
+	public Context getContext() {
+		return mContext;
+	}
+
+	public Handler getHandler() {
+		return mHandler;
+	}
 
 	public interface HandleContextListener{
 		

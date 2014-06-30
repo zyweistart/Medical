@@ -1,25 +1,16 @@
 package com.start.service;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
-import org.apache.http.HttpResponse;
-
-import com.start.core.AppException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Response {
-	
+
 	private String code;
-	
+
 	private String msg;
-	
-	private String responseString;
-	
-	private HttpResponse httpResponse;
-	
-	public Response(HttpResponse httpResponse) {
-		this.httpResponse = httpResponse;
-		//TODO:解析
+
+	public Response() {
+		
 	}
 
 	public String getCode() {
@@ -30,25 +21,14 @@ public class Response {
 		return msg;
 	}
 
-	public String getResponseString() throws AppException {
-		if(responseString==null){
-			try {
-				BufferedReader in = new BufferedReader(new InputStreamReader(this.httpResponse.getEntity().getContent()));
-				String line =null;
-				StringBuffer buffer = new StringBuffer();
-				while ((line = in.readLine()) != null) {
-					buffer.append(line);
-				}
-				responseString=buffer.toString();
-			} catch (Exception e) {
-				throw AppException.http(e);
-			}
+	public void resolve(String JsonString) throws JSONException {
+		JSONObject jsonObject = new JSONObject(JsonString);
+		if (!jsonObject.isNull("code")) {
+			this.code=jsonObject.getString("code");
 		}
-		return responseString;
+		if (!jsonObject.isNull("msg")) {
+			this.code=jsonObject.getString("msg");
+		}
 	}
 
-	public HttpResponse getHttpResponse() {
-		return httpResponse;
-	}
-	
 }

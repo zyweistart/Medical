@@ -57,14 +57,14 @@ public class UIHelper {
 		AlertDialog.Builder aDialog = new AlertDialog.Builder(context);
 		aDialog.
 		setIcon(android.R.drawable.ic_dialog_info).
-		setTitle("提示").
-		setMessage("当前无法连接到网络，是否立即进行设置？").
-		setPositiveButton("取消", new DialogInterface.OnClickListener() {
+		setTitle(R.string.prompt).
+		setMessage(R.string.network_not_connected).
+		setPositiveButton(R.string.cancle, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.dismiss();
 			}
-		}).setNeutralButton("设置", new DialogInterface.OnClickListener() {
+		}).setNeutralButton(R.string.setting, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				Intent netIntent=new Intent(Settings.ACTION_SETTINGS);
