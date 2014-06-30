@@ -19,16 +19,18 @@ import org.json.JSONObject;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Handler;
+import android.text.TextUtils;
 
 import com.start.core.AppException;
 import com.start.core.Constant;
 import com.start.medical.R;
+import com.start.utils.MD5;
 import com.start.utils.NetConnectManager;
 import com.start.utils.StringUtils;
 import com.start.utils.TimeUtils;
 
 /**
- * @author weizy   
+ * @author Start   
  * @Description: 网络请求执行类
  * @ClassName: HttpServer.java   
  * @date 2014年6月27日 下午3:45:19      
@@ -38,10 +40,11 @@ import com.start.utils.TimeUtils;
 public class HttpServer {
 	
 	private String mUrl;
-	private Map<String,String> mHeaders;
-	private Map<String,String>mParams;
 	private Handler mHandler;
 	private Context mContext;
+	private Map<String,String> mHeaders;
+	private Map<String,String>mParams;
+	private ProgressDialog mPDialog;
 	
 	public HttpServer(String mUrl, Context mContext, Handler mHandler) {
 		this.mUrl = mUrl;
@@ -64,29 +67,29 @@ public class HttpServer {
 		
 		if(NetConnectManager.isNetworkConnected(mContext)){
 			
-			final ProgressDialog mPDialog = new ProgressDialog(mContext);
-			mPDialog.setMessage(mContext.getString(R.string.wait));
-			mPDialog.setIndeterminate(true);
-			mPDialog.setCancelable(true);
-			mPDialog.show();
-			
+			showDialog();
 			new Thread(new Runnable() {
 				
 				@Override
 				public void run() {
 					
 					try{
-						String requestContent=buildRequestContentByString();
-						//TODO:执行网络请求
-						Response response=new Response();
-						//TODO:解析并生成响应对象
+						String requestContent=buildRequestContentByStringJson();
+						if(mHeaders!=null){
+							if(mHeaders.containsKey("sign")){
+								mHeaders.put("sign","".equals(mHeaders.get("sign"))?
+										MD5.md5(requestContent):StringUtils.signatureHmacSHA1(MD5.md5(requestContent),mHeaders.get("sign")));
+							}else{
+								mHeaders.put("sign",StringUtils.signatureHmacSHA1(MD5.md5(requestContent),Constant.ACCESSKEY));
+							}
+						}
+						HttpResponse httpResponse=getResponse(requestContent);
+						Response response=new Response(httpResponse);
 						runnable.run(response);
 					}catch(AppException e){
 						e.makeToast(mContext);
 					}finally{
-						if (mPDialog != null) {
-							mPDialog.dismiss();
-						}
+						dismissDialog();
 					}
 					
 				}}).start();
@@ -100,16 +103,60 @@ public class HttpServer {
 	/**
 	 * 获取列表数据
 	 */
-	public void gets(UIRunnable runnable){
-		Response response=new Response();
-		//更新UI
-		runnable.run(response);
+	public void gets(final UIRunnable runnable){
+		if(NetConnectManager.isNetworkConnected(mContext)){
+			
+			showDialog();
+			new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					
+					try{
+						String requestContent=buildRequestContentByStringJson();
+						if(mHeaders!=null){
+							if(mHeaders.containsKey("sign")){
+								mHeaders.put("sign","".equals(mHeaders.get("sign"))?
+										MD5.md5(requestContent):StringUtils.signatureHmacSHA1(MD5.md5(requestContent),mHeaders.get("sign")));
+							}else{
+								mHeaders.put("sign",StringUtils.signatureHmacSHA1(MD5.md5(requestContent),Constant.ACCESSKEY));
+							}
+						}
+						HttpResponse httpResponse=getResponse(requestContent);
+						Response response=new Response(httpResponse);
+						response.resolveJson();
+						runnable.run(response);
+					}catch(AppException e){
+						e.makeToast(mContext);
+					}finally{
+						dismissDialog();
+					}
+					
+				}}).start();
+			
+		}else{
+			UIHelper.goSettingNetwork(mContext);
+		}
+	}
+	
+	private void showDialog(){
+		mPDialog = new ProgressDialog(mContext);
+		mPDialog.setMessage(mContext.getString(R.string.wait));
+		mPDialog.setIndeterminate(true);
+		mPDialog.setCancelable(true);
+		mPDialog.show();
+	}
+	
+	private void dismissDialog(){
+		if (mPDialog != null) {
+			mPDialog.dismiss();
+		}
 	}
 	
 	/**
 	 * 生成请求内容
 	 */
-	public String buildRequestContentByString() throws AppException{
+	public String buildRequestContentByStringJson() throws AppException{
 		JSONObject commonObject = new JSONObject();
 		JSONObject contentObject = new JSONObject();
 		JSONObject requestObject = new JSONObject();
@@ -133,36 +180,6 @@ public class HttpServer {
 		}  
 	}
 	
-	/**
-	 * 请求并获取响应的字符串数据
-	 */
-	public String getResponseByString(String requestContent) throws AppException {
-		try {
-			HttpResponse response = getResponse(requestContent);
-			BufferedReader in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-			String line =null;
-			StringBuffer buffer = new StringBuffer();
-			while ((line = in.readLine()) != null) {
-				buffer.append(line);
-			}
-			return buffer.toString();
-		} catch (Exception e) {
-			throw AppException.http(e);
-		}
-	}
-
-	/**
-	 * 请求并获取响应的流对象
-	 */
-	public InputStream getResponseByInputStream(String requestContent) throws AppException {
-		try {
-			HttpResponse response = getResponse(requestContent);
-			return response.getEntity().getContent();
-		} catch (Exception e) {
-			throw AppException.http(e);
-		}
-	}
-
 	/**
 	 * 请求并获取响应的HTTP对象
 	 */

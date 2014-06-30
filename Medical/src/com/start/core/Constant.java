@@ -13,6 +13,28 @@ public final class Constant {
 
 	public static final String RESTURL = ISSYSTEMTEST ?
 			"http://192.168.0.221:8888/accore/http/HttpService":"http://server.ancun.com:3391/rest/RestService";
+
+	/**
+	 * 通行证编号
+	 */
+	public static String ACCESSID = "";
+	
+	/**
+	 * 通行证密钥
+	 */
+	public static String ACCESSKEY = "";
+	
+	/**
+	 * 本地通行证编号
+	 */
+	public static final String ACCESSID_LOCAL = ISSYSTEMTEST ? 
+			"b99810e661d546f14763f15a9270c28d": "e4e60d050f5513e086b47c4fdca35646";
+	
+	/**
+	 * 本地通行证密钥
+	 */
+	public static final String ACCESSKEY_LOCAL = ISSYSTEMTEST ? 
+			"aRxzVdMiopnzpJco3fPJOmXSDZL7rGiL3UgbqQA9YeJ=": "fUETGmOIiMujnipQnFm6rJIyO2wJDZSftsK4dwmmoSZ=";
 	
 	/**
 	 * 用户接口
