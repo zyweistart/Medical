@@ -13,6 +13,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.LinearLayout;
 
 import com.start.core.BaseActivity;
+import com.start.medical.personal.RegisterActivity;
 import com.start.utils.FileUtils;
 import com.start.utils.TimeUtils;
 
@@ -45,7 +46,7 @@ public class StartActivity extends BaseActivity{
 			
 			@Override
 			public void onAnimationEnd(Animation arg0) {
-				Intent intent = new Intent(StartActivity.this, MainActivity.class);
+				Intent intent = new Intent(StartActivity.this, RegisterActivity.class);
 		        startActivity(intent);
 		        finish();
 			}

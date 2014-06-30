@@ -143,7 +143,7 @@ public class HttpServer {
 		mPDialog = new ProgressDialog(mContext);
 		mPDialog.setMessage(mContext.getString(R.string.wait));
 		mPDialog.setIndeterminate(true);
-		mPDialog.setCancelable(true);
+		mPDialog.setCancelable(false);
 		mPDialog.show();
 	}
 	
