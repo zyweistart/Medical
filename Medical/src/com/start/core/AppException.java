@@ -69,7 +69,7 @@ public class AppException extends Exception implements UncaughtExceptionHandler{
 	}
 	
 	/**
-	 * 提示友好的错误信息
+	 * 返回错误信息
 	 */
 	public String getErrorString(Context ctx){
 		switch(this.getType()){

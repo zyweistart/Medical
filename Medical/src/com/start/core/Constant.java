@@ -12,7 +12,7 @@ public final class Constant {
 	public static final boolean ISSYSTEMTEST =true;
 
 	public static final String RESTURL = ISSYSTEMTEST ?
-			"http://account.chinacloudapp.cn:83/http/HttpService":"http://account.chinacloudapp.cn:82/http/HttpService";
+			"http://account.chinacloudapp.cn:82/http/HttpService":"http://account.chinacloudapp.cn:82/http/HttpService";
 
 	public static String ACCESSID = Constant.EMPTYSTR;
 	public static String ACCESSKEY = Constant.EMPTYSTR;
@@ -109,6 +109,9 @@ public final class Constant {
 		 * 无法加载数据时清除数据
 		 */
 		public static final int LOAD_DATA_FAIL_CLEAR_DATA=0x1117;
+		
+		public static final int REGISTER_RESET_PASSWORD_STEP1=0x2117;
+		public static final int REGISTER_RESET_PASSWORD_STEP2=0x2118;
 		
 	}
 

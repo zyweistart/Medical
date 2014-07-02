@@ -11,6 +11,13 @@
     <string name="personal_center">个人中心</string>
     <string name="edit_personal">修改资料</string>
     <string name="change_password">修改密码</string>
+    <!-- 注册重置密码 -->
+    <string name="getauthcode">获取校验码</string>
+    <string name="regetauthcode">重新获取校验码</string>
+    <string name="phoneemptytip">手机号码不能为空</string>
+    <string name="pwdemptytip">密码不能为空</string>
+    <string name="autocodeemptytip">验证码不能为空</string>
+    <string name="twopwddifftip">二次密码输入不一致</string>
     
     <!-- 挂号 -->
     

@@ -9,22 +9,68 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.start.core.AppException;
+import com.start.utils.StringUtils;
 
 public class Response {
 	
 	private String mCode;
 	private String mMsg;
+	private String responseString;
 	private JSONObject mJsonObject;
+	private JSONObject mResponseInfo;
+	private JSONObject mResponsePage;
+	private JSONObject mResponseContent;
+	
 	private HttpResponse mHttpResponse;
 
-	public String getCode(){
+	public String getCode() throws AppException{
+		if(StringUtils.isEmpty(mCode)){
+			try {
+				if (!mResponseInfo.isNull("code")) {
+					this.mCode=mResponseInfo.getString("code");
+				}
+			} catch (JSONException e) {
+				throw AppException.json(e);
+			}
+		}
 		return mCode;
 	}
 
-	public String getMsg() {
+	public String getMsg() throws AppException {
+		if(StringUtils.isEmpty(mMsg)){
+			try {
+				if (!mResponseInfo.isNull("msg")) {
+					this.mMsg=mResponseInfo.getString("msg");
+				}
+			} catch (JSONException e) {
+				throw AppException.json(e);
+			}
+		}
 		return mMsg;
 	}
 	
+	public JSONObject getResponsePage() throws AppException {
+		if(mResponsePage==null){
+			try {
+				mResponsePage=this.mJsonObject.getJSONObject("pageinfo");
+			} catch (JSONException e) {
+				throw AppException.json(e);
+			}
+		}
+		return mResponsePage;
+	}
+	
+	public JSONObject getResponseContent() throws AppException {
+		if(mResponseContent==null){
+			try {
+				mResponseContent=this.mJsonObject.getJSONObject("content");
+			} catch (JSONException e) {
+				throw AppException.json(e);
+			}
+		}
+		return mResponseContent;
+	}
+
 	public Response(HttpResponse httpResponse) {
 		this.mHttpResponse=httpResponse;
 	}
@@ -43,25 +89,21 @@ public class Response {
 	/**
 	 * 请求并获取响应的字符串数据
 	 */
-	public String getResponseByString() throws AppException {
-		try {
-			BufferedReader in = new BufferedReader(new InputStreamReader(getInputStream()));
-			String line =null;
-			StringBuffer buffer = new StringBuffer();
-			while ((line = in.readLine()) != null) {
-				buffer.append(line);
+	public String getResponseString() throws AppException {
+		if(responseString==null){
+			try {
+				BufferedReader in = new BufferedReader(new InputStreamReader(getInputStream()));
+				String line =null;
+				StringBuffer buffer = new StringBuffer();
+				while ((line = in.readLine()) != null) {
+					buffer.append(line);
+				}
+				responseString=buffer.toString();
+			} catch (Exception e) {
+				throw AppException.http(e);
 			}
-			return buffer.toString();
-		} catch (Exception e) {
-			throw AppException.http(e);
 		}
-	}
-	
-	/**
-	 * 解析XML
-	 */
-	public void resolveXML() throws AppException {
-		
+		return responseString;
 	}
 	
 	/**
@@ -69,24 +111,12 @@ public class Response {
 	 */
 	public void resolveJson() throws AppException {
 		try {
-			this.mJsonObject = new JSONObject(getResponseByString());
-			if (!mJsonObject.isNull("code")) {
-				this.mCode=mJsonObject.getString("code");
-			}
-			if (!mJsonObject.isNull("msg")) {
-				this.mMsg=mJsonObject.getString("msg");
-			}
+			JSONObject jo = new JSONObject(getResponseString());
+			this.mJsonObject=jo.getJSONObject("response");
+			mResponseInfo=this.mJsonObject.getJSONObject("info");
 		} catch (JSONException e) {
 			throw AppException.json(e);
 		}
-	}
-	
-	/**
-	 * 文件下载
-	 * @param path 下载文件存储的路径
-	 */
-	public void downloadFile(String path) throws AppException{
-		
 	}
 	
 }

@@ -39,12 +39,12 @@ public abstract class BaseRefreshListActivity extends BaseActivity implements IX
 	
 	@Override
 	public void onRefresh() {
-		getHandleContext().getHandler().sendEmptyMessage(Handle.LOAD_START_PULLDOWN_REFRESH_DATA);
+		getHandlerContext().getHandler().sendEmptyMessage(Handle.LOAD_START_PULLDOWN_REFRESH_DATA);
 	}
 
 	@Override
 	public void onLoadMore() {
-		getHandleContext().getHandler().sendEmptyMessage(Handle.LOAD_START_MORE_DATA);
+		getHandlerContext().getHandler().sendEmptyMessage(Handle.LOAD_START_MORE_DATA);
 	}
 	
 	/**
@@ -64,7 +64,6 @@ public abstract class BaseRefreshListActivity extends BaseActivity implements IX
 	
 	@Override
 	public void onProcessMessage(Message msg) {
-		super.onProcessMessage(msg);
 		switch (msg.what) {
 			case Handle.LOAD_INIT_DATA:
 				//TODO:初始化本地缓存数据
@@ -89,6 +88,7 @@ public abstract class BaseRefreshListActivity extends BaseActivity implements IX
 				onLoadDone();
 				break;
 			default:
+				super.onProcessMessage(msg);
 				break;
 		}
 	}

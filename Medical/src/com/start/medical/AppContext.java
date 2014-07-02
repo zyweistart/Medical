@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 
+import com.start.utils.SharedPreferencesUtils;
+
 /**
  * 
  * @author Start   
@@ -16,6 +18,14 @@ import android.content.pm.PackageManager.NameNotFoundException;
 public class AppContext extends Application {
     
     private static Context mContext;
+    private SharedPreferencesUtils sharedPreferences;
+	
+	public SharedPreferencesUtils getSharedPreferencesUtils() {
+		if(sharedPreferences==null){
+			sharedPreferences=new SharedPreferencesUtils(this);
+		}
+		return sharedPreferences;
+	}
 
     @Override
     public void onCreate() {

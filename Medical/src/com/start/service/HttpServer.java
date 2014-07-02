@@ -70,46 +70,12 @@ public class HttpServer {
 		
 		if(NetConnectManager.isNetworkConnected(mContext)){
 			
-			showDialog();
-			new Thread(new Runnable() {
-				
-				@Override
-				public void run() {
-					
-					try{
-						String requestContent=buildRequestContentByStringJson();
-						if(mHeaders!=null){
-							if(mHeaders.containsKey("sign")){
-								mHeaders.put("sign","".equals(mHeaders.get("sign"))?
-										MD5.md5(requestContent):StringUtils.signatureHmacSHA1(MD5.md5(requestContent),mHeaders.get("sign")));
-							}else{
-								mHeaders.put("sign",StringUtils.signatureHmacSHA1(MD5.md5(requestContent),Constant.ACCESSKEY));
-							}
-						}
-						HttpResponse httpResponse=getResponse(requestContent);
-						Response response=new Response(httpResponse);
-						runnable.run(response);
-					}catch(AppException e){
-						mHandler.makeTextShort(e.getErrorString(mContext));
-					}finally{
-						dismissDialog();
-					}
-					
-				}}).start();
+			mPDialog = new ProgressDialog(mContext);
+			mPDialog.setMessage(mContext.getString(R.string.wait));
+			mPDialog.setIndeterminate(true);
+			mPDialog.setCancelable(false);
+			mPDialog.show();
 			
-		}else{
-			UIHelper.goSettingNetwork(mContext);
-		}
-		
-	}
-	
-	/**
-	 * 获取列表数据
-	 */
-	public void gets(final UIRunnable runnable){
-		if(NetConnectManager.isNetworkConnected(mContext)){
-			
-			showDialog();
 			new Thread(new Runnable() {
 				
 				@Override
@@ -128,11 +94,20 @@ public class HttpServer {
 						HttpResponse httpResponse=getResponse(requestContent);
 						Response response=new Response(httpResponse);
 						response.resolveJson();
-						runnable.run(response);
+						if("100000".equals(response.getCode())){
+							runnable.run(response);
+						}else{
+							Message msg = new Message();
+							msg.what = StringUtils.toInt(response.getCode());
+							msg.obj = response.getMsg();
+							mHandler.sendMessage(msg);
+						}
 					}catch(AppException e){
 						mHandler.makeTextShort(e.getErrorString(mContext));
 					}finally{
-						dismissDialog();
+						if (mPDialog != null) {
+							mPDialog.dismiss();
+						}
 					}
 					
 				}}).start();
@@ -140,20 +115,7 @@ public class HttpServer {
 		}else{
 			UIHelper.goSettingNetwork(mContext);
 		}
-	}
-	
-	private void showDialog(){
-		mPDialog = new ProgressDialog(mContext);
-		mPDialog.setMessage(mContext.getString(R.string.wait));
-		mPDialog.setIndeterminate(true);
-		mPDialog.setCancelable(false);
-		mPDialog.show();
-	}
-	
-	private void dismissDialog(){
-		if (mPDialog != null) {
-			mPDialog.dismiss();
-		}
+		
 	}
 	
 	/**
@@ -192,7 +154,7 @@ public class HttpServer {
 		client.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, protocolVersion);
 		client.getParams().setParameter(CoreProtocolPNames.HTTP_CONTENT_CHARSET, Constant.ENCODE);
 		// 设置超时时间为30秒
-		client.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT,30000);
+		client.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT,30*1000);
 		HttpPost post = new HttpPost(Constant.RESTURL);
 		try {
 			post.addHeader("reqlength", StringUtils.encode(String.valueOf(requestContent.getBytes(Constant.ENCODE).length)));

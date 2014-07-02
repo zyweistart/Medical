@@ -6,6 +6,7 @@ import android.os.Message;
 
 import com.start.core.HandlerContext.HandleContextListener;
 import com.start.medical.AppContext;
+import com.start.utils.StringUtils;
 
 public abstract class BaseActivity extends Activity implements HandleContextListener {
 	
@@ -51,7 +52,7 @@ public abstract class BaseActivity extends Activity implements HandleContextList
 		return mAppContext;
 	}
 	
-	public HandlerContext getHandleContext() {
+	public HandlerContext getHandlerContext() {
 		if(mHandleContext==null){
 			mHandleContext=new HandlerContext(this);
 			mHandleContext.setListener(this);
@@ -61,7 +62,14 @@ public abstract class BaseActivity extends Activity implements HandleContextList
 
 	@Override
 	public void onProcessMessage(Message msg) {
-		//子类中如果需要处理Handle消息则必须要继承该类，并在调用前调用setListener(this);设置监听所实现的类 
+		switch(msg.what){
+		default:
+			String message=String.valueOf(msg.obj);
+			if(!StringUtils.isEmpty(message)){
+				getHandlerContext().makeTextShort(message);
+			}
+			break;
+		}
 	}
 	
 }
