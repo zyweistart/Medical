@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Message;
 
-import com.start.core.HandleContext.HandleContextListener;
+import com.start.core.HandlerContext.HandleContextListener;
 import com.start.medical.AppContext;
 
 public abstract class BaseActivity extends Activity implements HandleContextListener {
@@ -12,7 +12,7 @@ public abstract class BaseActivity extends Activity implements HandleContextList
 	protected final String TAG = this.getClass().getSimpleName();
 	
 	private AppContext mAppContext;
-	private HandleContext mHandleContext;
+	private HandlerContext mHandleContext;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +51,9 @@ public abstract class BaseActivity extends Activity implements HandleContextList
 		return mAppContext;
 	}
 	
-	public HandleContext getHandleContext() {
+	public HandlerContext getHandleContext() {
 		if(mHandleContext==null){
-			mHandleContext=new HandleContext(this);
+			mHandleContext=new HandlerContext(this);
 			mHandleContext.setListener(this);
 		}
 		return mHandleContext;

@@ -16,7 +16,6 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.os.Environment;
 import android.os.Looper;
-import android.widget.Toast;
 
 import com.start.medical.AppContext;
 import com.start.medical.R;
@@ -72,34 +71,26 @@ public class AppException extends Exception implements UncaughtExceptionHandler{
 	/**
 	 * 提示友好的错误信息
 	 */
-	public void makeToast(Context ctx){
+	public String getErrorString(Context ctx){
 		switch(this.getType()){
 		case TYPE_HTTP_CODE:
-			String err = ctx.getString(R.string.http_status_code_error, this.getCode());
-			Toast.makeText(ctx, err, Toast.LENGTH_SHORT).show();
-			break;
+			return ctx.getString(R.string.http_status_code_error);
 		case TYPE_HTTP_ERROR:
-			Toast.makeText(ctx, R.string.http_exception_error, Toast.LENGTH_SHORT).show();
-			break;
+			return ctx.getString(R.string.http_exception_error);
 		case TYPE_SOCKET:
-			Toast.makeText(ctx, R.string.socket_exception_error, Toast.LENGTH_SHORT).show();
-			break;
+			return ctx.getString(R.string.socket_exception_error);
 		case TYPE_NETWORK:
-			Toast.makeText(ctx, R.string.network_not_connected, Toast.LENGTH_SHORT).show();
-			break;
+			return ctx.getString(R.string.network_not_connected);
 		case TYPE_XML:
-			Toast.makeText(ctx, R.string.xml_parser_failed, Toast.LENGTH_SHORT).show();
-			break;
+			return ctx.getString(R.string.xml_parser_failed);
 		case TYPE_JSON:
-			Toast.makeText(ctx, R.string.xml_parser_failed, Toast.LENGTH_SHORT).show();
-			break;
+			return ctx.getString(R.string.xml_parser_failed);
 		case TYPE_IO:
-			Toast.makeText(ctx, R.string.io_exception_error, Toast.LENGTH_SHORT).show();
-			break;
+			return ctx.getString(R.string.io_exception_error);
 		case TYPE_RUN:
-			Toast.makeText(ctx, R.string.app_run_code_error, Toast.LENGTH_SHORT).show();
-			break;
+			return ctx.getString(R.string.app_run_code_error);
 		}
+		return null;
 	}
 	
 	/**

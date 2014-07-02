@@ -19,10 +19,13 @@ import org.json.JSONObject;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import com.start.core.AppException;
 import com.start.core.Constant;
+import com.start.core.HandlerContext;
 import com.start.medical.R;
 import com.start.utils.MD5;
 import com.start.utils.NetConnectManager;
@@ -40,16 +43,16 @@ import com.start.utils.TimeUtils;
 public class HttpServer {
 	
 	private String mUrl;
-	private Handler mHandler;
+	private HandlerContext mHandler;
 	private Context mContext;
 	private Map<String,String> mHeaders;
 	private Map<String,String>mParams;
 	private ProgressDialog mPDialog;
 	
-	public HttpServer(String mUrl, Context mContext, Handler mHandler) {
+	public HttpServer(String mUrl, HandlerContext mHandler) {
 		this.mUrl = mUrl;
-		this.mContext = mContext;
 		this.mHandler = mHandler;
+		this.mContext = mHandler.getContext();
 	}
 	
 	public void setHeaders(Map<String, String> mHeaders) {
@@ -87,7 +90,7 @@ public class HttpServer {
 						Response response=new Response(httpResponse);
 						runnable.run(response);
 					}catch(AppException e){
-						e.makeToast(mContext);
+						mHandler.makeTextShort(e.getErrorString(mContext));
 					}finally{
 						dismissDialog();
 					}
@@ -127,7 +130,7 @@ public class HttpServer {
 						response.resolveJson();
 						runnable.run(response);
 					}catch(AppException e){
-						e.makeToast(mContext);
+						mHandler.makeTextShort(e.getErrorString(mContext));
 					}finally{
 						dismissDialog();
 					}

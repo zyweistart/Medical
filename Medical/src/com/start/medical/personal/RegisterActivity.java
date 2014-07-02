@@ -14,11 +14,11 @@ import android.widget.LinearLayout;
 import com.start.core.AppException;
 import com.start.core.BaseActivity;
 import com.start.core.Constant;
-import com.start.core.Constant.Handle;
 import com.start.medical.R;
 import com.start.service.HttpServer;
 import com.start.service.Response;
 import com.start.service.UIRunnable;
+import com.start.utils.StringUtils;
 
 /**
  * 注册
@@ -50,7 +50,6 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 		et_setting_password=(EditText)findViewById(R.id.et_setting_password);
 		et_setting_repassword=(EditText)findViewById(R.id.et_setting_repassword);
 		getHandleContext().getHandler().sendEmptyMessage(REGISTER_RESET_PASSWORD_STEP1);
-		
 	}
 	
 	public static final int REGISTER_RESET_PASSWORD_STEP1=11;
@@ -93,8 +92,8 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 	public void onClick(View v) {
 		if(v.getId()==R.id.btn_get_checksum){
 			String phone=String.valueOf(et_phone.getText());
-			if(!TextUtils.isEmpty(phone)){
-				HttpServer httpServer=new HttpServer(Constant.URL.useracodeGet, this, getHandleContext().getHandler());
+			if(!StringUtils.isEmpty(phone)){
+				HttpServer httpServer=new HttpServer(Constant.URL.useracodeGet, getHandleContext());
 				Map<String,String> params=new HashMap<String,String>();
 				Map<String,String> headers=new HashMap<String,String>();
 				headers.put("sign", Constant.ACCESSKEY_LOCAL);
@@ -117,7 +116,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 					
 				});
 			}else{
-				
+				getHandleContext().makeTextLong("请输入手机号码");
 			}
 		}else if(v.getId()==R.id.btn_confirm_checksum){
 			String checksum=String.valueOf(et_checksum.getText());
@@ -127,7 +126,15 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 		}else if(v.getId()==R.id.btn_setting_password){
 			String password=String.valueOf(et_setting_password.getText());
 			String repassword=String.valueOf(et_setting_repassword.getText());
-			
+			if(!StringUtils.isEmpty(password)){
+				if(!password.equals(repassword)){
+					
+				}else{
+					getHandleContext().makeTextLong("二次密码输入不一致");
+				}
+			}else{
+				getHandleContext().makeTextLong("密码不能为空");
+			}
 		}else if(v.getId()==R.id.btn_done){
 			finish();
 		}
