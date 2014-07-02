@@ -1,14 +1,20 @@
 package com.start.medical.personal;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+
+import org.json.JSONObject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
+import com.start.core.AppException;
 import com.start.core.BaseActivity;
 import com.start.core.Constant;
 import com.start.core.Constant.SharedPreferences;
@@ -26,9 +32,18 @@ import com.start.utils.StringUtils;
  *
  */
 public class LoginActivity extends BaseActivity implements OnClickListener {
+	/**
+	 * 自动登陆标记
+	 */
+	public static final String BUNLE_AUTOLOGINFLAG="BUNLE_AUTOLOGINFLAG";
+	/**
+	 * 提示信息
+	 */
+	public static final String BUNLE_MESSAGE="BUNLE_MESSAGE";
 	
 	private EditText et_login_account;
 	private EditText et_login_password;
+	private CheckBox cb_login_autologin;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,21 +51,35 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		setContentView(R.layout.activity_login);
 		et_login_account=(EditText)findViewById(R.id.et_login_account);
 		et_login_password=(EditText)findViewById(R.id.et_login_password);
+		cb_login_autologin=(CheckBox)findViewById(R.id.cb_login_autologin);
 	}
 	
 	@Override
-	public void onStart() {
-		super.onStart();
+	public void onResume() {
+		super.onResume();
 		Bundle bundle=getIntent().getExtras();
-		if(bundle==null){
-			String account=getAppContext().getSharedPreferencesUtils().getString(SharedPreferences.SP_ACCOUNT_CONTENT_DATA, Constant.EMPTYSTR);
-			//TODO:显示账号
-			Boolean autoLogin=getAppContext().getSharedPreferencesUtils().getBoolean(SharedPreferences.SP_AUTOLOGIN_CONTENT_DATA, false);
-			if(autoLogin){
-				String password=getAppContext().getSharedPreferencesUtils().getString(SharedPreferences.SP_PASSWORD_CONTENT_DATA, Constant.EMPTYSTR);
-				//TODO：显示密码
-				login(account, password, autoLogin);
-				return;
+		if(bundle!=null){
+			if(bundle.getBoolean(BUNLE_AUTOLOGINFLAG,true)){
+				String account=getAppContext().getSharedPreferencesUtils().getString(SharedPreferences.SP_ACCOUNT_CONTENT_DATA, Constant.EMPTYSTR);
+				if(StringUtils.isEmpty(account)){
+					return;
+				}
+				et_login_account.setText(account);
+				Boolean autoLogin=getAppContext().getSharedPreferencesUtils().getBoolean(SharedPreferences.SP_AUTOLOGIN_CONTENT_DATA, false);
+				cb_login_autologin.setChecked(autoLogin);
+				if(autoLogin){
+					String password=getAppContext().getSharedPreferencesUtils().getString(SharedPreferences.SP_PASSWORD_CONTENT_DATA, Constant.EMPTYSTR);
+					if(StringUtils.isEmpty(password)){
+						return;
+					}
+					et_login_password.setText(password);
+					login(account, password, autoLogin);
+				}
+			}else{
+				String message=bundle.getString(BUNLE_MESSAGE,Constant.EMPTYSTR);
+				if(!StringUtils.isEmpty(message)){
+					getHandlerContext().makeTextLong(message);
+				}
 			}
 		}
 	}
@@ -68,7 +97,24 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 				getHandlerContext().makeTextLong(getString(R.string.pwdemptytip));
 				return;
 			}
-			login(account,MD5.md5(password),false);
+			Boolean checked=cb_login_autologin.isChecked();
+			login(account,MD5.md5(password),checked);
+		}
+	}
+	
+	
+	@Override
+	public void onProcessMessage(Message msg) {
+		switch(msg.what){
+		case 110036:
+			//签名不匹配或密码不正确
+			getAppContext().getSharedPreferencesUtils().putString(SharedPreferences.SP_PASSWORD_CONTENT_DATA, Constant.EMPTYSTR);
+			et_login_password.setText(Constant.EMPTYSTR);
+			getHandlerContext().makeTextShort("密码有误,请重新输入");
+			break;
+		default:
+			super.onProcessMessage(msg);
+			break;
 		}
 	}
 	
@@ -89,20 +135,33 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		hServer.setParams(params);
 		hServer.get(new UIRunnable() {
 			
+			@SuppressWarnings("unchecked")
 			@Override
-			public void run(Response response) {
+			public void run(Response response) throws AppException {
+				
 				getAppContext().getSharedPreferencesUtils().putString(SharedPreferences.SP_ACCOUNT_CONTENT_DATA, account);
 				getAppContext().getSharedPreferencesUtils().putBoolean(SharedPreferences.SP_AUTOLOGIN_CONTENT_DATA, autoLogin);
 				if(autoLogin){
 					getAppContext().getSharedPreferencesUtils().putString(SharedPreferences.SP_PASSWORD_CONTENT_DATA, password);
 				}
 				
-				//TODO:解析登陆数据
-				Constant.ACCESSID="";
-				Constant.ACCESSKEY="";
-				
-				startActivity(new Intent(LoginActivity.this,MainActivity.class));
-				finish();
+				try {
+					JSONObject userinfo=response.getResponseContent().getJSONObject("userinfo");
+					
+					Iterator<String> i=userinfo.keys();
+					while(i.hasNext()){
+						String key=i.next();
+						getAppContext().getUserInfo().put(key,userinfo.getString(key));
+					}
+					
+					Constant.ACCESSID=getAppContext().getUserInfo().get("accessid");
+					Constant.ACCESSKEY=getAppContext().getUserInfo().get("accesskey");
+					
+					startActivity(new Intent(LoginActivity.this,MainActivity.class));
+					finish();
+				} catch (Exception e) {
+					throw AppException.json(e);
+				}
 				
 			}
 			

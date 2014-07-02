@@ -8,18 +8,27 @@
 	    android:id="@+id/et_login_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="请输入账户"/>
+        android:text="13738873386"
+        android:hint="@string/accounthint"/>
      <EditText 
 	    android:id="@+id/et_login_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="请输入密码"/>
+        android:text="123456"
+        android:hint="@string/passwordhint"/>
+     <CheckBox
+         android:id="@+id/cb_login_autologin"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:checked="true"
+         android:textSize="@dimen/fontsize_h1"
+         android:drawablePadding="4.0dip"
+         android:text="@string/autologinttxt" />
     <Button 
 	    android:id="@+id/btn_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClick"
         android:text="@string/sure"/>
-    
 
 </LinearLayout>

@@ -1,5 +1,8 @@
 package com.start.medical;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -36,6 +39,16 @@ public class AppContext extends Application {
     public static Context getContext(){
         return mContext;
     }
+    
+    private Map<String,String> userInfo;
+    
+    public Map<String,String> getUserInfo(){
+    	if(userInfo==null){
+    		userInfo=new HashMap<String,String>();
+    	}
+    	return userInfo;
+    }
+    
     
     /**
 	 * 获取App安装包信息

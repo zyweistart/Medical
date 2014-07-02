@@ -11,7 +11,10 @@
     <string name="personal_center">个人中心</string>
     <string name="edit_personal">修改资料</string>
     <string name="change_password">修改密码</string>
-    <!-- 注册重置密码 -->
+    <string name="accounthint">请输入账户</string>
+    <string name="passwordhint">请输入密码</string>
+    <string name="repasswordhint">请再次输入密码</string>
+    <string name="autologinttxt">自动登陆</string>
     <string name="getauthcode">获取校验码</string>
     <string name="regetauthcode">重新获取校验码</string>
     <string name="phoneemptytip">手机号码不能为空</string>

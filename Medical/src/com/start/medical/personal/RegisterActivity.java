@@ -161,7 +161,12 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 			getAppContext().getSharedPreferencesUtils().putString(SharedPreferences.SP_ACCOUNT_CONTENT_DATA, phone);
 			getAppContext().getSharedPreferencesUtils().putString(SharedPreferences.SP_PASSWORD_CONTENT_DATA, MD5.md5(password));
 			getAppContext().getSharedPreferencesUtils().putBoolean(SharedPreferences.SP_AUTOLOGIN_CONTENT_DATA, true);
-			startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+			
+			Bundle bundle=new Bundle();
+			bundle.putBoolean(LoginActivity.BUNLE_AUTOLOGINFLAG, true);
+			Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);
+			intent.putExtras(bundle);
+			startActivity(intent);
 			finish();
 		}
 	}
