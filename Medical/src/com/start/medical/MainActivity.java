@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.os.Bundle;
-import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -56,18 +55,6 @@ public class MainActivity extends BaseRefreshListActivity implements OnClickList
 			}
 		}else if(v.getId()==R.id.module_top_right){
 			
-		}
-	}
-	
-	public void onProcessMessage(Message msg) {
-		switch(msg.what){
-		case 110042://暂无记录
-			mItemDatas.clear();
-			getHandlerContext().getHandler().sendEmptyMessage(Handle.LOAD_END_MORE_DATA);
-			break;
-		default:
-			super.onProcessMessage(msg);
-			break;
 		}
 	}
 	

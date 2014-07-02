@@ -65,6 +65,13 @@ public abstract class BaseRefreshListActivity extends BaseActivity implements IX
 	@Override
 	public void onProcessMessage(Message msg) {
 		switch (msg.what) {
+			case 110042://暂无记录
+				if(mCurrentPage==1){
+					//TODO：清缓存
+					mItemDatas.clear();
+				}
+				getHandlerContext().getHandler().sendEmptyMessage(Handle.LOAD_END_MORE_DATA);
+				break;
 			case Handle.LOAD_INIT_DATA:
 				//TODO:初始化本地缓存数据
 				//如果缓存数据为空则加载网络数据
