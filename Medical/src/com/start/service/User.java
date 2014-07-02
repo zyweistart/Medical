@@ -25,6 +25,7 @@ public class User {
 		if(mUser==null){
 			mUser=new User();
 			mUser.mContext=mContext;
+			mUser.setLogin(false);
 		}
 		return mUser;
 	}

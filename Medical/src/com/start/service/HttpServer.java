@@ -42,11 +42,13 @@ public class HttpServer {
 	private Map<String,String> mHeaders;
 	private Map<String,String>mParams;
 	private ProgressDialog mPDialog;
+	private Boolean download;
 	
 	public HttpServer(String mUrl, HandlerContext mHandler) {
 		this.mUrl = mUrl;
 		this.mHandler = mHandler;
 		this.mContext = mHandler.getContext();
+		this.setDownload(false);
 	}
 	
 	public void setHeaders(Map<String, String> mHeaders) {
@@ -57,7 +59,14 @@ public class HttpServer {
 		this.mParams = mParams;
 	}
 	
-	
+	public Boolean isDownload() {
+		return download;
+	}
+
+	public void setDownload(Boolean download) {
+		this.download = download;
+	}
+
 	public void get(final UIRunnable runnable){
 		get(runnable,true);
 	}
@@ -92,14 +101,18 @@ public class HttpServer {
 						}
 						HttpResponse httpResponse=getResponse(requestContent);
 						Response response=new Response(httpResponse);
-						response.resolveJson();
-						if("100000".equals(response.getCode())){
-							runnable.run(response);
+						if(isDownload()){
+							//TODO:文件下载
 						}else{
-							Message msg = new Message();
-							msg.what = StringUtils.toInt(response.getCode());
-							msg.obj = response.getMsg();
-							mHandler.sendMessage(msg);
+							response.resolveJson();
+							if("100000".equals(response.getCode())){
+								runnable.run(response);
+							}else{
+								Message msg = new Message();
+								msg.what = StringUtils.toInt(response.getCode());
+								msg.obj = response.getMsg();
+								mHandler.sendMessage(msg);
+							}
 						}
 					}catch(AppException e){
 						mHandler.makeTextShort(e.getErrorString(mContext));
