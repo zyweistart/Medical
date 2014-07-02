@@ -1,19 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+<com.start.widget.SlidingLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_slidingLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/activity_gb">
-    
-    <RelativeLayout
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:background="@color/activity_gb" >
-	
-	    <TextView 
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/app_name"/>
-	
-	</RelativeLayout>
-    
-</ScrollView>
+
+    <LinearLayout
+        android:id="@+id/main_menu"
+        android:layout_width="270dip"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:background="@color/sliding_layout_left_bg"
+        android:orientation="vertical"
+        android:visibility="invisible" >
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="账户绑定"
+            android:textColor="@color/sliding_layout_left_menu_font_color"
+            android:textSize="@dimen/fontsize_h6" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="安全管理"
+            android:textColor="@color/sliding_layout_left_menu_font_color"
+            android:textSize="@dimen/fontsize_h6" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用户日志"
+            android:textColor="@color/sliding_layout_left_menu_font_color"
+            android:textSize="@dimen/fontsize_h6" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="关于我们"
+            android:textColor="@color/sliding_layout_left_menu_font_color"
+            android:textSize="@dimen/fontsize_h6" />
+        
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/main_content"
+        android:layout_width="320dip"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="@color/sliding_layout_right_bg"
+        android:orientation="vertical"
+        android:visibility="visible" >
+
+        <include layout="@layout/module_top" />
+        
+        <com.start.widget.xlistview.XListView
+	        android:id="@+id/xlv_content_list"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent" 
+	        android:choiceMode="singleChoice"
+	        android:dividerHeight="1dp"
+	        android:fadeScrollbars="true"
+	        android:fadingEdge="none"
+	        android:fastScrollEnabled="true"
+	        android:scrollingCache="false" 
+	        android:divider="#aaaaaa"
+	        android:cacheColorHint="#00000000">
+	    </com.start.widget.xlistview.XListView>
+        
+    </LinearLayout>
+
+</com.start.widget.SlidingLayout>

@@ -13,11 +13,11 @@ import com.start.core.Constant.SharedPreferences;
 import com.start.medical.AppContext;
 
 public class User {
-	
+
+	private Boolean login;
 	private static User mUser;
 	private AppContext mContext;
 	private Map<String,String> info;
-	private Boolean login;
 	
 	private User(){}
 	

@@ -1,8 +1,6 @@
 package com.start.service;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.http.HttpResponse;
@@ -18,10 +16,7 @@ import org.json.JSONObject;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.os.Handler;
 import android.os.Message;
-import android.text.TextUtils;
-import android.widget.Toast;
 
 import com.start.core.AppException;
 import com.start.core.Constant;
@@ -39,7 +34,6 @@ import com.start.utils.TimeUtils;
  * @date 2014年6月27日 下午3:45:19      
  * @说明  代码版权归 杭州反盗版中心有限公司 所有
  */
-@SuppressWarnings("unused")
 public class HttpServer {
 	
 	private String mUrl;
@@ -63,18 +57,22 @@ public class HttpServer {
 		this.mParams = mParams;
 	}
 	
-	/**
-	 * 请求获取数据
-	 */
+	
 	public void get(final UIRunnable runnable){
+		get(runnable,true);
+	}
+	
+	public void get(final UIRunnable runnable,Boolean dialog){
 		
 		if(NetConnectManager.isNetworkConnected(mContext)){
 			
-			mPDialog = new ProgressDialog(mContext);
-			mPDialog.setMessage(mContext.getString(R.string.wait));
-			mPDialog.setIndeterminate(true);
-			mPDialog.setCancelable(false);
-			mPDialog.show();
+			if(dialog){
+				mPDialog = new ProgressDialog(mContext);
+				mPDialog.setMessage(mContext.getString(R.string.wait));
+				mPDialog.setIndeterminate(true);
+				mPDialog.setCancelable(false);
+				mPDialog.show();
+			}
 			
 			new Thread(new Runnable() {
 				
@@ -83,13 +81,14 @@ public class HttpServer {
 					
 					try{
 						String requestContent=buildRequestContentByStringJson();
-						if(mHeaders!=null){
-							if(mHeaders.containsKey("sign")){
-								mHeaders.put("sign","".equals(mHeaders.get("sign"))?
-										MD5.md5(requestContent):StringUtils.signatureHmacSHA1(MD5.md5(requestContent),mHeaders.get("sign")));
-							}else{
-								mHeaders.put("sign",StringUtils.signatureHmacSHA1(MD5.md5(requestContent),Constant.ACCESSKEY));
-							}
+						if(mHeaders==null){
+							mHeaders=new HashMap<String,String>();
+						}
+						if(mHeaders.containsKey("sign")){
+							mHeaders.put("sign","".equals(mHeaders.get("sign"))?
+									MD5.md5(requestContent):StringUtils.signatureHmacSHA1(MD5.md5(requestContent),mHeaders.get("sign")));
+						}else{
+							mHeaders.put("sign",StringUtils.signatureHmacSHA1(MD5.md5(requestContent),Constant.ACCESSKEY));
 						}
 						HttpResponse httpResponse=getResponse(requestContent);
 						Response response=new Response(httpResponse);

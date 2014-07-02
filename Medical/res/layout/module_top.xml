@@ -5,7 +5,17 @@
     android:paddingRight="0dip"
     android:paddingTop="@dimen/spacing_1"
     android:paddingBottom="@dimen/spacing_1"
-    android:background="@color/module_top_bg">
+    android:background="#0e75d4">
+    
+    
+    <Button 
+        android:id="@+id/module_top_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:onClick="onClick"
+        android:visibility="visible"
+        android:text="左"/>
     
     <TextView
         android:id="@+id/module_top_title"
@@ -16,4 +26,13 @@
         android:layout_centerInParent="true" 
         android:text="@string/app_name"/>
 
+    <Button 
+        android:id="@+id/module_top_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:onClick="onClick"
+        android:visibility="gone"
+        android:text="右"/>
+    
 </RelativeLayout>

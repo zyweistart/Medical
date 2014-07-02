@@ -110,8 +110,9 @@ public final class Constant {
 		 */
 		public static final int LOAD_DATA_FAIL_CLEAR_DATA=0x1117;
 		
-		public static final int REGISTER_RESET_PASSWORD_STEP1=0x2117;
-		public static final int REGISTER_RESET_PASSWORD_STEP2=0x2118;
+		//注册重置密码
+		public static final int REGISTER_RESET_PASSWORD_STEP1=0x1118;
+		public static final int REGISTER_RESET_PASSWORD_STEP2=0x1119;
 		
 	}
 

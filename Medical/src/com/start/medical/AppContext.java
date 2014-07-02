@@ -18,16 +18,10 @@ import com.start.utils.SharedPreferencesUtils;
  */
 public class AppContext extends Application {
     
+	private User mUser;
     private static Context mContext;
     private SharedPreferencesUtils sharedPreferences;
 	
-	public SharedPreferencesUtils getSharedPreferencesUtils() {
-		if(sharedPreferences==null){
-			sharedPreferences=new SharedPreferencesUtils(this);
-		}
-		return sharedPreferences;
-	}
-
     @Override
     public void onCreate() {
     	mContext = getApplicationContext();
@@ -38,14 +32,19 @@ public class AppContext extends Application {
         return mContext;
     }
     
-    private User mUser;
-    
     public User currentUser(){
     	if(mUser==null){
     		mUser=User.getInstance(this);
     	}
     	return mUser;
     }
+    
+    public SharedPreferencesUtils getSharedPreferencesUtils() {
+		if(sharedPreferences==null){
+			sharedPreferences=new SharedPreferencesUtils(this);
+		}
+		return sharedPreferences;
+	}
     
     /**
 	 * 获取App安装包信息
