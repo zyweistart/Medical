@@ -74,7 +74,7 @@ public class ChangePassWordActivity extends BaseActivity implements OnClickListe
 					if(autoLogin){
 						getAppContext().getSharedPreferencesUtils().putString(SharedPreferences.SP_PASSWORD_CONTENT_DATA, MD5.md5(newpassword));
 					}
-					getHandlerContext().makeTextLong("密码修改成功");
+					getHandlerContext().makeTextLong(getString(R.string.changepasswordsuccess));
 					finish();
 				}
 				
