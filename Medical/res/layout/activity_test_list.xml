@@ -4,7 +4,7 @@
     android:id="@+id/main_slidingLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/activity_gb" >
+    android:background="@color/activity_gb">
 
     <LinearLayout
         android:id="@+id/main_menu"
@@ -14,34 +14,32 @@
         android:background="@color/sliding_layout_left_bg"
         android:orientation="vertical"
         android:visibility="invisible" >
-
+        
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="账户绑定"
             android:textColor="@color/sliding_layout_left_menu_font_color"
             android:textSize="@dimen/fontsize_h6" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="安全管理"
             android:textColor="@color/sliding_layout_left_menu_font_color"
             android:textSize="@dimen/fontsize_h6" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="用户日志"
             android:textColor="@color/sliding_layout_left_menu_font_color"
             android:textSize="@dimen/fontsize_h6" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="关于我们"
             android:textColor="@color/sliding_layout_left_menu_font_color"
             android:textSize="@dimen/fontsize_h6" />
+        
     </LinearLayout>
 
     <LinearLayout
@@ -54,69 +52,20 @@
         android:visibility="visible" >
 
         <include layout="@layout/module_top" />
-
-        <GridLayout
-            android:id="@+id/gl_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:columnCount="4"
-            android:orientation="horizontal"
-            android:rowCount="5" >
-            <Button
-                android:id="@+id/one"
-                android:text="1" />
-            <Button
-                android:id="@+id/two"
-                android:text="2" />
-            <Button
-                android:id="@+id/three"
-                android:text="3" />
-            <Button
-                android:id="@+id/devide"
-                android:text="/" />
-            <Button
-                android:id="@+id/four"
-                android:text="4" />
-            <Button
-                android:id="@+id/five"
-                android:text="5" />
-            <Button
-                android:id="@+id/six"
-                android:text="6" />
-            <Button
-                android:id="@+id/multiply"
-                android:text="×" />
-            <Button
-                android:id="@+id/seven"
-                android:text="7" />
-            <Button
-                android:id="@+id/eight"
-                android:text="8" />
-            <Button
-                android:id="@+id/nine"
-                android:text="9" />
-            <Button
-                android:id="@+id/minus"
-                android:text="-" />
-            <Button
-                android:id="@+id/zero"
-                android:layout_columnSpan="2"
-                android:layout_gravity="fill"
-                android:text="0" />
-            <Button
-                android:id="@+id/point"
-                android:text="." />
-            <Button
-                android:id="@+id/plus"
-                android:layout_gravity="fill"
-                android:layout_rowSpan="2"
-                android:text="+" />
-            <Button
-                android:id="@+id/equal"
-                android:layout_columnSpan="3"
-                android:layout_gravity="fill"
-                android:text="=" />
-        </GridLayout>
+        
+        <com.start.widget.xlistview.XListView
+	        android:id="@+id/xlv_content_list"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent" 
+	        android:choiceMode="singleChoice"
+	        android:dividerHeight="1dp"
+	        android:fadeScrollbars="true"
+	        android:fadingEdge="none"
+	        android:fastScrollEnabled="true"
+	        android:scrollingCache="false" 
+	        android:divider="#aaaaaa"
+	        android:cacheColorHint="#00000000">
+	    </com.start.widget.xlistview.XListView>
         
     </LinearLayout>
 
