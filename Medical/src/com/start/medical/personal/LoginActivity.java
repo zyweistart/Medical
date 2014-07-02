@@ -1,9 +1,9 @@
 package com.start.medical.personal;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Intent;
@@ -33,13 +33,13 @@ import com.start.utils.StringUtils;
  */
 public class LoginActivity extends BaseActivity implements OnClickListener {
 	/**
-	 * 自动登陆标记
-	 */
-	public static final String BUNLE_AUTOLOGINFLAG="BUNLE_AUTOLOGINFLAG";
-	/**
 	 * 提示信息
 	 */
 	public static final String BUNLE_MESSAGE="BUNLE_MESSAGE";
+	/**
+	 * 自动登陆标记
+	 */
+	public static final String BUNLE_AUTOLOGINFLAG="BUNLE_AUTOLOGINFLAG";
 	
 	private EditText et_login_account;
 	private EditText et_login_password;
@@ -59,6 +59,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		super.onResume();
 		Bundle bundle=getIntent().getExtras();
 		if(bundle!=null){
+			//自动登陆
 			if(bundle.getBoolean(BUNLE_AUTOLOGINFLAG,true)){
 				String account=getAppContext().getSharedPreferencesUtils().getString(SharedPreferences.SP_ACCOUNT_CONTENT_DATA, Constant.EMPTYSTR);
 				if(StringUtils.isEmpty(account)){
@@ -76,10 +77,13 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 					login(account, password, autoLogin);
 				}
 			}else{
+				
 				String message=bundle.getString(BUNLE_MESSAGE,Constant.EMPTYSTR);
 				if(!StringUtils.isEmpty(message)){
 					getHandlerContext().makeTextLong(message);
+					return;
 				}
+				
 			}
 		}
 	}
@@ -106,9 +110,8 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 	@Override
 	public void onProcessMessage(Message msg) {
 		switch(msg.what){
-		case 110036:
-			//签名不匹配或密码不正确
-			getAppContext().getSharedPreferencesUtils().putString(SharedPreferences.SP_PASSWORD_CONTENT_DATA, Constant.EMPTYSTR);
+		case 110036://签名不匹配或密码不正确
+			getAppContext().currentUser().clearCachePassword();
 			et_login_password.setText(Constant.EMPTYSTR);
 			getHandlerContext().makeTextShort("密码有误,请重新输入");
 			break;
@@ -135,31 +138,15 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		hServer.setParams(params);
 		hServer.get(new UIRunnable() {
 			
-			@SuppressWarnings("unchecked")
 			@Override
 			public void run(Response response) throws AppException {
-				
-				getAppContext().getSharedPreferencesUtils().putString(SharedPreferences.SP_ACCOUNT_CONTENT_DATA, account);
-				getAppContext().getSharedPreferencesUtils().putBoolean(SharedPreferences.SP_AUTOLOGIN_CONTENT_DATA, autoLogin);
-				if(autoLogin){
-					getAppContext().getSharedPreferencesUtils().putString(SharedPreferences.SP_PASSWORD_CONTENT_DATA, password);
-				}
-				
+				getAppContext().currentUser().addCacheUser(account, password, autoLogin);
 				try {
 					JSONObject userinfo=response.getResponseContent().getJSONObject("userinfo");
-					
-					Iterator<String> i=userinfo.keys();
-					while(i.hasNext()){
-						String key=i.next();
-						getAppContext().getUserInfo().put(key,userinfo.getString(key));
-					}
-					
-					Constant.ACCESSID=getAppContext().getUserInfo().get("accessid");
-					Constant.ACCESSKEY=getAppContext().getUserInfo().get("accesskey");
-					
+					getAppContext().currentUser().resolveByJSON(userinfo);
 					startActivity(new Intent(LoginActivity.this,MainActivity.class));
 					finish();
-				} catch (Exception e) {
+				} catch (JSONException e) {
 					throw AppException.json(e);
 				}
 				

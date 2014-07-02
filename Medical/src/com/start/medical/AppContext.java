@@ -1,13 +1,11 @@
 package com.start.medical;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 
+import com.start.service.User;
 import com.start.utils.SharedPreferencesUtils;
 
 /**
@@ -40,15 +38,14 @@ public class AppContext extends Application {
         return mContext;
     }
     
-    private Map<String,String> userInfo;
+    private User mUser;
     
-    public Map<String,String> getUserInfo(){
-    	if(userInfo==null){
-    		userInfo=new HashMap<String,String>();
+    public User currentUser(){
+    	if(mUser==null){
+    		mUser=User.getInstance(this);
     	}
-    	return userInfo;
+    	return mUser;
     }
-    
     
     /**
 	 * 获取App安装包信息

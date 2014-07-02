@@ -15,7 +15,6 @@ import android.widget.LinearLayout;
 import com.start.core.BaseActivity;
 import com.start.core.Constant;
 import com.start.core.Constant.Handle;
-import com.start.core.Constant.SharedPreferences;
 import com.start.medical.R;
 import com.start.service.HttpServer;
 import com.start.service.Response;
@@ -158,10 +157,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 				
 			});
 		}else if(v.getId()==R.id.btn_done){
-			getAppContext().getSharedPreferencesUtils().putString(SharedPreferences.SP_ACCOUNT_CONTENT_DATA, phone);
-			getAppContext().getSharedPreferencesUtils().putString(SharedPreferences.SP_PASSWORD_CONTENT_DATA, MD5.md5(password));
-			getAppContext().getSharedPreferencesUtils().putBoolean(SharedPreferences.SP_AUTOLOGIN_CONTENT_DATA, true);
-			
+			getAppContext().currentUser().addCacheUser(phone, MD5.md5(password), true);
 			Bundle bundle=new Bundle();
 			bundle.putBoolean(LoginActivity.BUNLE_AUTOLOGINFLAG, true);
 			Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);
