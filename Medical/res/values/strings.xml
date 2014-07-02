@@ -21,6 +21,7 @@
     <string name="pwdemptytip">密码不能为空</string>
     <string name="autocodeemptytip">验证码不能为空</string>
     <string name="twopwddifftip">二次密码输入不一致</string>
+    <string name="usernameorpassworderrortip">用户名或密码有误</string>
     
     <!-- 挂号 -->
     

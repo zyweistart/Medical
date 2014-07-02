@@ -113,7 +113,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		case 110036://签名不匹配或密码不正确
 			getAppContext().currentUser().clearCachePassword();
 			et_login_password.setText(Constant.EMPTYSTR);
-			getHandlerContext().makeTextShort("密码有误,请重新输入");
+			getHandlerContext().makeTextShort(getString(R.string.usernameorpassworderrortip));
 			break;
 		default:
 			super.onProcessMessage(msg);
