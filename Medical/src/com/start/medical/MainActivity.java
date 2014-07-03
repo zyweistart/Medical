@@ -6,6 +6,7 @@ import java.util.List;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -114,6 +115,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 	 * 主体功能设置
 	 */
 	private void setMainFunctionModule(LinearLayout layout,int type){
+		layout.setOnTouchListener(mSlidingLayout);
 		ImageView ic_main_function=(ImageView)layout.findViewById(R.id.ic_main_function);
 		TextView txt_main_function=(TextView)layout.findViewById(R.id.txt_main_function);
 		TextView txt_child_main_function=(TextView)layout.findViewById(R.id.txt_child_main_function);
@@ -189,20 +191,28 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			
 		}else if(v.getId()==R.id.main_function_1){
 			//手机挂号
+			Log.v(TAG,"手机挂号");
 		}else if(v.getId()==R.id.main_function_2){
 			//妇保中心
+			Log.v(TAG,"妇保中心");
 		}else if(v.getId()==R.id.main_function_3){
 			//报告单
+			Log.v(TAG,"报告单");
 		}else if(v.getId()==R.id.main_function_4){
 			//疫苗接种
+			Log.v(TAG,"疫苗接种");
 		}else if(v.getId()==R.id.main_function_5){
 			//医院导航
+			Log.v(TAG,"医院导航");
 		}else if(v.getId()==R.id.main_function_6){
 			//科室医生
+			Log.v(TAG,"科室医生");
 		}else if(v.getId()==R.id.main_function_7){
 			//健康百科
+			Log.v(TAG,"健康百科");
 		}else if(v.getId()==R.id.main_function_8){
 			//健康资讯
+			Log.v(TAG,"健康资讯");
 		}
 	}
 	
