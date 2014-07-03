@@ -3,10 +3,20 @@
 
     <!-- 背景 -->
    	<color name="activity_gb">#f3f3f3</color>
-   	<color name="module_top_bg">#0e75d4</color>
+   	<color name="module_top_bg">#08b2c9</color>
    	<color name="module_bottom_bg">#0e75d4</color>
-   	<color name="sliding_layout_left_bg">#00ccff</color>
-   	<color name="sliding_layout_left_menu_font_color">#000000</color>
-   	<color name="sliding_layout_right_bg">#e9e9e9</color>
+   	<color name="sliding_layout_left_bg">#d9d9d9</color>
+   	<color name="sliding_layout_left_menu_font_color">#666666</color>
+   	<color name="sliding_layout_right_bg">#ffffff</color>
+   	<!-- 主功能区字体颜色 -->
+   	<color name="main_function_1">#09b2c9</color>
+   	<color name="main_function_2">#df4dcc</color>
+   	<color name="main_function_3">#f2a90e</color>
+   	<color name="main_function_4">#2ecb3c</color>
+   	<color name="main_function_5">#368ff5</color>
+   	<color name="main_function_6">#fe854c</color>
+   	<color name="main_function_7">#388df7</color>
+   	<color name="main_function_8">#c7a909</color>
+   	<color name="main_function_child">#d8d8d8</color>
 	
 </resources>

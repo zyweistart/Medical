@@ -13,7 +13,6 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.LinearLayout;
 
 import com.start.core.BaseActivity;
-import com.start.medical.personal.LoginActivity;
 import com.start.utils.FileUtils;
 import com.start.utils.TimeUtils;
 
@@ -46,10 +45,11 @@ public class StartActivity extends BaseActivity{
 			
 			@Override
 			public void onAnimationEnd(Animation arg0) {
-				Bundle bundle=new Bundle();
-				bundle.putBoolean(LoginActivity.BUNLE_AUTOLOGINFLAG, true);
-				Intent intent=new Intent(StartActivity.this,LoginActivity.class);
-				intent.putExtras(bundle);
+//				Bundle bundle=new Bundle();
+//				bundle.putBoolean(LoginActivity.BUNLE_AUTOLOGINFLAG, true);
+//				Intent intent=new Intent(StartActivity.this,LoginActivity.class);
+//				intent.putExtras(bundle);
+				Intent intent=new Intent(StartActivity.this,MainActivity.class);
 				startActivity(intent);
 				finish();
 			}

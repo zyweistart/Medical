@@ -55,68 +55,54 @@
 
         <include layout="@layout/module_top" />
 
-        <GridLayout
-            android:id="@+id/gl_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:columnCount="4"
-            android:orientation="horizontal"
-            android:rowCount="5" >
-            <Button
-                android:id="@+id/one"
-                android:text="1" />
-            <Button
-                android:id="@+id/two"
-                android:text="2" />
-            <Button
-                android:id="@+id/three"
-                android:text="3" />
-            <Button
-                android:id="@+id/devide"
-                android:text="/" />
-            <Button
-                android:id="@+id/four"
-                android:text="4" />
-            <Button
-                android:id="@+id/five"
-                android:text="5" />
-            <Button
-                android:id="@+id/six"
-                android:text="6" />
-            <Button
-                android:id="@+id/multiply"
-                android:text="×" />
-            <Button
-                android:id="@+id/seven"
-                android:text="7" />
-            <Button
-                android:id="@+id/eight"
-                android:text="8" />
-            <Button
-                android:id="@+id/nine"
-                android:text="9" />
-            <Button
-                android:id="@+id/minus"
-                android:text="-" />
-            <Button
-                android:id="@+id/zero"
-                android:layout_columnSpan="2"
-                android:layout_gravity="fill"
-                android:text="0" />
-            <Button
-                android:id="@+id/point"
-                android:text="." />
-            <Button
-                android:id="@+id/plus"
-                android:layout_gravity="fill"
-                android:layout_rowSpan="2"
-                android:text="+" />
-            <Button
-                android:id="@+id/equal"
-                android:layout_columnSpan="3"
-                android:layout_gravity="fill"
-                android:text="=" />
-        </GridLayout>
+        <ScrollView 
+            android:id="@+id/main_content_sv_function"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                
+                <LinearLayout 
+	                android:layout_width="match_parent"
+	                android:layout_height="100.0dip"
+	                android:orientation="horizontal">
+	                
+                    <include android:id="@+id/main_function_1" layout="@layout/module_main_function"/>
+                    <include android:id="@+id/main_function_2" layout="@layout/module_main_function"/>
+	                
+	            </LinearLayout>
+	            <LinearLayout 
+	                android:layout_width="match_parent"
+	                android:layout_height="100.0dip"
+	                android:orientation="horizontal">
+	                
+                    <include android:id="@+id/main_function_3" layout="@layout/module_main_function"/>
+                    <include android:id="@+id/main_function_4" layout="@layout/module_main_function"/>
+	                
+	            </LinearLayout>
+	            <LinearLayout 
+	                android:layout_width="match_parent"
+	                android:layout_height="100.0dip"
+	                android:orientation="horizontal">
+	                
+                    <include android:id="@+id/main_function_5" layout="@layout/module_main_function"/>
+                    <include android:id="@+id/main_function_6" layout="@layout/module_main_function"/>
+	                
+	            </LinearLayout>
+	            <LinearLayout 
+	                android:layout_width="match_parent"
+	                android:layout_height="100.0dip"
+	                android:orientation="horizontal">
+	                
+                    <include android:id="@+id/main_function_7" layout="@layout/module_main_function"/>
+                    <include android:id="@+id/main_function_8" layout="@layout/module_main_function"/>
+	                
+	            </LinearLayout>
+                
+            </LinearLayout>
+        </ScrollView>
         
     </LinearLayout>
 

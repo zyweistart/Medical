@@ -24,6 +24,22 @@
     <string name="usernameorpassworderrortip">用户名或密码有误</string>
     <string name="changepasswordsuccess">修改密码成功</string>
     
+    <string name="mainfunctiontxt1">手机挂号</string>
+    <string name="mainfunctionchiltxt1">手机实时挂号，叫号查询</string>
+    <string name="mainfunctiontxt2">妇保中心</string>
+    <string name="mainfunctionchiltxt2">妇保信息跟踪健康中心</string>
+    <string name="mainfunctiontxt3">报告单</string>
+    <string name="mainfunctionchiltxt3">手机及时查询，减少不必要的等待时间</string>
+    <string name="mainfunctiontxt4">疫苗接种</string>
+    <string name="mainfunctionchiltxt4">新生婴儿疫苗接种情况</string>
+    <string name="mainfunctiontxt5">医院导航</string>
+    <string name="mainfunctionchiltxt5">医院位置，楼层、周边情况</string>
+    <string name="mainfunctiontxt6">科室医生</string>
+    <string name="mainfunctionchiltxt6">科室医生信息查询</string>
+    <string name="mainfunctiontxt7">健康百科</string>
+    <string name="mainfunctionchiltxt7">海量医学健康知识</string>
+    <string name="mainfunctiontxt8">健康资讯</string>
+    <string name="mainfunctionchiltxt8">日常生活健康资讯</string>
     <!-- 挂号 -->
     
     <!-- 取单 -->
