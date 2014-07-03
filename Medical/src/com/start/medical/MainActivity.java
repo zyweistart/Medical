@@ -110,7 +110,6 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 	 * 主体功能设置
 	 */
 	private void setMainFunctionModule(LinearLayout layout,int type){
-		layout.setOnTouchListener(mSlidingLayout);
 		ImageView ic_main_function=(ImageView)layout.findViewById(R.id.ic_main_function);
 		TextView txt_main_function=(TextView)layout.findViewById(R.id.txt_main_function);
 		TextView txt_child_main_function=(TextView)layout.findViewById(R.id.txt_child_main_function);
