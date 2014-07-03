@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- 背景 -->
    	<color name="activity_gb">#f3f3f3</color>
    	<color name="module_top_bg">#08b2c9</color>
    	<color name="module_bottom_bg">#0e75d4</color>
+   	
    	<color name="sliding_layout_left_bg">#d9d9d9</color>
    	<color name="sliding_layout_left_menu_font_color">#666666</color>
    	<color name="sliding_layout_right_bg">#ffffff</color>
-   	<!-- 主功能区字体颜色 -->
+   	
+   	<color name="main_function_pressed">#efefef</color>
+   	<color name="main_function_normal">#ffffff</color>
    	<color name="main_function_1">#09b2c9</color>
    	<color name="main_function_2">#df4dcc</color>
    	<color name="main_function_3">#f2a90e</color>

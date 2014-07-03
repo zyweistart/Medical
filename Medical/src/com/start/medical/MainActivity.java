@@ -19,7 +19,6 @@ import com.start.widget.SlidingLayout;
 public class MainActivity extends BaseActivity implements OnClickListener{
 
 	private SlidingLayout mSlidingLayout;
-	
 	private ScrollView mMainContentSV;
 	
 	@Override
@@ -120,21 +119,21 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		}else if(v.getId()==R.id.module_top_right){
 			
 		}else if(v.getId()==R.id.main_function_1){
-			//
+			//手机挂号
 		}else if(v.getId()==R.id.main_function_2){
-			//
+			//妇保中心
 		}else if(v.getId()==R.id.main_function_3){
-			//
+			//报告单
 		}else if(v.getId()==R.id.main_function_4){
-			//
+			//疫苗接种
 		}else if(v.getId()==R.id.main_function_5){
-			//
+			//医院导航
 		}else if(v.getId()==R.id.main_function_6){
-			//
+			//科室医生
 		}else if(v.getId()==R.id.main_function_7){
-			//
+			//健康百科
 		}else if(v.getId()==R.id.main_function_8){
-			//
+			//健康资讯
 		}
 	}
 	
