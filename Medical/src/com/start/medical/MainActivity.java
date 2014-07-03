@@ -79,6 +79,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		}
 		
 		mBanner=(ViewPager)findViewById(R.id.main_banner);
+		mBanner.setOffscreenPageLimit(imageResId.length);
 		mBanner.setAdapter(new BannerAdapter());
 		
 	}
