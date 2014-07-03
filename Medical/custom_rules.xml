@@ -24,7 +24,7 @@
 
     <!-- Basic Ant + SDK check -->
     <target name="-post-build">
-		<echo>out.final.file: ${out.final.file}.</echo>
+		<!-- <echo>out.final.file: ${out.final.file}.</echo> -->
 		<!-- 生成输出到目标文件中 -->
 		<copy file="${out.final.file}" tofile="${app.build.path}\${ant.project.name}\current\${ant.project.name}-${apk-market}.apk" overwrite="true"/>
 		<!-- 生成输出到历史文件中 -->
@@ -33,7 +33,7 @@
 		<copy file="${app.file.manifest.bak}" tofile="${app.file.manifest}" overwrite="true"/>
 		<!-- 删除备份配置文件 -->
 		<delete file="${app.file.manifest.bak}" />
-		<echo>APK 版本号：${var.time} 渠道编号:${apk-market}生成成功！</echo>
+		<echo>生成成功---当前版本号：${var.time} 当前所属渠道编号：${apk-market} APK路径：${app.build.path}/${ant.project.name}/current/${ant.project.name}-${apk-market}.apk</echo>
     </target>
 
     <!-- Basic Ant + SDK check -->
