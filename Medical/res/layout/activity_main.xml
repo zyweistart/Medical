@@ -18,7 +18,7 @@
         <RelativeLayout
 	        android:layout_width="match_parent"
 	        android:layout_height="150.0dip"
-	        android:background="@color/main_function_3">
+	        android:background="@drawable/sliding_layout_left_top_bg">
 	        
 	        <TextView 
 	            android:layout_width="match_parent"
@@ -61,6 +61,7 @@
         <include layout="@layout/module_top" />
 
         <ScrollView 
+            android:id="@+id/main_content_sv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 			android:scrollbars="none">

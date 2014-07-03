@@ -39,6 +39,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		mSlidingLayout = (SlidingLayout) findViewById(R.id.main_slidingLayout);
+		mSlidingLayout.setScrollEvent(findViewById(R.id.main_content_sv));
 		
 		//设置Left功能区
 		LinearLayout more_item_1=(LinearLayout)findViewById(R.id.more_item_1);
