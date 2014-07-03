@@ -2,7 +2,7 @@
 <resources>
 
     <!-- App -->
-    <string name="app_name">智能医疗</string>
+    <string name="app_name">彭卫医疗</string>
     
     <!-- 个人 -->
     <string name="login">登陆</string>

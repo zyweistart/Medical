@@ -11,7 +11,6 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -46,13 +45,13 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		mSlidingLayout.setScrollEvent(mMainContentSV);
 		
 		//设置Left功能区
-		RelativeLayout more_item_1=(RelativeLayout)findViewById(R.id.more_item_1);
+		LinearLayout more_item_1=(LinearLayout)findViewById(R.id.more_item_1);
 		setSlidingLeftModule(more_item_1,1);
-		RelativeLayout more_item_2=(RelativeLayout)findViewById(R.id.more_item_2);
+		LinearLayout more_item_2=(LinearLayout)findViewById(R.id.more_item_2);
 		setSlidingLeftModule(more_item_2,2);
-		RelativeLayout more_item_3=(RelativeLayout)findViewById(R.id.more_item_3);
+		LinearLayout more_item_3=(LinearLayout)findViewById(R.id.more_item_3);
 		setSlidingLeftModule(more_item_3,3);
-		RelativeLayout more_item_4=(RelativeLayout)findViewById(R.id.more_item_4);
+		LinearLayout more_item_4=(LinearLayout)findViewById(R.id.more_item_4);
 		setSlidingLeftModule(more_item_4,4);
 		//设置主功能区
 		LinearLayout main_function_1=(LinearLayout)findViewById(R.id.main_function_1);
@@ -88,7 +87,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 	/**
 	 * 设置Left功能区
 	 */
-	private void setSlidingLeftModule(RelativeLayout layout,int type){
+	private void setSlidingLeftModule(LinearLayout layout,int type){
 		ImageView ic_more=(ImageView)layout.findViewById(R.id.ic_more);
 		TextView txt_more=(TextView)layout.findViewById(R.id.txt_more);
 		switch(type){

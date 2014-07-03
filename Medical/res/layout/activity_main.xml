@@ -13,11 +13,12 @@
         android:layout_alignParentLeft="true"
         android:background="@color/sliding_layout_bg"
         android:orientation="vertical"
-        android:visibility="invisible" >
+        android:visibility="visible" >
 
         <RelativeLayout
 	        android:layout_width="match_parent"
-	        android:layout_height="150.0dip">
+	        android:layout_height="150.0dip"
+	        android:background="@color/main_function_1">
 	        
 	        <TextView 
 	            android:layout_width="match_parent"
@@ -26,7 +27,7 @@
 	            android:layout_centerInParent="true"
 	            android:padding="5.0dip"
 	            android:textSize="15.0dip"
-	            android:text="安存网络科技有限公司"/>
+	            android:text="@string/app_name"/>
             
 	    </RelativeLayout>
         
@@ -39,7 +40,7 @@
             android:textSize="15.0dip"
             android:background="#08b2c9"
             android:textColor="#ffffff"
-            android:text="安存网络科技有限公司"/>
+            android:text="@string/app_name"/>
         
         <include android:id="@+id/more_item_1" layout="@layout/module_sliding_layout_left_item"/>
         <include android:id="@+id/more_item_2" layout="@layout/module_sliding_layout_left_item"/>
@@ -81,33 +82,61 @@
 	                android:orientation="horizontal">
 	                
                     <include android:id="@+id/main_function_1" layout="@layout/module_sliding_layout_right_main_function_item"/>
+                    <View
+				        android:layout_width="1.0dip"
+				        android:layout_height="match_parent"
+				        android:background="@drawable/line" />
                     <include android:id="@+id/main_function_2" layout="@layout/module_sliding_layout_right_main_function_item"/>
 	                
 	            </LinearLayout>
+	            <View
+			        android:layout_width="match_parent"
+			        android:layout_height="1.0dip"
+			        android:background="@drawable/line" />
 	            <LinearLayout 
 	                android:layout_width="match_parent"
 	                android:layout_height="@dimen/main_function_height"
 	                android:orientation="horizontal">
 	                
                     <include android:id="@+id/main_function_3" layout="@layout/module_sliding_layout_right_main_function_item"/>
+                    <View
+				        android:layout_width="1.0dip"
+				        android:layout_height="match_parent"
+				        android:background="@drawable/line" />
                     <include android:id="@+id/main_function_4" layout="@layout/module_sliding_layout_right_main_function_item"/>
 	                
 	            </LinearLayout>
+	            <View
+			        android:layout_width="match_parent"
+			        android:layout_height="1.0dip"
+			        android:background="@drawable/line" />
 	            <LinearLayout 
 	                android:layout_width="match_parent"
 	                android:layout_height="@dimen/main_function_height"
 	                android:orientation="horizontal">
 	                
                     <include android:id="@+id/main_function_5" layout="@layout/module_sliding_layout_right_main_function_item"/>
+                    <View
+				        android:layout_width="1.0dip"
+				        android:layout_height="match_parent"
+				        android:background="@drawable/line" />
                     <include android:id="@+id/main_function_6" layout="@layout/module_sliding_layout_right_main_function_item"/>
 	                
 	            </LinearLayout>
+	            <View
+			        android:layout_width="match_parent"
+			        android:layout_height="1.0dip"
+			        android:background="@drawable/line" />
 	            <LinearLayout 
 	                android:layout_width="match_parent"
 	                android:layout_height="@dimen/main_function_height"
 	                android:orientation="horizontal">
 	                
                     <include android:id="@+id/main_function_7" layout="@layout/module_sliding_layout_right_main_function_item"/>
+                    <View
+				        android:layout_width="1.0dip"
+				        android:layout_height="match_parent"
+				        android:background="@drawable/line" />
                     <include android:id="@+id/main_function_8" layout="@layout/module_sliding_layout_right_main_function_item"/>
 	                
 	            </LinearLayout>
