@@ -19,6 +19,7 @@
     <string name="app_error">应用程序错误</string>
     <string name="app_error_message">很抱歉，应用程序出现错误，即将退出。\n请提交错误报告，我们会尽快修复这个问题！</string>
     <string name="submit_report">提交报告</string>
+    <string name="not_login_message">你还没有登陆请先登陆</string>
     
     <!-- widget -->
     <string name="widget_xlistview_header_hint_normal">下拉刷新</string>

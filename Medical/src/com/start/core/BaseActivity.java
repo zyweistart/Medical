@@ -1,11 +1,13 @@
 package com.start.core;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 
 import com.start.core.HandlerContext.HandleContextListener;
 import com.start.medical.AppContext;
+import com.start.medical.personal.LoginActivity;
 import com.start.utils.StringUtils;
 
 public abstract class BaseActivity extends Activity implements HandleContextListener {
@@ -70,6 +72,24 @@ public abstract class BaseActivity extends Activity implements HandleContextList
 			}
 			break;
 		}
+	}
+	
+	public void goLogin(){
+		Bundle bundle=new Bundle();
+		bundle.putBoolean(LoginActivity.BUNLE_AUTOLOGINFLAG, true);
+		Intent intent=new Intent(this,LoginActivity.class);
+		intent.putExtras(bundle);
+		startActivity(intent);
+		finish();
+	}
+	
+	public void goLogin(String message){
+		Bundle bundle=new Bundle();
+		bundle.putString(LoginActivity.BUNLE_MESSAGE, message);
+		Intent intent=new Intent(this,LoginActivity.class);
+		intent.putExtras(bundle);
+		startActivity(intent);
+		finish();
 	}
 	
 }

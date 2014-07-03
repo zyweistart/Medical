@@ -35,6 +35,10 @@ public class ChangePassWordActivity extends BaseActivity implements OnClickListe
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		if(!getAppContext().currentUser().isLogin()){
+			goLogin(getString(R.string.not_login_message));
+			return;
+		}
 		setContentView(R.layout.activity_change_password);
 		et_old_password=(EditText)findViewById(R.id.et_old_password);
 		et_new_password=(EditText)findViewById(R.id.et_new_password);

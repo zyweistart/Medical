@@ -45,10 +45,7 @@ public class StartActivity extends BaseActivity{
 			
 			@Override
 			public void onAnimationEnd(Animation arg0) {
-//				Bundle bundle=new Bundle();
-//				bundle.putBoolean(LoginActivity.BUNLE_AUTOLOGINFLAG, true);
-//				Intent intent=new Intent(StartActivity.this,LoginActivity.class);
-//				intent.putExtras(bundle);
+//				goLogin();
 				Intent intent=new Intent(StartActivity.this,MainActivity.class);
 				startActivity(intent);
 				finish();

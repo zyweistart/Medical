@@ -3,7 +3,6 @@ package com.start.medical.personal;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
@@ -159,12 +158,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 			});
 		}else if(v.getId()==R.id.btn_done){
 			getAppContext().currentUser().addCacheUser(phone, MD5.md5(password), true);
-			Bundle bundle=new Bundle();
-			bundle.putBoolean(LoginActivity.BUNLE_AUTOLOGINFLAG, true);
-			Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);
-			intent.putExtras(bundle);
-			startActivity(intent);
-			finish();
+			goLogin();
 		}
 	}
 	
