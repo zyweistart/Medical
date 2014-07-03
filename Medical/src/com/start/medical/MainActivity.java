@@ -12,7 +12,6 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.start.core.BaseActivity;
@@ -26,8 +25,6 @@ import com.start.widget.SlidingLayout;
 public class MainActivity extends BaseActivity implements OnClickListener{
 
 	private SlidingLayout mSlidingLayout;
-	private ScrollView mMainContentSV;
-	private ViewPager mBanner;
 	
 	private List<ImageView> imageViews;
 	private int[] imageResId = new int[] {
@@ -42,8 +39,6 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		mSlidingLayout = (SlidingLayout) findViewById(R.id.main_slidingLayout);
-		mMainContentSV = (ScrollView) findViewById(R.id.main_content_sv_function);
-		mSlidingLayout.setScrollEvent(mMainContentSV);
 		
 		//设置Left功能区
 		LinearLayout more_item_1=(LinearLayout)findViewById(R.id.more_item_1);
@@ -79,9 +74,9 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			imageViews.add(imageView);
 		}
 		
-		mBanner=(ViewPager)findViewById(R.id.main_banner);
-		mBanner.setOffscreenPageLimit(imageResId.length);
-		mBanner.setAdapter(new BannerAdapter());
+		ViewPager bannerPager=(ViewPager)findViewById(R.id.main_banner);
+		bannerPager.setOffscreenPageLimit(imageResId.length);
+		bannerPager.setAdapter(new BannerAdapter());
 		
 	}
 

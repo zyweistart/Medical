@@ -61,7 +61,6 @@
         <include layout="@layout/module_top" />
 
         <ScrollView 
-            android:id="@+id/main_content_sv_function"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 			android:scrollbars="none">
