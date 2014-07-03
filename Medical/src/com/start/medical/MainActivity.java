@@ -75,7 +75,6 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		for (int i = 0; i < imageResId.length; i++) {
 			ImageView imageView = new ImageView(MainActivity.this);
 			imageView.setImageResource(imageResId[i]);
-			imageView.setScaleType(ScaleType.CENTER_CROP);
 			imageViews.add(imageView);
 		}
 		
@@ -207,7 +206,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 	}
 	
 	private class BannerAdapter extends PagerAdapter {
-
+		
 		@Override
 		public int getCount() {
 			return imageResId.length;
@@ -215,8 +214,10 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 
 		@Override
 		public Object instantiateItem(View view, int index) {
-			((ViewPager) view).addView(imageViews.get(index));
-			return imageViews.get(index);
+			ImageView im = imageViews.get(index);
+		    im.setScaleType(ScaleType.CENTER_CROP);
+		    ((ViewPager)view).addView(im);
+		    return im;
 		}
 
 		@Override
