@@ -5,7 +5,7 @@
     android:paddingRight="0dip"
     android:paddingTop="@dimen/spacing_1"
     android:paddingBottom="@dimen/spacing_1"
-    android:background="@color/module_top_bg">
+    android:background="#08b2c9">
     
     
     <Button 

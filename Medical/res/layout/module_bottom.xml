@@ -5,7 +5,7 @@
     android:paddingRight="0dip"
     android:paddingTop="@dimen/spacing_1"
     android:paddingBottom="@dimen/spacing_1"
-    android:background="@color/module_bottom_bg">
+    android:background="#0e75d4">
     
     <TextView
         android:layout_width="wrap_content"

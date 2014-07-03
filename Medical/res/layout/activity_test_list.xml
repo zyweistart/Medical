@@ -11,33 +11,15 @@
         android:layout_width="270dip"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:background="@color/sliding_layout_left_bg"
+        android:background="@color/sliding_layout_bg"
         android:orientation="vertical"
         android:visibility="invisible" >
         
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="账户绑定"
-            android:textColor="@color/sliding_layout_left_menu_font_color"
-            android:textSize="@dimen/fontsize_h6" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="安全管理"
-            android:textColor="@color/sliding_layout_left_menu_font_color"
-            android:textSize="@dimen/fontsize_h6" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="用户日志"
-            android:textColor="@color/sliding_layout_left_menu_font_color"
-            android:textSize="@dimen/fontsize_h6" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="关于我们"
-            android:textColor="@color/sliding_layout_left_menu_font_color"
+            android:textColor="#686868"
             android:textSize="@dimen/fontsize_h6" />
         
     </LinearLayout>
@@ -47,7 +29,7 @@
         android:layout_width="320dip"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
-        android:background="@color/sliding_layout_right_bg"
+        android:background="#ffffff"
         android:orientation="vertical"
         android:visibility="visible" >
 

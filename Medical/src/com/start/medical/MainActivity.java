@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -29,6 +30,15 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		mMainContentSV = (ScrollView) findViewById(R.id.main_content_sv_function);
 		mSlidingLayout.setScrollEvent(mMainContentSV);
 		
+		//设置Left功能区
+		RelativeLayout more_item_1=(RelativeLayout)findViewById(R.id.more_item_1);
+		setSlidingLeftModule(more_item_1,1);
+		RelativeLayout more_item_2=(RelativeLayout)findViewById(R.id.more_item_2);
+		setSlidingLeftModule(more_item_2,2);
+		RelativeLayout more_item_3=(RelativeLayout)findViewById(R.id.more_item_3);
+		setSlidingLeftModule(more_item_3,3);
+		RelativeLayout more_item_4=(RelativeLayout)findViewById(R.id.more_item_4);
+		setSlidingLeftModule(more_item_4,4);
 		//设置主功能区
 		LinearLayout main_function_1=(LinearLayout)findViewById(R.id.main_function_1);
 		setMainFunctionModule(main_function_1, 1);
@@ -49,6 +59,32 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		
 	}
 
+	/**
+	 * 设置Left功能区
+	 */
+	private void setSlidingLeftModule(RelativeLayout layout,int type){
+		ImageView ic_more=(ImageView)layout.findViewById(R.id.ic_more);
+		TextView txt_more=(TextView)layout.findViewById(R.id.txt_more);
+		switch(type){
+		case 1:
+			ic_more.setBackgroundResource(R.drawable.ic_more_aboutus);
+			txt_more.setText(R.string.personal_center);
+			break;
+		case 2:
+			ic_more.setBackgroundResource(R.drawable.ic_more_change_password);
+			txt_more.setText(R.string.change_password);
+			break;
+		case 3:
+			ic_more.setBackgroundResource(R.drawable.ic_more_clear_cache);
+			txt_more.setText(R.string.mainfunctiontxt1);
+			break;
+		case 4:
+			ic_more.setBackgroundResource(R.drawable.ic_more_feedback);
+			txt_more.setText(R.string.login);
+			break;
+		}
+	}
+	
 	/**
 	 * 主体功能设置
 	 */
@@ -117,6 +153,14 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 				mSlidingLayout.scrollToLeftLayout();
 			}
 		}else if(v.getId()==R.id.module_top_right){
+			
+		}else if(v.getId()==R.id.more_item_1){
+			
+		}else if(v.getId()==R.id.more_item_2){
+			
+		}else if(v.getId()==R.id.more_item_3){
+			
+		}else if(v.getId()==R.id.more_item_4){
 			
 		}else if(v.getId()==R.id.main_function_1){
 			//手机挂号
