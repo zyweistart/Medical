@@ -1,9 +1,15 @@
 package com.start.medical;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.os.Bundle;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -21,6 +27,15 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 
 	private SlidingLayout mSlidingLayout;
 	private ScrollView mMainContentSV;
+	private ViewPager mBanner;
+	
+	private List<ImageView> imageViews;
+	private int[] imageResId = new int[] {
+			R.drawable.default_banner_1,
+			R.drawable.default_banner_2,
+			R.drawable.default_banner_3,
+			R.drawable.default_banner_4,
+			R.drawable.default_banner_5 };
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +71,17 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		setMainFunctionModule(main_function_7, 7);
 		LinearLayout main_function_8=(LinearLayout)findViewById(R.id.main_function_8);
 		setMainFunctionModule(main_function_8, 8);
+		
+		imageViews = new ArrayList<ImageView>();
+		for (int i = 0; i < imageResId.length; i++) {
+			ImageView imageView = new ImageView(MainActivity.this);
+			imageView.setImageResource(imageResId[i]);
+			imageView.setScaleType(ScaleType.CENTER_CROP);
+			imageViews.add(imageView);
+		}
+		
+		mBanner=(ViewPager)findViewById(R.id.main_banner);
+		mBanner.setAdapter(new BannerAdapter());
 		
 	}
 
@@ -179,6 +205,31 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		}else if(v.getId()==R.id.main_function_8){
 			//健康资讯
 		}
+	}
+	
+	private class BannerAdapter extends PagerAdapter {
+
+		@Override
+		public int getCount() {
+			return imageResId.length;
+		}
+
+		@Override
+		public Object instantiateItem(View view, int index) {
+			((ViewPager) view).addView(imageViews.get(index));
+			return imageViews.get(index);
+		}
+
+		@Override
+		public void destroyItem(View arg0, int arg1, Object arg2) {
+			((ViewPager) arg0).removeView((View) arg2);
+		}
+
+		@Override
+		public boolean isViewFromObject(View arg0, Object arg1) {
+			return arg0 == arg1;
+		}
+		
 	}
 	
 }

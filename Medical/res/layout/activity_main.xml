@@ -19,20 +19,14 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="150.0dip">
 	        
-	        <LinearLayout 
+	        <TextView 
 	            android:layout_width="match_parent"
-	            android:layout_height="wrap_content"
-	            android:layout_alignParentTop="true"
-	            android:orientation="horizontal">
-	            
-	        </LinearLayout>
-            <LinearLayout 
-	            android:layout_width="match_parent"
-	            android:layout_height="wrap_content"
-	            android:layout_alignParentBottom="true"
-	            android:orientation="horizontal">
-	            
-	        </LinearLayout>
+	            android:layout_height="45.0dip"
+	            android:gravity="center_vertical"
+	            android:layout_centerInParent="true"
+	            android:padding="5.0dip"
+	            android:textSize="15.0dip"
+	            android:text="安存网络科技有限公司"/>
             
 	    </RelativeLayout>
         
@@ -68,11 +62,18 @@
         <ScrollView 
             android:id="@+id/main_content_sv_function"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+			android:scrollbars="none">
+            
             <LinearLayout 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+                
+                <android.support.v4.view.ViewPager
+		            android:id="@+id/main_banner"
+		            android:layout_width="match_parent"
+		            android:layout_height="150.0dip" />
                 
                 <LinearLayout 
 	                android:layout_width="match_parent"
