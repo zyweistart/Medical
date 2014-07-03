@@ -33,7 +33,10 @@
 		<copy file="${app.file.manifest.bak}" tofile="${app.file.manifest}" overwrite="true"/>
 		<!-- 删除备份配置文件 -->
 		<delete file="${app.file.manifest.bak}" />
-		<echo>生成成功---当前版本号：${var.time} 当前所属渠道编号：${apk-market} APK路径：${app.build.path}/${ant.project.name}/current/${ant.project.name}-${apk-market}.apk</echo>
+		<echo>生成成功</echo>
+		<echo>当前版本号：${var.time}</echo>
+		<echo>当前所属渠道编号：${apk-market}</echo>
+		<echo>APK路径：${app.build.path}/${ant.project.name}/current/${ant.project.name}-${apk-market}.apk</echo>
     </target>
 
     <!-- Basic Ant + SDK check -->
