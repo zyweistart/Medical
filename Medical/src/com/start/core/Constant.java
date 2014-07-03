@@ -14,13 +14,6 @@ public final class Constant {
 	public static final String RESTURL = ISSYSTEMTEST ?
 			"http://account.chinacloudapp.cn:82/http/HttpService":"http://account.chinacloudapp.cn:82/http/HttpService";
 
-	public static String ACCESSID = Constant.EMPTYSTR;
-	public static String ACCESSKEY = Constant.EMPTYSTR;
-	public static final String ACCESSID_LOCAL = ISSYSTEMTEST ? 
-			"4a069ace58ba0918a3aa11b62b472b9e": "e4e60d050f5513e086b47c4fdca35646";
-	public static final String ACCESSKEY_LOCAL = ISSYSTEMTEST ? 
-			"MThjMDE3ZjAwMTE3NTIzNmE4OTM2ZjQ5N2M2Y2JhNDc=": "fUETGmOIiMujnipQnFm6rJIyO2wJDZSftsK4dwmmoSZ=";
-	
 	/**
 	 * 用户接口
 	 */
@@ -79,7 +72,7 @@ public final class Constant {
 		public static final String userpatientDelete="userpatientDelete";
 	}
 	
-	public final class Handle {
+	public final class Handler {
 		
 		/**
 		 * 加载数据
@@ -109,20 +102,29 @@ public final class Constant {
 		 * 无法加载数据时清除数据
 		 */
 		public static final int LOAD_DATA_FAIL_CLEAR_DATA=0x1117;
-		
-		//注册重置密码
+		/**
+		 * 注册重置密码步骤1
+		 */
 		public static final int REGISTER_RESET_PASSWORD_STEP1=0x1118;
+		/**
+		 * 注册重置密码步骤2
+		 */
 		public static final int REGISTER_RESET_PASSWORD_STEP2=0x1119;
 		
 	}
 
-	/**
-	 * SharedPreferences
-	 */
-	public final class SharedPreferences {
-		
+	public final class Preferences {
+		/**
+		 * 用户账户
+		 */
 		public static final String SP_ACCOUNT_CONTENT_DATA = "SP_ACCOUNT_DATA";
+		/**
+		 * 用户密码
+		 */
 		public static final String SP_PASSWORD_CONTENT_DATA = "SP_PASSWORD_DATA";
+		/**
+		 * 自动登陆
+		 */
 		public static final String SP_AUTOLOGIN_CONTENT_DATA = "SP_AUTOLOGIN_CONTENT_DATA";
 		
 	}

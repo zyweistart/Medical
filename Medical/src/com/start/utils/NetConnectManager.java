@@ -3,7 +3,6 @@ package com.start.utils;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.text.TextUtils;
 /**
  * 网络连接管理
  * @author Start
@@ -38,7 +37,7 @@ public class NetConnectManager {
 		int nType = networkInfo.getType();
 		if (nType == ConnectivityManager.TYPE_MOBILE) {
 			String extraInfo = networkInfo.getExtraInfo();
-			if(!TextUtils.isEmpty(extraInfo)){
+			if(!StringUtils.isEmpty(extraInfo)){
 				if (extraInfo.toLowerCase().equals("cmnet")) {
 					netType = NETTYPE_CMNET;
 				} else {

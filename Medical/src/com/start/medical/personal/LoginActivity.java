@@ -17,7 +17,8 @@ import android.widget.EditText;
 import com.start.core.AppException;
 import com.start.core.BaseActivity;
 import com.start.core.Constant;
-import com.start.core.Constant.SharedPreferences;
+import com.start.core.Constant.Preferences;
+import com.start.medical.AppContext;
 import com.start.medical.MainActivity;
 import com.start.medical.R;
 import com.start.service.HttpServer;
@@ -61,15 +62,15 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		if(bundle!=null){
 			//自动登陆
 			if(bundle.getBoolean(BUNLE_AUTOLOGINFLAG,true)){
-				String account=getAppContext().getSharedPreferencesUtils().getString(SharedPreferences.SP_ACCOUNT_CONTENT_DATA, Constant.EMPTYSTR);
+				String account=AppContext.getSharedPreferences().getString(Preferences.SP_ACCOUNT_CONTENT_DATA, Constant.EMPTYSTR);
 				if(StringUtils.isEmpty(account)){
 					return;
 				}
 				et_login_account.setText(account);
-				Boolean autoLogin=getAppContext().getSharedPreferencesUtils().getBoolean(SharedPreferences.SP_AUTOLOGIN_CONTENT_DATA, false);
+				Boolean autoLogin=AppContext.getSharedPreferences().getBoolean(Preferences.SP_AUTOLOGIN_CONTENT_DATA, false);
 				cb_login_autologin.setChecked(autoLogin);
 				if(autoLogin){
-					String password=getAppContext().getSharedPreferencesUtils().getString(SharedPreferences.SP_PASSWORD_CONTENT_DATA, Constant.EMPTYSTR);
+					String password=AppContext.getSharedPreferences().getString(Preferences.SP_PASSWORD_CONTENT_DATA, Constant.EMPTYSTR);
 					if(StringUtils.isEmpty(password)){
 						return;
 					}

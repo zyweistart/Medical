@@ -20,11 +20,12 @@ public class AppContext extends Application {
     
 	private User mUser;
     private static Context mContext;
-    private SharedPreferencesUtils sharedPreferences;
+    private static SharedPreferencesUtils sharedPreferences;
 	
     @Override
     public void onCreate() {
     	mContext = getApplicationContext();
+    	sharedPreferences=new SharedPreferencesUtils(this);
         super.onCreate();
     }
     
@@ -32,19 +33,19 @@ public class AppContext extends Application {
         return mContext;
     }
     
+    public static SharedPreferencesUtils getSharedPreferences() {
+		return sharedPreferences;
+	}
+    
+    /**
+     * 获取当前用户信息
+     */
     public User currentUser(){
     	if(mUser==null){
-    		mUser=User.getInstance(this);
+    		mUser=User.getInstance();
     	}
     	return mUser;
     }
-    
-    public SharedPreferencesUtils getSharedPreferencesUtils() {
-		if(sharedPreferences==null){
-			sharedPreferences=new SharedPreferencesUtils(this);
-		}
-		return sharedPreferences;
-	}
     
     /**
 	 * 获取App安装包信息

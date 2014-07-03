@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.os.Message;
 import android.widget.BaseAdapter;
 
-import com.start.core.Constant.Handle;
+import com.start.core.Constant.Handler;
 import com.start.utils.TimeUtils;
 import com.start.widget.xlistview.XListView;
 import com.start.widget.xlistview.XListView.IXListViewListener;
@@ -39,12 +39,12 @@ public abstract class BaseRefreshListActivity extends BaseActivity implements IX
 	
 	@Override
 	public void onRefresh() {
-		getHandlerContext().getHandler().sendEmptyMessage(Handle.LOAD_START_PULLDOWN_REFRESH_DATA);
+		getHandlerContext().getHandler().sendEmptyMessage(Handler.LOAD_START_PULLDOWN_REFRESH_DATA);
 	}
 
 	@Override
 	public void onLoadMore() {
-		getHandlerContext().getHandler().sendEmptyMessage(Handle.LOAD_START_MORE_DATA);
+		getHandlerContext().getHandler().sendEmptyMessage(Handler.LOAD_START_MORE_DATA);
 	}
 	
 	/**
@@ -70,28 +70,28 @@ public abstract class BaseRefreshListActivity extends BaseActivity implements IX
 					//TODO：清缓存
 					mItemDatas.clear();
 				}
-				getHandlerContext().getHandler().sendEmptyMessage(Handle.LOAD_END_MORE_DATA);
+				getHandlerContext().getHandler().sendEmptyMessage(Handler.LOAD_END_MORE_DATA);
 				break;
-			case Handle.LOAD_INIT_DATA:
+			case Handler.LOAD_INIT_DATA:
 				//TODO:初始化本地缓存数据
 				//如果缓存数据为空则加载网络数据
 				if(mItemDatas.isEmpty()){
 					mListView.startLoadMore();
 				}
 				break;
-			case Handle.LOAD_START_PULLDOWN_REFRESH_DATA:
+			case Handler.LOAD_START_PULLDOWN_REFRESH_DATA:
 				mCurrentPage=1;
-				onLoading(Handle.LOAD_END_PULLDOWN_REFRESH_DATA);
+				onLoading(Handler.LOAD_END_PULLDOWN_REFRESH_DATA);
 				break;
-			case Handle.LOAD_START_MORE_DATA:
+			case Handler.LOAD_START_MORE_DATA:
 				mCurrentPage++;
-				onLoading(Handle.LOAD_END_MORE_DATA);
+				onLoading(Handler.LOAD_END_MORE_DATA);
 				break;
-			case Handle.LOAD_DATA_FAIL_CLEAR_DATA:
+			case Handler.LOAD_DATA_FAIL_CLEAR_DATA:
 				mCurrentPage=0;
 				this.mItemDatas.clear();
-			case Handle.LOAD_END_PULLDOWN_REFRESH_DATA:
-			case Handle.LOAD_END_MORE_DATA:
+			case Handler.LOAD_END_PULLDOWN_REFRESH_DATA:
+			case Handler.LOAD_END_MORE_DATA:
 				onLoadDone();
 				break;
 			default:

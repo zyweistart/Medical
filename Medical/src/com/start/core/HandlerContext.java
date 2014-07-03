@@ -3,8 +3,9 @@ package com.start.core;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
-import android.text.TextUtils;
 import android.widget.Toast;
+
+import com.start.utils.StringUtils;
 
 /**
  * @author Start   
@@ -27,13 +28,13 @@ public class HandlerContext {
 	}
 
 	public void makeTextShort(String text) {
-		if(!TextUtils.isEmpty(text)){
+		if(!StringUtils.isEmpty(text)){
 			sendMessage(Toast.LENGTH_SHORT,text);
 		}
 	}
 
 	public void makeTextLong(String text) {
-		if(!TextUtils.isEmpty(text)){
+		if(!StringUtils.isEmpty(text)){
 			sendMessage(Toast.LENGTH_LONG,text);
 		}
 	}

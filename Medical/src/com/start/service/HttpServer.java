@@ -97,12 +97,12 @@ public class HttpServer {
 							mHeaders.put("sign","".equals(mHeaders.get("sign"))?
 									MD5.md5(requestContent):StringUtils.signatureHmacSHA1(MD5.md5(requestContent),mHeaders.get("sign")));
 						}else{
-							mHeaders.put("sign",StringUtils.signatureHmacSHA1(MD5.md5(requestContent),Constant.ACCESSKEY));
+							mHeaders.put("sign",StringUtils.signatureHmacSHA1(MD5.md5(requestContent),User.ACCESSKEY));
 						}
 						HttpResponse httpResponse=getResponse(requestContent);
 						Response response=new Response(httpResponse);
 						if(isDownload()){
-							//TODO:文件下载
+							//TODO:文件下载处理
 						}else{
 							response.resolveJson();
 							if("100000".equals(response.getCode())){

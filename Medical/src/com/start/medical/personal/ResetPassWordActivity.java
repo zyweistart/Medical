@@ -6,11 +6,12 @@ import java.util.Map;
 import android.view.View;
 
 import com.start.core.Constant;
-import com.start.core.Constant.Handle;
+import com.start.core.Constant.Handler;
 import com.start.medical.R;
 import com.start.service.HttpServer;
 import com.start.service.Response;
 import com.start.service.UIRunnable;
+import com.start.service.User;
 import com.start.utils.MD5;
 import com.start.utils.StringUtils;
 
@@ -50,10 +51,10 @@ public class ResetPassWordActivity extends RegisterActivity {
 			}
 			HttpServer hServer=new HttpServer(Constant.URL.userpwdReset, getHandlerContext());
 			Map<String,String> headers=new HashMap<String,String>();
-			headers.put("sign", Constant.ACCESSKEY_LOCAL);
+			headers.put("sign", User.ACCESSKEY_LOCAL);
 			hServer.setHeaders(headers);
 			Map<String,String> params=new HashMap<String,String>();
-			params.put("accessid", Constant.ACCESSID_LOCAL);
+			params.put("accessid", User.ACCESSID_LOCAL);
 			params.put("mobile", phone);
 			params.put("pwd", MD5.md5(password));
 			params.put("authcode", authcode);
@@ -64,7 +65,7 @@ public class ResetPassWordActivity extends RegisterActivity {
 				
 				@Override
 				public void run(Response response) {
-					getHandlerContext().getHandler().sendEmptyMessage(Handle.REGISTER_RESET_PASSWORD_STEP2);
+					getHandlerContext().getHandler().sendEmptyMessage(Handler.REGISTER_RESET_PASSWORD_STEP2);
 				}
 				
 			});

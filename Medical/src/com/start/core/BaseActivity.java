@@ -13,7 +13,7 @@ public abstract class BaseActivity extends Activity implements HandleContextList
 	protected final String TAG = this.getClass().getSimpleName();
 	
 	private AppContext mAppContext;
-	private HandlerContext mHandleContext;
+	private HandlerContext mHandlerContext;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +53,11 @@ public abstract class BaseActivity extends Activity implements HandleContextList
 	}
 	
 	public HandlerContext getHandlerContext() {
-		if(mHandleContext==null){
-			mHandleContext=new HandlerContext(this);
-			mHandleContext.setListener(this);
+		if(mHandlerContext==null){
+			mHandlerContext=new HandlerContext(this);
+			mHandlerContext.setListener(this);
 		}
-		return mHandleContext;
+		return mHandlerContext;
 	}
 
 	@Override

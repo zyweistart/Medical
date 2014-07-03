@@ -11,11 +11,13 @@ import android.widget.EditText;
 import com.start.core.AppException;
 import com.start.core.BaseActivity;
 import com.start.core.Constant;
-import com.start.core.Constant.SharedPreferences;
+import com.start.core.Constant.Preferences;
+import com.start.medical.AppContext;
 import com.start.medical.R;
 import com.start.service.HttpServer;
 import com.start.service.Response;
 import com.start.service.UIRunnable;
+import com.start.service.User;
 import com.start.utils.MD5;
 import com.start.utils.StringUtils;
 
@@ -62,7 +64,7 @@ public class ChangePassWordActivity extends BaseActivity implements OnClickListe
 			headers.put("sign", MD5.md5(newpassword));
 			hServer.setHeaders(headers);
 			Map<String,String> params=new HashMap<String,String>();
-			params.put("accessid", Constant.ACCESSID);
+			params.put("accessid", User.ACCESSID);
 			params.put("pwd", MD5.md5(oldpassword));
 			hServer.setParams(params);
 			hServer.get(new UIRunnable() {
@@ -70,9 +72,9 @@ public class ChangePassWordActivity extends BaseActivity implements OnClickListe
 				@Override
 				public void run(Response response) throws AppException {
 					
-					Boolean autoLogin=getAppContext().getSharedPreferencesUtils().getBoolean(SharedPreferences.SP_AUTOLOGIN_CONTENT_DATA, false);
+					Boolean autoLogin=AppContext.getSharedPreferences().getBoolean(Preferences.SP_AUTOLOGIN_CONTENT_DATA, false);
 					if(autoLogin){
-						getAppContext().getSharedPreferencesUtils().putString(SharedPreferences.SP_PASSWORD_CONTENT_DATA, MD5.md5(newpassword));
+						AppContext.getSharedPreferences().putString(Preferences.SP_PASSWORD_CONTENT_DATA, MD5.md5(newpassword));
 					}
 					getHandlerContext().makeTextLong(getString(R.string.changepasswordsuccess));
 					finish();

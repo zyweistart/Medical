@@ -14,11 +14,12 @@ import android.widget.LinearLayout;
 
 import com.start.core.BaseActivity;
 import com.start.core.Constant;
-import com.start.core.Constant.Handle;
+import com.start.core.Constant.Handler;
 import com.start.medical.R;
 import com.start.service.HttpServer;
 import com.start.service.Response;
 import com.start.service.UIRunnable;
+import com.start.service.User;
 import com.start.utils.MD5;
 import com.start.utils.StringUtils;
 import com.start.utils.TimeUtils;
@@ -61,7 +62,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 	@Override
 	public void onProcessMessage(Message msg) {
 		switch (msg.what) {
-		case Handle.REGISTER_RESET_PASSWORD_STEP1:
+		case Handler.REGISTER_RESET_PASSWORD_STEP1:
 			ll_setting_phone.setVisibility(View.GONE);
 			ll_setting_data.setVisibility(View.VISIBLE);
 			ll_setting_done.setVisibility(View.GONE);
@@ -98,7 +99,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 			}).start();
 			
 			break;
-		case Handle.REGISTER_RESET_PASSWORD_STEP2:
+		case Handler.REGISTER_RESET_PASSWORD_STEP2:
 			ll_setting_phone.setVisibility(View.GONE);
 			ll_setting_data.setVisibility(View.GONE);
 			ll_setting_done.setVisibility(View.VISIBLE);
@@ -138,10 +139,10 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 			}
 			HttpServer hServer=new HttpServer(Constant.URL.userReg, getHandlerContext());
 			Map<String,String> headers=new HashMap<String,String>();
-			headers.put("sign", Constant.ACCESSKEY_LOCAL);
+			headers.put("sign", User.ACCESSKEY_LOCAL);
 			hServer.setHeaders(headers);
 			Map<String,String> params=new HashMap<String,String>();
-			params.put("accessid", Constant.ACCESSID_LOCAL);
+			params.put("accessid", User.ACCESSID_LOCAL);
 			params.put("mobile", phone);
 			params.put("pwd", MD5.md5(password));
 			params.put("authcode", authcode);
@@ -152,7 +153,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 				
 				@Override
 				public void run(Response response) {
-					getHandlerContext().getHandler().sendEmptyMessage(Handle.REGISTER_RESET_PASSWORD_STEP2);
+					getHandlerContext().getHandler().sendEmptyMessage(Handler.REGISTER_RESET_PASSWORD_STEP2);
 				}
 				
 			});
@@ -173,10 +174,10 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 	public void getAuthCode(int type){
 		HttpServer hServer=new HttpServer(Constant.URL.useracodeGet, getHandlerContext());
 		Map<String,String> headers=new HashMap<String,String>();
-		headers.put("sign", Constant.ACCESSKEY_LOCAL);
+		headers.put("sign", User.ACCESSKEY_LOCAL);
 		hServer.setHeaders(headers);
 		Map<String,String> params=new HashMap<String,String>();
-		params.put("accessid", Constant.ACCESSID_LOCAL);
+		params.put("accessid", User.ACCESSID_LOCAL);
 		params.put("mobile", phone);
 		params.put("type", String.valueOf(type));
 		hServer.setParams(params);
@@ -184,7 +185,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 			
 			@Override
 			public void run(Response response) {
-				getHandlerContext().getHandler().sendEmptyMessage(Handle.REGISTER_RESET_PASSWORD_STEP1);
+				getHandlerContext().getHandler().sendEmptyMessage(Handler.REGISTER_RESET_PASSWORD_STEP1);
 			}
 			
 		});

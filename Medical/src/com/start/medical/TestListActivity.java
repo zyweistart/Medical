@@ -12,10 +12,11 @@ import android.widget.TextView;
 import com.start.core.AppException;
 import com.start.core.BaseRefreshListActivity;
 import com.start.core.Constant;
-import com.start.core.Constant.Handle;
+import com.start.core.Constant.Handler;
 import com.start.service.HttpServer;
 import com.start.service.Response;
 import com.start.service.UIRunnable;
+import com.start.service.User;
 import com.start.widget.SlidingLayout;
 import com.start.widget.xlistview.XListView;
 
@@ -42,7 +43,7 @@ public class TestListActivity extends BaseRefreshListActivity implements OnClick
 		mListView.setAdapter(mAdapter);
 		mSlidingLayout.setScrollEvent(mListView);
 		//加载数据
-		getHandlerContext().getHandler().sendEmptyMessage(Handle.LOAD_INIT_DATA);
+		getHandlerContext().getHandler().sendEmptyMessage(Handler.LOAD_INIT_DATA);
 	}
 
 	@Override
@@ -62,14 +63,14 @@ public class TestListActivity extends BaseRefreshListActivity implements OnClick
 	protected void onLoading(final int HANDLER){
 		HttpServer hServer=new HttpServer(Constant.URL.userpatientList, getHandlerContext());
 		Map<String,String> params=new HashMap<String,String>();
-		params.put("accessid", Constant.ACCESSID);
+		params.put("accessid", User.ACCESSID);
 		hServer.setParams(params);
 		hServer.get(new UIRunnable() {
 			
 			@Override
 			public void run(Response response) throws AppException {
 				//如果为下拉刷新则清除数据
-				if(HANDLER==Handle.LOAD_END_PULLDOWN_REFRESH_DATA){
+				if(HANDLER==Handler.LOAD_END_PULLDOWN_REFRESH_DATA){
 					mItemDatas.clear();
 				}
 				
