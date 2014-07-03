@@ -45,6 +45,9 @@
     
 	<!-- 调用该目标方法生成全部 -->
 	<target name="custom_release"> 
+	    <!-- 先执行清理项目，再生成 -->
+	    <antcall target="clean" />
+	    <echo>项目清理完成，开始生成</echo>
 	   <foreach target="release" list="${app.channel}" param="apk-market" delimiter=";"/> 
 	</target>
     
