@@ -5,16 +5,12 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 
+import com.start.core.AppException;
 import com.start.service.User;
 import com.start.utils.SharedPreferencesUtils;
 
 /**
- * 
- * @author Start   
- * @Description: 全局application 
- * @ClassName: AppContext.java   
- * @date 2014年6月30日 上午9:08:15      
- * @说明  代码版权归 杭州反盗版中心有限公司 所有
+ * 全局application
  */
 public class AppContext extends Application {
     
@@ -24,9 +20,11 @@ public class AppContext extends Application {
 	
     @Override
     public void onCreate() {
+        super.onCreate();
+        //注册App异常崩溃处理器
+        Thread.setDefaultUncaughtExceptionHandler(AppException.getAppExceptionHandler());
     	mContext = getApplicationContext();
     	sharedPreferences=new SharedPreferencesUtils(this);
-        super.onCreate();
     }
     
     public static Context getContext(){

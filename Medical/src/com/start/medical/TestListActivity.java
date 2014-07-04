@@ -54,8 +54,6 @@ public class TestListActivity extends BaseRefreshListActivity implements OnClick
 			} else {
 				mSlidingLayout.scrollToLeftLayout();
 			}
-		}else if(v.getId()==R.id.module_top_right){
-			
 		}
 	}
 	
