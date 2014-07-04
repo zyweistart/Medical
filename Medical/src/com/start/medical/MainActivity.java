@@ -174,8 +174,6 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			} else {
 				mSlidingLayout.scrollToLeftLayout();
 			}
-		}else if(v.getId()==R.id.module_top_right){
-			
 		}else if(v.getId()==R.id.more_item_1){
 			
 		}else if(v.getId()==R.id.more_item_2){
