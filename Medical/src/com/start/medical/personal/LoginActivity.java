@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
@@ -91,6 +90,7 @@ public class LoginActivity extends BaseActivity {
 	
 	@Override
 	public void onClick(View v) {
+		super.onClick(v);
 		if(v.getId()==R.id.btn_login){
 			String account=String.valueOf(et_login_account.getText());
 			if(StringUtils.isEmpty(account)){
@@ -104,8 +104,6 @@ public class LoginActivity extends BaseActivity {
 			}
 			Boolean checked=cb_login_autologin.isChecked();
 			login(account,MD5.md5(password),checked);
-		}else{
-			super.onClick(v);
 		}
 	}
 	
