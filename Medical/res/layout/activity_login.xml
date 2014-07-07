@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/activity_gb"  >
+    android:background="@color/activity_gb2"  >
     
     <include layout="@layout/module_top" />
     
@@ -11,7 +11,9 @@
 	    android:id="@+id/et_login_account"
         android:layout_width="match_parent"
         android:layout_height="50.0dip"
-        android:drawableLeft="@drawable/ic_collect"
+        android:drawableLeft="@drawable/ic_account"
+        android:drawablePadding="5.0dip"
+        android:padding="5.0dip"
         android:hint="@string/accounthint"
         style="@style/edittext_style"/>
     
@@ -20,7 +22,9 @@
         android:layout_width="match_parent"
         android:layout_height="50.0dip"
         android:inputType="textPassword"
-        android:drawableLeft="@drawable/ic_collect"
+        android:drawableLeft="@drawable/ic_password"
+        android:drawablePadding="5.0dip"
+        android:padding="5.0dip"
         android:hint="@string/passwordhint"
         style="@style/edittext_style"/>
      
@@ -43,6 +47,6 @@
         android:textSize="20.0dip"
         android:textColor="@color/white"
         android:text="@string/login"
-        android:background="@drawable/btn_1_selector"/>
+        android:background="@drawable/btn_2_selector"/>
 
 </LinearLayout>

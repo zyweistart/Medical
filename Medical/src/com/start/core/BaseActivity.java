@@ -4,13 +4,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 import com.start.core.HandlerContext.HandleContextListener;
 import com.start.medical.AppContext;
+import com.start.medical.R;
 import com.start.medical.personal.LoginActivity;
 import com.start.utils.StringUtils;
 
-public abstract class BaseActivity extends Activity implements HandleContextListener {
+public abstract class BaseActivity extends Activity implements HandleContextListener,OnClickListener {
 	
 	protected final String TAG = this.getClass().getSimpleName();
 	
@@ -71,6 +74,13 @@ public abstract class BaseActivity extends Activity implements HandleContextList
 				getHandlerContext().makeTextShort(message);
 			}
 			break;
+		}
+	}
+	
+	@Override
+	public void onClick(View v) {
+		if(v.getId()==R.id.module_top_left){
+			finish();
 		}
 	}
 	

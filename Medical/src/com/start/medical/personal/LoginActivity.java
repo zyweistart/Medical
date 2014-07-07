@@ -32,7 +32,7 @@ import com.start.utils.StringUtils;
  * @author start
  *
  */
-public class LoginActivity extends BaseActivity implements OnClickListener {
+public class LoginActivity extends BaseActivity {
 	/**
 	 * 提示信息
 	 */
@@ -104,6 +104,8 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 			}
 			Boolean checked=cb_login_autologin.isChecked();
 			login(account,MD5.md5(password),checked);
+		}else{
+			super.onClick(v);
 		}
 	}
 	

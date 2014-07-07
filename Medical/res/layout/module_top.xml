@@ -13,8 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:onClick="onClick"
-        android:background="@drawable/module_top_left_1_selector"
-        android:visibility="gone"/>
+        android:background="@drawable/module_top_left_1_selector"/>
     
     <TextView
         android:id="@+id/module_top_title"

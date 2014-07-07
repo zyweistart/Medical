@@ -8,7 +8,6 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
@@ -22,7 +21,7 @@ import com.start.widget.SlidingLayout;
  * @author start
  *
  */
-public class MainActivity extends BaseActivity implements OnClickListener{
+public class MainActivity extends BaseActivity{
 
 	private SlidingLayout mSlidingLayout;
 	
