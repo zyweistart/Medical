@@ -45,9 +45,9 @@ public class StartActivity extends BaseActivity{
 			
 			@Override
 			public void onAnimationEnd(Animation arg0) {
-//				goLogin();
-				Intent intent=new Intent(StartActivity.this,MainActivity.class);
-				startActivity(intent);
+				goLogin();
+//				Intent intent=new Intent(StartActivity.this,MainActivity.class);
+//				startActivity(intent);
 				finish();
 			}
 			

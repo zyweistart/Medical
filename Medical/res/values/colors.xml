@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="white">#ffffff</color>
    	<color name="activity_gb">#f3f3f3</color>
    	<color name="line">#efefef</color>
    	
@@ -18,5 +19,10 @@
    	<color name="main_function_6">#fe854c</color>
    	<color name="main_function_7">#388df7</color>
    	<color name="main_function_8">#c7a909</color>
+   	
+   	<color name="btn_1_normal">#ff9702</color>
+   	<color name="btn_1_pressed">#fcd499</color>
+   	<color name="btn_2_normal">#0abad2</color>
+   	<color name="btn_2_pressed">#fcd499</color>
 	
 </resources>

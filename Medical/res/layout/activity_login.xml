@@ -2,20 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@color/activity_gb"  >
+    
+    <include layout="@layout/module_top" />
     
     <EditText 
 	    android:id="@+id/et_login_account"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="13738873386"
-        android:hint="@string/accounthint"/>
+        android:layout_height="50.0dip"
+        android:drawableLeft="@drawable/ic_collect"
+        android:hint="@string/accounthint"
+        style="@style/edittext_style"/>
+    
      <EditText 
 	    android:id="@+id/et_login_password"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="123456"
-        android:hint="@string/passwordhint"/>
+        android:layout_height="50.0dip"
+        android:inputType="textPassword"
+        android:drawableLeft="@drawable/ic_collect"
+        android:hint="@string/passwordhint"
+        style="@style/edittext_style"/>
+     
      <CheckBox
          android:id="@+id/cb_login_autologin"
          android:layout_width="wrap_content"
@@ -23,12 +31,18 @@
          android:checked="true"
          android:textSize="@dimen/fontsize_h1"
          android:drawablePadding="4.0dip"
+         android:textColor="#d0d0d0"
          android:text="@string/autologinttxt" />
+     
     <Button 
 	    android:id="@+id/btn_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="45.0dip"
+        android:layout_margin="5.0dip"
         android:onClick="onClick"
-        android:text="@string/sure"/>
+        android:textSize="20.0dip"
+        android:textColor="@color/white"
+        android:text="@string/login"
+        android:background="@drawable/btn_1_selector"/>
 
 </LinearLayout>
