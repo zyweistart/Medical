@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="medical" default="custom_release">
+<project name="medical" default="start_release">
     
     <property file="ant.properties" />
     
@@ -13,7 +13,7 @@
     <fail message="sdk.dir is missing. Make sure to generate local.properties using 'android update project' or to inject it through the ANDROID_HOME environment variable."
             unless="sdk.dir"/>
     
-    <import file="custom_rules.xml" optional="true" />
+    <import file="start_rules.xml" optional="true" />
     
     <import file="${sdk.dir}/tools/ant/build.xml" />
 
