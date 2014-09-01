@@ -3,6 +3,7 @@ package com.start.medical;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -14,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.start.core.BaseActivity;
+import com.start.medical.personal.LoginActivity;
 import com.start.widget.SlidingLayout;
 
 /**
@@ -205,6 +207,9 @@ public class MainActivity extends BaseActivity{
 		}else if(v.getId()==R.id.main_function_8){
 			//健康资讯
 			Log.v(TAG,"健康资讯");
+		}else if(v.getId()==R.id.btn_login){
+			Intent intent=new Intent(this,LoginActivity.class);
+			startActivity(intent);
 		}
 	}
 	

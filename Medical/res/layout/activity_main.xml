@@ -24,16 +24,18 @@
                android:layout_height="100.0dip"
                android:layout_alignParentTop="true">
                
-               <Button 
+               <Button
+                   android:id="@+id/btn_login" 
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:layout_centerVertical="true"
                    android:padding="3.0dip"
                    android:layout_margin="3.0dip"
                    android:textColor="#ffffff"
-                   android:textSize="20.0dip"
+                   android:textSize="18.0dip"
+                   android:onClick="onClick"
                    android:background="#08b2c9"
-                   android:text="登陆"/>
+                   android:text="@string/login"/>
                
             </RelativeLayout>
 	        <RelativeLayout 

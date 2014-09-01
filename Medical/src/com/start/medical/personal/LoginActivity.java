@@ -3,9 +3,6 @@ package com.start.medical.personal;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
@@ -54,7 +51,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		et_login_password=(EditText)findViewById(R.id.et_login_password);
 		cb_login_autologin=(CheckBox)findViewById(R.id.cb_login_autologin);
 		
-		et_login_account.setText("18368013123");
+		et_login_account.setText("13738873386");
 		et_login_password.setText("123456");
 	}
 	
@@ -107,6 +104,12 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 			}
 			Boolean checked=cb_login_autologin.isChecked();
 			login(account,MD5.md5(password),checked);
+		}else if(v.getId()==R.id.btn_register){
+			Intent intent=new Intent(this,RegisterActivity.class);
+			startActivity(intent);
+		}else if(v.getId()==R.id.btn_reset_password){
+			Intent intent=new Intent(this,RegisterActivity.class);
+			startActivity(intent);
 		}
 	}
 	
@@ -145,15 +148,9 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 			@Override
 			public void run(Response response) throws AppException {
 				getAppContext().currentUser().addCacheUser(account, password, autoLogin);
-				try {
-					JSONObject userinfo=response.getResponseData().getJSONObject("userinfo");
-					getAppContext().currentUser().resolveByJSON(userinfo);
-					startActivity(new Intent(LoginActivity.this,MainActivity.class));
-					finish();
-				} catch (JSONException e) {
-					throw AppException.json(e);
-				}
-				
+				getAppContext().currentUser().resolve(response.getMapData("userinfo"));
+				startActivity(new Intent(LoginActivity.this,MainActivity.class));
+				finish();
 			}
 			
 		});

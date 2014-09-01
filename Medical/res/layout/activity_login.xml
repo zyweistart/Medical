@@ -48,5 +48,27 @@
         android:textColor="@color/white"
         android:text="@string/login"
         android:background="@drawable/btn_2_selector"/>
+    
+    <Button 
+	    android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="45.0dip"
+        android:layout_margin="5.0dip"
+        android:onClick="onClick"
+        android:textSize="20.0dip"
+        android:textColor="@color/white"
+        android:text="注册"
+        android:background="@drawable/btn_2_selector"/>
+    
+    <Button 
+	    android:id="@+id/btn_reset_password"
+        android:layout_width="match_parent"
+        android:layout_height="45.0dip"
+        android:layout_margin="5.0dip"
+        android:onClick="onClick"
+        android:textSize="20.0dip"
+        android:textColor="@color/white"
+        android:text="重置密码"
+        android:background="@drawable/btn_2_selector"/>
 
 </LinearLayout>

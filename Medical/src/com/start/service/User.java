@@ -1,13 +1,8 @@
 package com.start.service;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import com.start.core.AppException;
 import com.start.core.Constant;
 import com.start.core.Constant.Preferences;
 import com.start.medical.AppContext;
@@ -78,20 +73,11 @@ public class User {
 		AppContext.getSharedPreferences().putString(Preferences.SP_PASSWORD_CONTENT_DATA, Constant.EMPTYSTR);
 	}
 	
-	@SuppressWarnings("unchecked")
-	public void resolveByJSON(JSONObject userinfo) throws AppException{
-		try {
-			setLogin(true);
-			Iterator<String> i=userinfo.keys();
-			while(i.hasNext()){
-				String key=i.next();
-				getInfo().put(key,userinfo.getString(key));
-			}
-			User.ACCESSID=getInfo().get("accessid");
-			User.ACCESSKEY=getInfo().get("accesskey");
-		} catch (JSONException e) {
-			throw AppException.json(e);
-		}
+	public void resolve(Map<String,String> userinfo){
+		setLogin(true);
+		getInfo().putAll(userinfo);
+		User.ACCESSID=getInfo().get("accessid");
+		User.ACCESSKEY=getInfo().get("accesskey");
 	}
 	
 }

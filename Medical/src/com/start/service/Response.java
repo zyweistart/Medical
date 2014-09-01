@@ -64,6 +64,19 @@ public class Response {
 		return mResponseData;
 	}
 	
+	public JSONObject getResponseData(String tag) throws AppException {
+		if(mResponseData==null){
+			try {
+				if(this.mJsonObject!=null){
+					mResponseData=this.mJsonObject.getJSONObject(tag);
+				}
+			} catch (JSONException e) {
+				throw AppException.json(e);
+			}
+		}
+		return mResponseData;
+	}
+	
 	public JSONObject getResponsePageInfo() throws AppException {
 		if(mResponsePageInfo==null){
 			try {
@@ -99,6 +112,26 @@ public class Response {
 		if(mMapData==null){
 			try {
 				JSONObject obj=getResponseData();
+				if(obj!=null){
+					mMapData=new HashMap<String,String>();
+					Iterator<String> i=obj.keys();
+					while(i.hasNext()){
+						String key=i.next();
+						mMapData.put(key,obj.getString(key));
+					}
+				}
+			} catch (JSONException e) {
+				throw AppException.json(e);
+			}
+		}
+		return mMapData;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String,String> getMapData(String tag) throws AppException {
+		if(mMapData==null){
+			try {
+				JSONObject obj=getResponseData(tag);
 				if(obj!=null){
 					mMapData=new HashMap<String,String>();
 					Iterator<String> i=obj.keys();

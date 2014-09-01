@@ -3,6 +3,7 @@ package com.start.medical;
 import java.io.File;
 import java.util.List;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -44,9 +45,9 @@ public class StartActivity extends BaseActivity{
 			
 			@Override
 			public void onAnimationEnd(Animation arg0) {
-				goLogin(true);
-//				Intent intent=new Intent(StartActivity.this,MainActivity.class);
-//				startActivity(intent);
+//				goLogin(true);
+				Intent intent=new Intent(StartActivity.this,MainActivity.class);
+				startActivity(intent);
 				finish();
 			}
 			
