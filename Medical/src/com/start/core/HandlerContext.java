@@ -3,9 +3,8 @@ package com.start.core;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.widget.Toast;
-
-import com.start.utils.StringUtils;
 
 /**
  * @author Start   
@@ -28,13 +27,13 @@ public class HandlerContext {
 	}
 
 	public void makeTextShort(String text) {
-		if(!StringUtils.isEmpty(text)){
+		if(!TextUtils.isEmpty(text)){
 			sendMessage(Toast.LENGTH_SHORT,text);
 		}
 	}
 
 	public void makeTextLong(String text) {
-		if(!StringUtils.isEmpty(text)){
+		if(!TextUtils.isEmpty(text)){
 			sendMessage(Toast.LENGTH_LONG,text);
 		}
 	}
@@ -67,7 +66,11 @@ public class HandlerContext {
 				break;
 			default:
 				if(mListener!=null){
-					mListener.onProcessMessage(msg);
+					try {
+						mListener.onProcessMessage(msg);
+					} catch (AppException e) {
+						makeTextShort(e.getErrorString(mContext));
+					}
 				}
 				break;
 			}
@@ -85,7 +88,7 @@ public class HandlerContext {
 
 	public interface HandleContextListener{
 		
-		public void onProcessMessage(Message msg);
+		public void onProcessMessage(Message msg) throws AppException;
 		
 	}
 	

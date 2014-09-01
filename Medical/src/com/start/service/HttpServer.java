@@ -20,6 +20,7 @@ import android.os.Message;
 
 import com.start.core.AppException;
 import com.start.core.Constant;
+import com.start.core.Constant.Handler;
 import com.start.core.HandlerContext;
 import com.start.medical.R;
 import com.start.utils.MD5;
@@ -105,7 +106,7 @@ public class HttpServer {
 							//TODO:文件下载处理
 						}else{
 							response.resolveJson();
-							if("100000".equals(response.getCode())){
+							if(Response.SUCCESS.equals(response.getCode())){
 								runnable.run(response);
 							}else{
 								Message msg = new Message();
@@ -115,6 +116,7 @@ public class HttpServer {
 							}
 						}
 					}catch(AppException e){
+						mHandler.sendEmptyMessage(Handler.LOAD_END);
 						mHandler.makeTextShort(e.getErrorString(mContext));
 					}finally{
 						if (mPDialog != null) {
@@ -145,13 +147,14 @@ public class HttpServer {
 	    	
 	    	if(mParams!=null){
 	    		for(String key:mParams.keySet()){
-	    			contentObject.put(key,mParams.get(key));
+	    			contentObject.put(key.toLowerCase(),mParams.get(key));
 	    		}
 	    	}
 	    	requestObject.put("content", contentObject);
 	    	
 	    	mainObject.put("request", requestObject);
-			return mainObject.toString();
+//			return mainObject.toString();
+	    	return contentObject.toString();
 		} catch (JSONException e) {
 			throw AppException.json(e);
 		}  
@@ -167,7 +170,7 @@ public class HttpServer {
 		client.getParams().setParameter(CoreProtocolPNames.HTTP_CONTENT_CHARSET, Constant.ENCODE);
 		// 设置超时时间为30秒
 		client.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT,30*1000);
-		HttpPost post = new HttpPost(Constant.RESTURL);
+		HttpPost post = new HttpPost(Constant.RESTURL+mUrl);
 		try {
 			post.addHeader("reqlength", StringUtils.encode(String.valueOf(requestContent.getBytes(Constant.ENCODE).length)));
 			if (mHeaders != null) {

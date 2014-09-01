@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
@@ -31,7 +32,7 @@ import com.start.utils.StringUtils;
  * @author start
  *
  */
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity implements OnClickListener {
 	/**
 	 * 提示信息
 	 */
@@ -90,7 +91,6 @@ public class LoginActivity extends BaseActivity {
 	
 	@Override
 	public void onClick(View v) {
-		super.onClick(v);
 		if(v.getId()==R.id.btn_login){
 			String account=String.valueOf(et_login_account.getText());
 			if(StringUtils.isEmpty(account)){
@@ -109,7 +109,7 @@ public class LoginActivity extends BaseActivity {
 	
 	
 	@Override
-	public void onProcessMessage(Message msg) {
+	public void onProcessMessage(Message msg) throws AppException {
 		switch(msg.what){
 		case 110036://签名不匹配或密码不正确
 			getAppContext().currentUser().clearCachePassword();
@@ -143,7 +143,7 @@ public class LoginActivity extends BaseActivity {
 			public void run(Response response) throws AppException {
 				getAppContext().currentUser().addCacheUser(account, password, autoLogin);
 				try {
-					JSONObject userinfo=response.getResponseContent().getJSONObject("userinfo");
+					JSONObject userinfo=response.getResponseData().getJSONObject("userinfo");
 					getAppContext().currentUser().resolveByJSON(userinfo);
 					startActivity(new Intent(LoginActivity.this,MainActivity.class));
 					finish();

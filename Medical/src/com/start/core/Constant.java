@@ -12,7 +12,7 @@ public final class Constant {
 	public static final boolean ISSYSTEMTEST =true;
 
 	public static final String RESTURL = ISSYSTEMTEST ?
-			"http://account.chinacloudapp.cn:82/http/HttpService":"http://account.chinacloudapp.cn:82/http/HttpService";
+			"http://account.chinacloudapp.cn:82/hzpbws/http/HttpService":"http://account.chinacloudapp.cn:82/http/HttpService";
 
 	/**
 	 * 用户接口
@@ -99,20 +99,44 @@ public final class Constant {
 		 */
 		public static final int LOAD_END_MORE_DATA=0x1116;
 		/**
+		 * 加载结束
+		 */
+		public static final int LOAD_END=0x1117;
+		/**
 		 * 无法加载数据时清除数据
 		 */
-		public static final int LOAD_DATA_FAIL_CLEAR_DATA=0x1117;
+		public static final int LOAD_DATA_FAIL_CLEAR_DATA=0x1118;
 		/**
 		 * 注册重置密码步骤1
 		 */
-		public static final int REGISTER_RESET_PASSWORD_STEP1=0x1118;
+		public static final int REGISTER_RESET_PASSWORD_STEP1=0x1119;
 		/**
 		 * 注册重置密码步骤2
 		 */
-		public static final int REGISTER_RESET_PASSWORD_STEP2=0x1119;
+		public static final int REGISTER_RESET_PASSWORD_STEP2=0x1120;
 		
 	}
 
+	public final class ResultCode{
+		/**
+		 * 成功
+		 */
+		public static final int SUCCESS=200;
+		/**
+		 * 用户名或密码有误
+		 */
+		public static final int USERNAMEORPASSWORDERROR=306;
+		/**
+		 * 暂无记录
+		 */
+		public static final int NODATA=430;
+		/**
+		 * 登陆信息过期，请重新登陆
+		 */
+		public static final int NOLOGIN=414;
+		
+	}
+	
 	public final class Preferences {
 		/**
 		 * 用户账户

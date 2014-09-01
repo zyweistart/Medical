@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import com.start.core.AppException;
 import com.start.core.BaseActivity;
 import com.start.core.Constant;
 import com.start.core.Constant.Handler;
@@ -59,7 +60,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 	}
 	
 	@Override
-	public void onProcessMessage(Message msg) {
+	public void onProcessMessage(Message msg) throws AppException {
 		switch (msg.what) {
 		case Handler.REGISTER_RESET_PASSWORD_STEP1:
 			ll_setting_phone.setVisibility(View.GONE);
@@ -158,7 +159,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 			});
 		}else if(v.getId()==R.id.btn_done){
 			getAppContext().currentUser().addCacheUser(phone, MD5.md5(password), true);
-			goLogin();
+			goLogin(true);
 		}
 	}
 	

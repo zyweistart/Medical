@@ -3,74 +3,159 @@ package com.start.service;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.http.HttpResponse;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.start.core.AppException;
-import com.start.utils.StringUtils;
 
 public class Response {
+	
+	public static final String SUCCESS="200";
+	public static final String CODETAG="code";
+	public static final String MSGTAG="msg";
+	public static final String CONTENTTAG="content";
+	public static final String DATATAG="data";
+	public static final String PAGEINFOTAG="page";
+	public static final String LISTTAG="list";
 	
 	private String mCode;
 	private String mMsg;
 	private String responseString;
 	private JSONObject mJsonObject;
-	private JSONObject mResponseInfo;
-	private JSONObject mResponsePage;
-	private JSONObject mResponseContent;
+	
+	private JSONObject mResponsePageInfo;
+	private JSONObject mResponseData;
+	private JSONArray mResponseDataArray;
+	
+	private Map<String,String> mMapData;
+	private Map<String,String> mPageInfoMapData;
+	private List<Map<String,String>> mListMapData;
 	
 	private HttpResponse mHttpResponse;
 
 	public String getCode() throws AppException{
-		if(StringUtils.isEmpty(mCode)){
-			try {
-				if (!mResponseInfo.isNull("code")) {
-					this.mCode=mResponseInfo.getString("code");
-				}
-			} catch (JSONException e) {
-				throw AppException.json(e);
-			}
-		}
 		return mCode;
 	}
 
 	public String getMsg() throws AppException {
-		if(StringUtils.isEmpty(mMsg)){
+		return mMsg;
+	}
+	
+	public JSONObject getResponseData() throws AppException {
+		if(mResponseData==null){
 			try {
-				if (!mResponseInfo.isNull("msg")) {
-					this.mMsg=mResponseInfo.getString("msg");
+				if(this.mJsonObject!=null){
+					mResponseData=this.mJsonObject.getJSONObject(DATATAG);
 				}
 			} catch (JSONException e) {
 				throw AppException.json(e);
 			}
 		}
-		return mMsg;
+		return mResponseData;
 	}
 	
-	public JSONObject getResponsePage() throws AppException {
-		if(mResponsePage==null){
+	public JSONObject getResponsePageInfo() throws AppException {
+		if(mResponsePageInfo==null){
 			try {
-				mResponsePage=this.mJsonObject.getJSONObject("pageinfo");
+				if(this.mJsonObject!=null){
+					if(this.mJsonObject.has(PAGEINFOTAG)){
+						mResponsePageInfo=this.mJsonObject.getJSONObject(PAGEINFOTAG);
+					}
+				}
 			} catch (JSONException e) {
 				throw AppException.json(e);
 			}
 		}
-		return mResponsePage;
+		return mResponsePageInfo;
 	}
 	
-	public JSONObject getResponseContent() throws AppException {
-		if(mResponseContent==null){
+	public JSONArray getResponseDataArray() throws AppException {
+		if(mResponseDataArray==null){
 			try {
-				mResponseContent=this.mJsonObject.getJSONObject("content");
+				if(this.mJsonObject!=null){
+					if(getResponsePageInfo()!=null){
+						mResponseDataArray=this.mJsonObject.getJSONArray(LISTTAG);
+					}
+				}
 			} catch (JSONException e) {
 				throw AppException.json(e);
 			}
 		}
-		return mResponseContent;
+		return mResponseDataArray;
 	}
 
+	@SuppressWarnings("unchecked")
+	public Map<String,String> getMapData() throws AppException {
+		if(mMapData==null){
+			try {
+				JSONObject obj=getResponseData();
+				if(obj!=null){
+					mMapData=new HashMap<String,String>();
+					Iterator<String> i=obj.keys();
+					while(i.hasNext()){
+						String key=i.next();
+						mMapData.put(key,obj.getString(key));
+					}
+				}
+			} catch (JSONException e) {
+				throw AppException.json(e);
+			}
+		}
+		return mMapData;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String,String> getPageInfoMapData() throws AppException {
+		if(mResponsePageInfo==null){
+			try {
+				JSONObject obj=getResponsePageInfo();
+				if(obj!=null){
+					mPageInfoMapData=new HashMap<String,String>();
+					Iterator<String> i=obj.keys();
+					while(i.hasNext()){
+						String key=i.next();
+						mPageInfoMapData.put(key,obj.getString(key));
+					}
+				}
+			} catch (JSONException e) {
+				throw AppException.json(e);
+			}
+		}
+		return mPageInfoMapData;
+	}
+	
+	public List<Map<String,String>> getListMapData() throws AppException {
+		if(mListMapData==null){
+			try {
+				JSONArray dataArray=getResponseDataArray();
+				if(dataArray!=null){
+					mListMapData=new ArrayList<Map<String,String>>();
+					for(int i=0;i<dataArray.length();i++){
+						JSONObject current=dataArray.getJSONObject(i);
+						Map<String,String> datas=new HashMap<String,String>();
+						JSONArray names=current.names();
+						for(int j=0;j<names.length();j++){
+							String name=names.getString(j);
+							datas.put(name, current.getString(name));
+						}
+						mListMapData.add(datas);
+					}
+				}
+			} catch (JSONException e) {
+				throw AppException.json(e);
+			}
+		}
+		return mListMapData;
+	}
+	
 	public Response(HttpResponse httpResponse) {
 		this.mHttpResponse=httpResponse;
 	}
@@ -106,14 +191,23 @@ public class Response {
 		return responseString;
 	}
 	
+	public void setResponseString(String responseString){
+		this.responseString=responseString;
+	}
+	
 	/**
 	 * 解析JSON
 	 */
 	public void resolveJson() throws AppException {
 		try {
 			JSONObject jo = new JSONObject(getResponseString());
-			this.mJsonObject=jo.getJSONObject("response");
-			mResponseInfo=this.mJsonObject.getJSONObject("info");
+			this.mCode=jo.getString(CODETAG);
+			this.mMsg=jo.getString(MSGTAG);
+			if(SUCCESS.equals(this.mCode)){
+				if(jo.has(CONTENTTAG)){
+					this.mJsonObject=jo.getJSONObject(CONTENTTAG);
+				}
+			}
 		} catch (JSONException e) {
 			throw AppException.json(e);
 		}
