@@ -18,7 +18,9 @@ import com.start.core.AppException;
 
 public class Response {
 	
-	public static final String SUCCESS="200";
+	public static final String SUCCESS="100000";
+	public static final String RESPONSETAG="response";
+	public static final String INFOTAG="info";
 	public static final String CODETAG="code";
 	public static final String MSGTAG="msg";
 	public static final String CONTENTTAG="content";
@@ -201,11 +203,15 @@ public class Response {
 	public void resolveJson() throws AppException {
 		try {
 			JSONObject jo = new JSONObject(getResponseString());
-			this.mCode=jo.getString(CODETAG);
-			this.mMsg=jo.getString(MSGTAG);
+			JSONObject response=jo.getJSONObject(RESPONSETAG);
+			if(response.has(INFOTAG)){
+				JSONObject info=response.getJSONObject(INFOTAG);
+				this.mCode=info.getString(CODETAG);
+				this.mMsg=info.getString(MSGTAG);
+			}
 			if(SUCCESS.equals(this.mCode)){
-				if(jo.has(CONTENTTAG)){
-					this.mJsonObject=jo.getJSONObject(CONTENTTAG);
+				if(response.has(CONTENTTAG)){
+					this.mJsonObject=response.getJSONObject(CONTENTTAG);
 				}
 			}
 		} catch (JSONException e) {

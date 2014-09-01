@@ -153,8 +153,7 @@ public class HttpServer {
 	    	requestObject.put("content", contentObject);
 	    	
 	    	mainObject.put("request", requestObject);
-//			return mainObject.toString();
-	    	return contentObject.toString();
+			return mainObject.toString();
 		} catch (JSONException e) {
 			throw AppException.json(e);
 		}  
@@ -170,7 +169,7 @@ public class HttpServer {
 		client.getParams().setParameter(CoreProtocolPNames.HTTP_CONTENT_CHARSET, Constant.ENCODE);
 		// 设置超时时间为30秒
 		client.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT,30*1000);
-		HttpPost post = new HttpPost(Constant.RESTURL+mUrl);
+		HttpPost post = new HttpPost(Constant.RESTURL);
 		try {
 			post.addHeader("reqlength", StringUtils.encode(String.valueOf(requestContent.getBytes(Constant.ENCODE).length)));
 			if (mHeaders != null) {

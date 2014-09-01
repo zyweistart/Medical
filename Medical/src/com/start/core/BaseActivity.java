@@ -6,14 +6,16 @@ import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 import com.start.core.Constant.ResultCode;
 import com.start.core.HandlerContext.HandleContextListener;
 import com.start.medical.AppContext;
+import com.start.medical.R;
 import com.start.medical.personal.LoginActivity;
 import com.umeng.analytics.MobclickAgent;
 
-public abstract class BaseActivity extends Activity implements HandleContextListener,OnClickListener {
+public abstract class BaseActivity extends Activity implements OnClickListener,HandleContextListener {
 	
 	protected final String TAG = this.getClass().getSimpleName();
 	
@@ -88,10 +90,10 @@ public abstract class BaseActivity extends Activity implements HandleContextList
 	 * 设置导航标题
 	 */
 	public void setMainHeadTitle(String title){
-//		TextView tvTitle=(TextView)findViewById(R.id.main_head_title);
-//		if(tvTitle!=null){
-//			tvTitle.setText(title);
-//		}
+		TextView tvTitle=(TextView)findViewById(R.id.main_head_title);
+		if(tvTitle!=null){
+			tvTitle.setText(title);
+		}
 	}
 	
 	public void goLogin(Boolean autoLogin){
