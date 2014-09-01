@@ -17,9 +17,9 @@ import android.content.pm.PackageInfo;
 import android.os.Environment;
 import android.os.Looper;
 
-import com.start.medical.AppContext;
 import com.start.medical.R;
 import com.start.service.UIHelper;
+import com.start.utils.CommonFn;
 
 /**
  * 应用程序异常类：用于捕获异常和提示错误信息
@@ -230,7 +230,7 @@ public class AppException extends Exception implements UncaughtExceptionHandler{
 	 * 获取APP崩溃异常报告
 	 */
 	private String getCrashReport(Context context, Throwable ex) {
-		PackageInfo pinfo = ((AppContext)context.getApplicationContext()).getPackageInfo();
+		PackageInfo pinfo = CommonFn.getPackageInfo(context);
 		StringBuffer exceptionStr = new StringBuffer();
 		exceptionStr.append("Version: "+pinfo.versionName+"("+pinfo.versionCode+")\n");
 		exceptionStr.append("Android: "+android.os.Build.VERSION.RELEASE+"("+android.os.Build.MODEL+")\n");

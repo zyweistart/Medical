@@ -121,7 +121,7 @@ public final class Constant {
 		/**
 		 * 成功
 		 */
-		public static final int SUCCESS=200;
+		public static final int SUCCESS=100000;
 		/**
 		 * 用户名或密码有误
 		 */

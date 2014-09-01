@@ -5,12 +5,10 @@ import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -78,7 +76,9 @@ public class MainActivity extends BaseActivity{
 		
 		ViewPager bannerPager=(ViewPager)findViewById(R.id.main_banner);
 		bannerPager.setOffscreenPageLimit(imageResId.length);
-		bannerPager.setAdapter(new BannerAdapter());
+		BannerAdapter ba=new BannerAdapter(this);
+		ba.setItemDatas(imageViews);
+		bannerPager.setAdapter(ba);
 		
 	}
 
@@ -212,32 +212,5 @@ public class MainActivity extends BaseActivity{
 			startActivity(intent);
 		}
 	}
-	
-	private class BannerAdapter extends PagerAdapter {
 		
-		@Override
-		public int getCount() {
-			return imageResId.length;
-		}
-
-		@Override
-		public Object instantiateItem(View view, int index) {
-			ImageView im = imageViews.get(index);
-		    im.setScaleType(ScaleType.CENTER_CROP);
-		    ((ViewPager)view).addView(im);
-		    return im;
-		}
-
-		@Override
-		public void destroyItem(View arg0, int arg1, Object arg2) {
-			((ViewPager) arg0).removeView((View) arg2);
-		}
-
-		@Override
-		public boolean isViewFromObject(View arg0, Object arg1) {
-			return arg0 == arg1;
-		}
-		
-	}
-	
 }
