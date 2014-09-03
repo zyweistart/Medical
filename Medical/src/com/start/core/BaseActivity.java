@@ -83,9 +83,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,H
 			goLogin(String.valueOf(msg.obj));
 			break;
 		default:
-			if(msg.obj!=null){
-				getHandlerContext().makeTextShort(String.valueOf(msg.obj));
-			}
+			getHandlerContext().makeTextShort(String.valueOf(msg.obj));
 			break;
 		}
 	}

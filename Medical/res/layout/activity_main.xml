@@ -33,7 +33,7 @@
                    android:padding="3.0dip"
                    android:layout_margin="3.0dip"
                    android:textColor="@color/white"
-                   android:textSize="18.0dip"
+                   android:textSize="16.0dip"
                    android:onClick="onClick"
                    android:background="#08b2c9"
                    android:text="@string/login"/>
@@ -93,13 +93,14 @@
             android:padding="5.0dip"
             android:textSize="15.0dip"
             android:background="#08b2c9"
-            android:textColor="#ffffff"
+            android:textColor="@color/white"
             android:text="@string/app_name"/>
         
         <include android:id="@+id/more_item_1" layout="@layout/module_sliding_layout_left_item"/>
         <include android:id="@+id/more_item_2" layout="@layout/module_sliding_layout_left_item"/>
         <include android:id="@+id/more_item_3" layout="@layout/module_sliding_layout_left_item"/>
         <include android:id="@+id/more_item_4" layout="@layout/module_sliding_layout_left_item"/>
+        <include android:id="@+id/more_item_5" layout="@layout/module_sliding_layout_left_item"/>
         
     </LinearLayout>
 

@@ -27,13 +27,14 @@
     <string name="twopwddifftip">二次密码输入不一致</string>
     <string name="usernameorpassworderrortip">用户名或密码有误</string>
     <string name="changepasswordsuccess">修改密码成功</string>
-    
+    <string name="mysubscribe">我的预约</string>
+    <string name="electroniccase">电子病例</string>
+    <string name="switchhospital">切换医院</string>
     
     <string name="authcodehint">请输入校验码</string>
     <string name="next">下一步</string>
     <string name="haveaccount">已有账号</string>
     <string name="gologin">马上去登陆</string>
-    
     
     <string name="mainfunctiontxt1">手机挂号</string>
     <string name="mainfunctionchiltxt1">手机实时挂号，叫号查询</string>

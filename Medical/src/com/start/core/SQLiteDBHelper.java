@@ -9,7 +9,7 @@ public class SQLiteDBHelper extends SQLiteOpenHelper {
 	/**
 	 * 数据库名
 	 */
-	public static final String DB_NAME = "xca_database";
+	public static final String DB_NAME = "medical_database";
 	
 	/**
 	 * 数据库  版本  注意：数据库需要升级的时候才修改版本值

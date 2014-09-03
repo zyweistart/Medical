@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.start.core.BaseActivity;
 import com.start.medical.R;
-import com.start.medical.department.DepartmentDoctorsActivity;
+import com.start.medical.department.DepartmentActivity;
 import com.start.medical.health.information.HealthInformationActivity;
 import com.start.medical.health.wikipedial.HealthWikipediaActivity;
 import com.start.medical.navigation.NavigationActivity;
@@ -64,6 +64,8 @@ public class MainActivity extends BaseActivity{
 		setSlidingLeftModule(more_item_3,3);
 		LinearLayout more_item_4=(LinearLayout)findViewById(R.id.more_item_4);
 		setSlidingLeftModule(more_item_4,4);
+		LinearLayout more_item_5=(LinearLayout)findViewById(R.id.more_item_5);
+		setSlidingLeftModule(more_item_5,5);
 		//设置主功能区
 		LinearLayout main_function_1=(LinearLayout)findViewById(R.id.main_function_1);
 		setMainFunctionModule(main_function_1, 1);
@@ -100,16 +102,7 @@ public class MainActivity extends BaseActivity{
 	@Override
 	protected void onResume() {
 		super.onResume();
-		
-		if(getAppContext().currentUser().isLogin()){
-			left_head_nologin_frame.setVisibility(View.GONE);
-			left_head_login_frame.setVisibility(View.VISIBLE);
-			txt_current_user.setText("18368013123");
-		}else{
-			left_head_nologin_frame.setVisibility(View.VISIBLE);
-			left_head_login_frame.setVisibility(View.GONE);
-		}
-		
+		this.initMainData();
 	}
 
 	/**
@@ -125,15 +118,19 @@ public class MainActivity extends BaseActivity{
 			break;
 		case 2:
 			ic_more.setBackgroundResource(R.drawable.ic_change_password);
-			txt_more.setText(R.string.change_password);
+			txt_more.setText(R.string.mysubscribe);
 			break;
 		case 3:
 			ic_more.setBackgroundResource(R.drawable.ic_clear_cache);
-			txt_more.setText(R.string.mainfunctiontxt1);
+			txt_more.setText(R.string.electroniccase);
 			break;
 		case 4:
 			ic_more.setBackgroundResource(R.drawable.ic_feedback);
-			txt_more.setText(R.string.login);
+			txt_more.setText(R.string.switchhospital);
+			break;
+		case 5:
+			ic_more.setBackgroundResource(R.drawable.ic_feedback);
+			txt_more.setText(R.string.setting);
 			break;
 		}
 	}
@@ -197,6 +194,17 @@ public class MainActivity extends BaseActivity{
 		}
 	}
 	
+	private void initMainData(){
+		if(getAppContext().currentUser().isLogin()){
+			left_head_nologin_frame.setVisibility(View.GONE);
+			left_head_login_frame.setVisibility(View.VISIBLE);
+			txt_current_user.setText("18368013123");
+		}else{
+			left_head_nologin_frame.setVisibility(View.VISIBLE);
+			left_head_login_frame.setVisibility(View.GONE);
+		}
+	}
+	
 	@Override
 	public void onClick(View v) {
 		if(v.getId()==R.id.module_header_left_back){
@@ -218,19 +226,19 @@ public class MainActivity extends BaseActivity{
 			startActivity(new Intent(this,RegisteredActivity.class));
 		}else if(v.getId()==R.id.main_function_2){
 			//妇保中心
-			getHandlerContext().makeTextLong("妇保中心");
+			getHandlerContext().makeTextLong("妇保中心-即将上线");
 		}else if(v.getId()==R.id.main_function_3){
 			//报告单
 			startActivity(new Intent(this,TakeReportActivity.class));
 		}else if(v.getId()==R.id.main_function_4){
 			//疫苗接种
-			getHandlerContext().makeTextLong("疫苗接种");
+			getHandlerContext().makeTextLong("疫苗接种-即将上线");
 		}else if(v.getId()==R.id.main_function_5){
 			//医院导航
 			startActivity(new Intent(this,NavigationActivity.class));
 		}else if(v.getId()==R.id.main_function_6){
 			//科室医生
-			startActivity(new Intent(this,DepartmentDoctorsActivity.class));
+			startActivity(new Intent(this,DepartmentActivity.class));
 		}else if(v.getId()==R.id.main_function_7){
 			//健康百科
 			startActivity(new Intent(this,HealthWikipediaActivity.class));

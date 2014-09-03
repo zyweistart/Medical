@@ -80,7 +80,7 @@
         	android:screenOrientation="portrait"/>
         <!-- 科室医生 -->
         <activity
-            android:name=".department.DepartmentDoctorsActivity"
+            android:name=".department.DepartmentActivity"
         	android:screenOrientation="portrait"/>
         <!-- 健康百科 -->
         <activity

@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:onClick="onClick"
-        android:background="@drawable/selector_module_header_button_2"/>
+        android:background="@drawable/selector_module_header_button_2"
+        android:visibility="gone"/>
     
 </RelativeLayout>
