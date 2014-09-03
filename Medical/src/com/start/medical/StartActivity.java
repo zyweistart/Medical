@@ -13,6 +13,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.LinearLayout;
 
 import com.start.core.BaseActivity;
+import com.start.medical.main.MainActivity;
 import com.start.utils.FileUtils;
 import com.start.utils.TimeUtils;
 
