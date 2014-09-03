@@ -37,7 +37,7 @@ public class HealthInformationActivity extends BaseActivity implements RefreshLi
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_healthinformation);
-		setMainHeadTitle(getString(R.string.mainfunctiontxt7));
+		setMainHeadTitle(getString(R.string.mainfunctiontxt8));
 		mListView = (XListView) findViewById(R.id.xlv_listview);
 		mListView.setOnItemClickListener(new OnItemClickListener() {
 

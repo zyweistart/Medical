@@ -21,7 +21,7 @@ public class HealthWikipediaDetailActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_healthwikipedia_detail);
-		setMainHeadTitle(getString(R.string.mainfunctiontxt8));
+		setMainHeadTitle(getString(R.string.mainfunctiontxt7));
 		Bundle bundle=getIntent().getExtras();
 		if(bundle!=null){
 			recordno=bundle.getString(RECORDNO);

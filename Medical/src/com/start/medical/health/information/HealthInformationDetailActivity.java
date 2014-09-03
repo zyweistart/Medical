@@ -21,6 +21,7 @@ public class HealthInformationDetailActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_healthinformation_detail);
+		setMainHeadTitle(getString(R.string.mainfunctiontxt8));
 		Bundle bundle=getIntent().getExtras();
 		if(bundle!=null){
 			recordno=bundle.getString(RECORDNO);

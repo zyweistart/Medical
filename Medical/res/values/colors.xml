@@ -25,6 +25,9 @@
    	<color name="button_2_n">#0abad2</color>
    	<color name="button_2_p">#fcd499</color>
 	
+   	<color name="selector_item_n">#eff1f5</color>
+   	<color name="selector_item_p">#e7eaee</color>
+   	
    	<color name="bg_frame">#e7eaee</color>
    	
 </resources>
