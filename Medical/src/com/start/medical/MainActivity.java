@@ -6,7 +6,6 @@ import java.util.List;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -14,8 +13,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.start.core.BaseActivity;
+import com.start.medical.department.DepartmentDoctorsActivity;
+import com.start.medical.health.information.HealthInformationActivity;
 import com.start.medical.health.wikipedial.HealthWikipediaActivity;
+import com.start.medical.navigation.NavigationActivity;
 import com.start.medical.personal.LoginActivity;
+import com.start.medical.report.TakeReportActivity;
 import com.start.widget.SlidingLayout;
 
 /**
@@ -194,7 +197,7 @@ public class MainActivity extends BaseActivity{
 	
 	@Override
 	public void onClick(View v) {
-		if(v.getId()==R.id.module_top_left){
+		if(v.getId()==R.id.module_header_left){
 			if (mSlidingLayout.isLeftLayoutVisible()) {
 				mSlidingLayout.scrollToRightLayout();
 			} else {
@@ -210,28 +213,28 @@ public class MainActivity extends BaseActivity{
 			
 		}else if(v.getId()==R.id.main_function_1){
 			//手机挂号
-			Log.v(TAG,"手机挂号");
+			getHandlerContext().makeTextLong("手机挂号");
 		}else if(v.getId()==R.id.main_function_2){
 			//妇保中心
-			Log.v(TAG,"妇保中心");
+			getHandlerContext().makeTextLong("妇保中心");
 		}else if(v.getId()==R.id.main_function_3){
 			//报告单
-			Log.v(TAG,"报告单");
+			startActivity(new Intent(this,TakeReportActivity.class));
 		}else if(v.getId()==R.id.main_function_4){
 			//疫苗接种
-			Log.v(TAG,"疫苗接种");
+			getHandlerContext().makeTextLong("疫苗接种");
 		}else if(v.getId()==R.id.main_function_5){
 			//医院导航
-			Log.v(TAG,"医院导航");
+			startActivity(new Intent(this,NavigationActivity.class));
 		}else if(v.getId()==R.id.main_function_6){
 			//科室医生
-			Log.v(TAG,"科室医生");
+			startActivity(new Intent(this,DepartmentDoctorsActivity.class));
 		}else if(v.getId()==R.id.main_function_7){
 			//健康百科
 			startActivity(new Intent(this,HealthWikipediaActivity.class));
 		}else if(v.getId()==R.id.main_function_8){
 			//健康资讯
-			Log.v(TAG,"健康资讯");
+			startActivity(new Intent(this,HealthInformationActivity.class));
 		}else if(v.getId()==R.id.btn_login){
 			Intent intent=new Intent(this,LoginActivity.class);
 			startActivity(intent);

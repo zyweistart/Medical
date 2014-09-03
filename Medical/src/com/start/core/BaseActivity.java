@@ -69,7 +69,9 @@ public abstract class BaseActivity extends Activity implements OnClickListener,H
 
 	@Override
 	public void onClick(View v) {
-	
+		if(v.getId()==R.id.module_header_left){
+			finish();
+		}
 	}
 	
 	@Override

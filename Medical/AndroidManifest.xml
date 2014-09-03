@@ -62,12 +62,37 @@
         <activity
             android:name=".personal.ChangePassWordActivity"
         	android:screenOrientation="portrait"/>
+        <!-- 手机挂号 -->
         
+        <!-- 妇保中心 -->
+        
+        <!-- 报告单 -->
+        <activity
+            android:name=".report.TakeReportActivity"
+        	android:screenOrientation="portrait"/>
+        <!-- 疫苗接种 -->
+        
+        <!-- 医院导航 -->
+        <activity
+            android:name=".navigation.NavigationActivity"
+        	android:screenOrientation="portrait"/>
+        <!-- 科室医生 -->
+        <activity
+            android:name=".department.DepartmentDoctorsActivity"
+        	android:screenOrientation="portrait"/>
+        <!-- 健康百科 -->
         <activity
             android:name=".health.wikipedial.HealthWikipediaActivity"
         	android:screenOrientation="portrait"/>
         <activity
             android:name=".health.wikipedial.HealthWikipediaDetailActivity"
+        	android:screenOrientation="portrait"/>
+        <!-- 健康资讯 -->
+        <activity
+            android:name=".health.information.HealthInformationActivity"
+        	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".health.information.HealthInformationDetailActivity"
         	android:screenOrientation="portrait"/>
         
     </application>
