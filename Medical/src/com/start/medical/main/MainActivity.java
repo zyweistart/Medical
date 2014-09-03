@@ -19,6 +19,7 @@ import com.start.medical.health.information.HealthInformationActivity;
 import com.start.medical.health.wikipedial.HealthWikipediaActivity;
 import com.start.medical.navigation.NavigationActivity;
 import com.start.medical.personal.LoginActivity;
+import com.start.medical.registered.RegisteredActivity;
 import com.start.medical.report.TakeReportActivity;
 import com.start.widget.SlidingLayout;
 
@@ -214,7 +215,7 @@ public class MainActivity extends BaseActivity{
 			
 		}else if(v.getId()==R.id.main_function_1){
 			//手机挂号
-			getHandlerContext().makeTextLong("手机挂号");
+			startActivity(new Intent(this,RegisteredActivity.class));
 		}else if(v.getId()==R.id.main_function_2){
 			//妇保中心
 			getHandlerContext().makeTextLong("妇保中心");

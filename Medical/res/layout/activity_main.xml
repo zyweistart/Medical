@@ -18,7 +18,7 @@
         <RelativeLayout
 	        android:layout_width="match_parent"
 	        android:layout_height="150.0dip"
-	        android:background="@drawable/sliding_layout_left_top_bg">
+	        android:background="@drawable/bg_sliding_layout_left_top">
 	        <RelativeLayout 
                android:id="@+id/left_head_nologin_frame"
                android:layout_width="match_parent"

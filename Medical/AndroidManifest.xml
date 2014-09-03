@@ -63,7 +63,9 @@
             android:name=".personal.ChangePassWordActivity"
         	android:screenOrientation="portrait"/>
         <!-- 手机挂号 -->
-        
+        <activity
+            android:name=".registered.RegisteredActivity"
+        	android:screenOrientation="portrait"/>
         <!-- 妇保中心 -->
         
         <!-- 报告单 -->

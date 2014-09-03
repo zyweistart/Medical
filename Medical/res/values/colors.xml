@@ -8,11 +8,11 @@
    	<color name="line">#efefef</color>
    	
    	<color name="sliding_layout_bg">#d9d9d9</color>
-   	<color name="sliding_layout_left_bg_normal">#d9d9d9</color>
-   	<color name="sliding_layout_left_bg_pressed">#efefef</color>
+   	<color name="sliding_layout_left_bg_n">#d9d9d9</color>
+   	<color name="sliding_layout_left_bg_p">#efefef</color>
    	
-   	<color name="main_function_normal">#ffffff</color>
-   	<color name="main_function_pressed">#efefef</color>
+   	<color name="main_function_n">#ffffff</color>
+   	<color name="main_function_p">#efefef</color>
    	<color name="main_function_1">#09b2c9</color>
    	<color name="main_function_2">#df4dcc</color>
    	<color name="main_function_3">#f2a90e</color>
