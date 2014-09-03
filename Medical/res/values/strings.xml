@@ -10,6 +10,8 @@
     <string name="login">登陆</string>
     <string name="register">注册</string>
     <string name="reset_password">重置密码</string>
+    <string name="register_success">恭喜您，注册成功</string>
+    <string name="reset_password_success">恭喜您，重置密码成功</string>
     <string name="personal_center">个人中心</string>
     <string name="edit_personal">修改资料</string>
     <string name="change_password">修改密码</string>
@@ -25,6 +27,13 @@
     <string name="twopwddifftip">二次密码输入不一致</string>
     <string name="usernameorpassworderrortip">用户名或密码有误</string>
     <string name="changepasswordsuccess">修改密码成功</string>
+    
+    
+    <string name="authcodehint">请输入校验码</string>
+    <string name="next">下一步</string>
+    <string name="haveaccount">已有账号</string>
+    <string name="gologin">马上去登陆</string>
+    
     
     <string name="mainfunctiontxt1">手机挂号</string>
     <string name="mainfunctionchiltxt1">手机实时挂号，叫号查询</string>

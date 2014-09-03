@@ -6,27 +6,43 @@
     android:background="@color/activity_gb"  >
     
     <include layout="@layout/module_header" />
-    
-    <EditText 
-	    android:id="@+id/et_login_account"
-        android:layout_width="match_parent"
-        android:layout_height="50.0dip"
-        android:drawableLeft="@drawable/ic_account"
-        android:drawablePadding="5.0dip"
-        android:padding="5.0dip"
-        android:hint="@string/accounthint"
-        style="@style/edittext1"/>
-    
-     <EditText 
-	    android:id="@+id/et_login_password"
-        android:layout_width="match_parent"
-        android:layout_height="50.0dip"
-        android:inputType="textPassword"
-        android:drawableLeft="@drawable/ic_password"
-        android:drawablePadding="5.0dip"
-        android:padding="5.0dip"
-        android:hint="@string/passwordhint"
-        style="@style/edittext1"/>
+     
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="@drawable/bg_frame"
+         android:orientation="horizontal"
+         android:layout_margin="5.0dip" >
+
+         <com.start.widget.CustomEditText
+             android:id="@+id/et_login_account"
+             style="@style/edittext1"
+             android:drawableLeft="@drawable/ic_account"
+        	 android:drawablePadding="5.0dip"
+        	 android:padding="5.0dip"
+        	 android:hint="@string/accounthint" />
+     </LinearLayout>
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="@drawable/bg_frame"
+         android:orientation="horizontal"
+         android:layout_margin="5.0dip"  >
+
+         <com.start.widget.CustomEditText
+             android:id="@+id/et_login_password"
+             style="@style/edittext1"
+	         android:inputType="textPassword"
+	         android:drawableLeft="@drawable/ic_password"
+	         android:drawablePadding="5.0dip"
+	         android:padding="5.0dip"
+	         android:hint="@string/passwordhint" />
+     </LinearLayout>
+     
+     <View
+         android:layout_width="match_parent"
+         android:layout_height="10.0dip" />
      
      <CheckBox
          android:id="@+id/cb_login_autologin"
@@ -40,35 +56,17 @@
      
     <Button 
 	    android:id="@+id/btn_login"
-        android:layout_width="match_parent"
-        android:layout_height="45.0dip"
-        android:layout_margin="5.0dip"
-        android:onClick="onClick"
-        android:textSize="20.0dip"
-        android:textColor="@color/white"
-        android:text="@string/login"
-        android:background="@drawable/selector_button_2"/>
+	    style="@style/button1"
+        android:text="@string/login"/>
     
     <Button 
 	    android:id="@+id/btn_register"
-        android:layout_width="match_parent"
-        android:layout_height="45.0dip"
-        android:layout_margin="5.0dip"
-        android:onClick="onClick"
-        android:textSize="20.0dip"
-        android:textColor="@color/white"
-        android:text="注册"
-        android:background="@drawable/selector_button_2"/>
+	    style="@style/button1"
+        android:text="@string/register"/>
     
     <Button 
 	    android:id="@+id/btn_reset_password"
-        android:layout_width="match_parent"
-        android:layout_height="45.0dip"
-        android:layout_margin="5.0dip"
-        android:onClick="onClick"
-        android:textSize="20.0dip"
-        android:textColor="@color/white"
-        android:text="重置密码"
-        android:background="@drawable/selector_button_2"/>
+	    style="@style/button1"
+        android:text="@string/reset_password"/>
 
 </LinearLayout>

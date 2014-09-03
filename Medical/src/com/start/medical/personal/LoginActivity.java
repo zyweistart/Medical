@@ -9,7 +9,6 @@ import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
-import android.widget.EditText;
 
 import com.start.core.AppException;
 import com.start.core.BaseActivity;
@@ -24,6 +23,7 @@ import com.start.service.Response;
 import com.start.service.UIRunnable;
 import com.start.utils.MD5;
 import com.start.utils.StringUtils;
+import com.start.widget.CustomEditText;
 
 /**
  * 登陆
@@ -40,16 +40,16 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 	 */
 	public static final String BUNLE_AUTOLOGINFLAG="BUNLE_AUTOLOGINFLAG";
 	
-	private EditText et_login_account;
-	private EditText et_login_password;
+	private CustomEditText et_login_account;
+	private CustomEditText et_login_password;
 	private CheckBox cb_login_autologin;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		et_login_account=(EditText)findViewById(R.id.et_login_account);
-		et_login_password=(EditText)findViewById(R.id.et_login_password);
+		et_login_account=(CustomEditText)findViewById(R.id.et_login_account);
+		et_login_password=(CustomEditText)findViewById(R.id.et_login_password);
 		cb_login_autologin=(CheckBox)findViewById(R.id.cb_login_autologin);
 		
 		et_login_account.setText("13738873386");

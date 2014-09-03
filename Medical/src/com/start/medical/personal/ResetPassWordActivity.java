@@ -3,6 +3,7 @@ package com.start.medical.personal;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.start.core.Constant;
@@ -20,21 +21,30 @@ import com.start.utils.StringUtils;
  * @author start
  *
  */
-public class ResetPassWordActivity extends RegisterActivity {
+public class ResetPassWordActivity  extends RegisterActivity {
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setMainHeadTitle(getString(R.string.reset_password));
+		success_title.setText(R.string.reset_password_success);
+	}
 	
 	@Override
 	public void onClick(View v) {
-		if(v.getId()==R.id.btn_get_checksum){
+		if(v.getId()==R.id.btn_re_get_checksum){
 			phone=String.valueOf(et_phone.getText());
 			if(StringUtils.isEmpty(phone)){
 				getHandlerContext().makeTextLong(getString(R.string.phoneemptytip));
 				return;
 			}
 			getAuthCode(2);
-		}else if(v.getId()==R.id.btn_re_get_checksum){
-			//重发验证码
-			getAuthCode(2);
-		}else if(v.getId()==R.id.btn_setting_password){
+		}else if(v.getId()==R.id.btn_next){
+			phone=String.valueOf(et_phone.getText());
+			if(StringUtils.isEmpty(phone)){
+				getHandlerContext().makeTextLong(getString(R.string.phoneemptytip));
+				return;
+			}
 			authcode=String.valueOf(et_checksum.getText());
 			if(StringUtils.isEmpty(authcode)){
 				getHandlerContext().makeTextLong(getString(R.string.autocodeemptytip));
@@ -51,14 +61,14 @@ public class ResetPassWordActivity extends RegisterActivity {
 			}
 			HttpServer hServer=new HttpServer(Constant.URL.userpwdReset, getHandlerContext());
 			Map<String,String> headers=new HashMap<String,String>();
-			headers.put("sign", User.ACCESSKEY_LOCAL);
+			headers.put("sign", User.USER_ACCESSKEY_LOCAL);
 			hServer.setHeaders(headers);
 			Map<String,String> params=new HashMap<String,String>();
-			params.put("accessid", User.ACCESSID_LOCAL);
+			params.put("accessid", User.USER_ACCESSID_LOCAL);
 			params.put("mobile", phone);
 			params.put("pwd", MD5.md5(password));
 			params.put("authcode", authcode);
-			params.put("operatesource", "10");
+			params.put("regsource", "10");
 			params.put("loginflag", "1");
 			hServer.setParams(params);
 			hServer.get(new UIRunnable() {

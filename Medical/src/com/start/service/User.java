@@ -11,9 +11,13 @@ public class User {
 
 	public static String ACCESSID = Constant.EMPTYSTR;
 	public static String ACCESSKEY = Constant.EMPTYSTR;
-	public static final String ACCESSID_LOCAL = Constant.ISSYSTEMTEST ? 
+	public static final String USER_ACCESSID_LOCAL = Constant.ISSYSTEMTEST ? 
+			"4a069ace58ba0918a3aa11b62b472b9e": "e4e60d050f5513e086b47c4fdca35646";
+	public static final String USER_ACCESSKEY_LOCAL = Constant.ISSYSTEMTEST ? 
+			"MThjMDE3ZjAwMTE3NTIzNmE4OTM2ZjQ5N2M2Y2JhNDc=": "fUETGmOIiMujnipQnFm6rJIyO2wJDZSftsK4dwmmoSZ=";
+	public static final String COMMON_ACCESSID_LOCAL = Constant.ISSYSTEMTEST ? 
 			"3c075d12a568dbc5be68902f99c24393": "e4e60d050f5513e086b47c4fdca35646";
-	public static final String ACCESSKEY_LOCAL = Constant.ISSYSTEMTEST ? 
+	public static final String COMMON_ACCESSKEY_LOCAL = Constant.ISSYSTEMTEST ? 
 			"MDY4YmVmMDM2NGM0ODliMGVhYmQ1MDI1NzE5YzQwOWI=": "fUETGmOIiMujnipQnFm6rJIyO2wJDZSftsK4dwmmoSZ=";
 	
 	/**

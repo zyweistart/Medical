@@ -8,8 +8,8 @@ import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.start.core.AppException;
 import com.start.core.BaseActivity;
@@ -23,6 +23,7 @@ import com.start.service.User;
 import com.start.utils.MD5;
 import com.start.utils.StringUtils;
 import com.start.utils.TimeUtils;
+import com.start.widget.CustomEditText;
 
 /**
  * 注册
@@ -36,36 +37,37 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 	protected String password;
 	
 	protected Button btn_re_get_checksum;
-	protected EditText et_phone;
-	protected EditText et_checksum;
-	protected EditText et_setting_password;
-	protected EditText et_setting_repassword;
-	
-	private LinearLayout ll_setting_phone;
-	private LinearLayout ll_setting_data;
-	private LinearLayout ll_setting_done;
+	protected CustomEditText et_phone;
+	protected CustomEditText et_checksum;
+	protected CustomEditText et_setting_password;
+	protected CustomEditText et_setting_repassword;
+	protected LinearLayout ll_main_frame;
+	protected LinearLayout ll_first_frame;
+	protected LinearLayout ll_second_frame;
+	protected TextView success_title;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register_reset_password);
-		ll_setting_phone=(LinearLayout)findViewById(R.id.ll_setting_phone);
-		ll_setting_data=(LinearLayout)findViewById(R.id.ll_setting_data);
-		ll_setting_done=(LinearLayout)findViewById(R.id.ll_setting_done);
+		setMainHeadTitle(getString(R.string.register));
 		btn_re_get_checksum=(Button)findViewById(R.id.btn_re_get_checksum);
-		et_phone=(EditText)findViewById(R.id.et_phone);
-		et_checksum=(EditText)findViewById(R.id.et_checksum);
-		et_setting_password=(EditText)findViewById(R.id.et_setting_password);
-		et_setting_repassword=(EditText)findViewById(R.id.et_setting_repassword);
+		et_phone=(CustomEditText)findViewById(R.id.et_phone);
+		et_checksum=(CustomEditText)findViewById(R.id.et_checksum);
+		et_setting_password=(CustomEditText)findViewById(R.id.et_setting_password);
+		et_setting_repassword=(CustomEditText)findViewById(R.id.et_setting_repassword);
+		ll_main_frame=(LinearLayout)findViewById(R.id.ll_main_frame);
+		ll_first_frame=(LinearLayout)findViewById(R.id.ll_first_frame);
+		ll_second_frame=(LinearLayout)findViewById(R.id.ll_second_frame);
+		success_title=(TextView)findViewById(R.id.success_title);
+		success_title.setText(R.string.register_success);
 	}
 	
 	@Override
 	public void onProcessMessage(Message msg) throws AppException {
 		switch (msg.what) {
 		case Handler.REGISTER_RESET_PASSWORD_STEP1:
-			ll_setting_phone.setVisibility(View.GONE);
-			ll_setting_data.setVisibility(View.VISIBLE);
-			ll_setting_done.setVisibility(View.GONE);
+			ll_main_frame.setVisibility(View.VISIBLE);
 			btn_re_get_checksum.setEnabled(false);
 			
 			new Thread(new Runnable() {
@@ -100,9 +102,8 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 			
 			break;
 		case Handler.REGISTER_RESET_PASSWORD_STEP2:
-			ll_setting_phone.setVisibility(View.GONE);
-			ll_setting_data.setVisibility(View.GONE);
-			ll_setting_done.setVisibility(View.VISIBLE);
+			ll_first_frame.setVisibility(View.GONE);
+			ll_second_frame.setVisibility(View.VISIBLE);
 			break;
 		default:
 			super.onProcessMessage(msg);
@@ -112,17 +113,19 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 	
 	@Override
 	public void onClick(View v) {
-		if(v.getId()==R.id.btn_get_checksum){
+		if(v.getId()==R.id.btn_re_get_checksum){
 			phone=String.valueOf(et_phone.getText());
 			if(StringUtils.isEmpty(phone)){
 				getHandlerContext().makeTextLong(getString(R.string.phoneemptytip));
 				return;
 			}
 			getAuthCode(1);
-		}else if(v.getId()==R.id.btn_re_get_checksum){
-			//重发验证码
-			getAuthCode(1);
-		}else if(v.getId()==R.id.btn_setting_password){
+		}else if(v.getId()==R.id.btn_next){
+			phone=String.valueOf(et_phone.getText());
+			if(StringUtils.isEmpty(phone)){
+				getHandlerContext().makeTextLong(getString(R.string.phoneemptytip));
+				return;
+			}
 			authcode=String.valueOf(et_checksum.getText());
 			if(StringUtils.isEmpty(authcode)){
 				getHandlerContext().makeTextLong(getString(R.string.autocodeemptytip));
@@ -139,10 +142,10 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 			}
 			HttpServer hServer=new HttpServer(Constant.URL.userReg, getHandlerContext());
 			Map<String,String> headers=new HashMap<String,String>();
-			headers.put("sign", User.ACCESSKEY_LOCAL);
+			headers.put("sign", User.USER_ACCESSKEY_LOCAL);
 			hServer.setHeaders(headers);
 			Map<String,String> params=new HashMap<String,String>();
-			params.put("accessid", User.ACCESSID_LOCAL);
+			params.put("accessid", User.USER_ACCESSID_LOCAL);
 			params.put("mobile", phone);
 			params.put("pwd", MD5.md5(password));
 			params.put("authcode", authcode);
@@ -160,6 +163,8 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 		}else if(v.getId()==R.id.btn_done){
 			getAppContext().currentUser().addCacheUser(phone, MD5.md5(password), true);
 			goLogin(true);
+		}else if(v.getId()==R.id.tvHaveAccount){
+			goLogin(false);
 		}
 	}
 	
@@ -169,10 +174,10 @@ public class RegisterActivity extends BaseActivity implements OnClickListener {
 	public void getAuthCode(int type){
 		HttpServer hServer=new HttpServer(Constant.URL.useracodeGet, getHandlerContext());
 		Map<String,String> headers=new HashMap<String,String>();
-		headers.put("sign", User.ACCESSKEY_LOCAL);
+		headers.put("sign", User.USER_ACCESSKEY_LOCAL);
 		hServer.setHeaders(headers);
 		Map<String,String> params=new HashMap<String,String>();
-		params.put("accessid", User.ACCESSID_LOCAL);
+		params.put("accessid", User.USER_ACCESSID_LOCAL);
 		params.put("mobile", phone);
 		params.put("type", String.valueOf(type));
 		hServer.setParams(params);

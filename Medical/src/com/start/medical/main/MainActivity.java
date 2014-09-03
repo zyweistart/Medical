@@ -199,7 +199,7 @@ public class MainActivity extends BaseActivity{
 	
 	@Override
 	public void onClick(View v) {
-		if(v.getId()==R.id.module_header_left){
+		if(v.getId()==R.id.module_header_left_back){
 			if (mSlidingLayout.isLeftLayoutVisible()) {
 				mSlidingLayout.scrollToRightLayout();
 			} else {

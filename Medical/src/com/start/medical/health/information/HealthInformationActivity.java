@@ -64,10 +64,10 @@ public class HealthInformationActivity extends BaseActivity implements RefreshLi
 	public void onLoading(final int HANDLER) {
 		HttpServer hServer = new HttpServer(Constant.URL.htinfonewsQuery,mRefreshListServer.getHandlerContext());
 		Map<String,String> headers=new HashMap<String,String>();
-		headers.put("sign", User.ACCESSKEY_LOCAL);
+		headers.put("sign", User.COMMON_ACCESSKEY_LOCAL);
 		hServer.setHeaders(headers);
 		Map<String, String> params = new HashMap<String, String>();
-		params.put("accessid", User.ACCESSID_LOCAL);
+		params.put("accessid", User.COMMON_ACCESSID_LOCAL);
 		params.put("currentpage",String.valueOf(mRefreshListServer.getCurrentPage() + 1));
 		params.put("pagesize", String.valueOf(Constant.PAGESIZE));
 		params.put("type", Constant.EMPTYSTR);
