@@ -15,6 +15,7 @@ import com.start.core.AppException;
 import com.start.core.BaseActivity;
 import com.start.core.Constant;
 import com.start.core.Constant.Preferences;
+import com.start.core.Constant.ResultCode;
 import com.start.medical.AppContext;
 import com.start.medical.R;
 import com.start.medical.main.MainActivity;
@@ -110,6 +111,8 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		}else if(v.getId()==R.id.btn_reset_password){
 			Intent intent=new Intent(this,RegisterActivity.class);
 			startActivity(intent);
+		}else{
+			super.onClick(v);
 		}
 	}
 	
@@ -117,7 +120,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 	@Override
 	public void onProcessMessage(Message msg) throws AppException {
 		switch(msg.what){
-		case 110036://签名不匹配或密码不正确
+		case ResultCode.USERNAMEORPASSWORDERROR://签名不匹配或密码不正确
 			getAppContext().currentUser().clearCachePassword();
 			et_login_password.setText(Constant.EMPTYSTR);
 			getHandlerContext().makeTextShort(getString(R.string.usernameorpassworderrortip));

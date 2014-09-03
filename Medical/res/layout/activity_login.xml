@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/activity_gb2"  >
+    android:background="@color/activity_gb"  >
     
     <include layout="@layout/module_header" />
     
@@ -15,7 +15,7 @@
         android:drawablePadding="5.0dip"
         android:padding="5.0dip"
         android:hint="@string/accounthint"
-        style="@style/edittext_style"/>
+        style="@style/edittext1"/>
     
      <EditText 
 	    android:id="@+id/et_login_password"
@@ -26,7 +26,7 @@
         android:drawablePadding="5.0dip"
         android:padding="5.0dip"
         android:hint="@string/passwordhint"
-        style="@style/edittext_style"/>
+        style="@style/edittext1"/>
      
      <CheckBox
          android:id="@+id/cb_login_autologin"

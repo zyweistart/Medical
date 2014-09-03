@@ -3,7 +3,7 @@
     android:id="@+id/start_view"
     android:layout_width="match_parent"
 	android:layout_height="match_parent"
-    android:background="@drawable/start_background"
+    android:background="@drawable/bm_start_background"
 	android:gravity="bottom"
     android:orientation="vertical">
     
