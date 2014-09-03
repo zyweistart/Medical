@@ -16,6 +16,7 @@ public class DepartmentDoctorsActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_department_doctors);
+		setMainHeadTitle(getString(R.string.mainfunctiontxt6));
 	}
 	
 }

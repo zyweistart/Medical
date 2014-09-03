@@ -16,6 +16,7 @@ public class TakeReportActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_task_report);
+		setMainHeadTitle(getString(R.string.mainfunctiontxt3));
 	}
 	
 }

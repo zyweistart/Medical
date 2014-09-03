@@ -92,7 +92,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener,H
 	 * 设置导航标题
 	 */
 	public void setMainHeadTitle(String title){
-		TextView tvTitle=(TextView)findViewById(R.id.main_head_title);
+		TextView tvTitle=(TextView)findViewById(R.id.module_header_title);
 		if(tvTitle!=null){
 			tvTitle.setText(title);
 		}

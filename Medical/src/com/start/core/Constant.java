@@ -47,6 +47,18 @@ public final class Constant {
 		 */
 		public static final String userpwdMod="userpwdMod";
 		/**
+		 * 科室查询
+		 */
+		public static final String hisdeptQuery="hisdeptQuery";
+		/**
+		 * 医生查询
+		 */
+		public static final String hisdoctorQuery="hisdoctorQuery";
+		/**
+		 * 医生详情
+		 */
+		public static final String hisinfoDetail="hisinfoDetail";
+		/**
 		 * 健康百科-疾病查询
 		 */
 		public static final String htwikidisQuery="htwikidisQuery";
@@ -54,6 +66,14 @@ public final class Constant {
 		 * 健康百科-疾病详情
 		 */
 		public static final String htwikidisDetail="htwikidisDetail";
+		/**
+		 * 健康资讯-新闻查询
+		 */
+		public static final String htinfonewsQuery="htinfonewsQuery";
+		/**
+		 * 健康资讯-新闻详情
+		 */
+		public static final String htinfonewsDetail="htinfonewsDetail";
 	}
 	
 	public final class Handler {

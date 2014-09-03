@@ -16,6 +16,7 @@ public class NavigationActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_navigation);
+		setMainHeadTitle(getString(R.string.mainfunctiontxt5));
 	}
 	
 }

@@ -36,6 +36,7 @@ public class HealthWikipediaActivity extends BaseActivity implements RefreshList
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_healthwikipedia);
+		setMainHeadTitle(getString(R.string.mainfunctiontxt8));
 		mListView = (XListView) findViewById(R.id.xlv_listview);
 		mListView.setOnItemClickListener(new OnItemClickListener() {
 
