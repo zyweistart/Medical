@@ -33,7 +33,7 @@
         android:orientation="vertical"
         android:visibility="visible" >
 
-        <include layout="@layout/module_top" />
+        <include layout="@layout/module_header" />
         
         <com.start.widget.xlistview.XListView
 	        android:id="@+id/xlv_content_list"

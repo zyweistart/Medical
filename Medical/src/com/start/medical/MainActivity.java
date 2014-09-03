@@ -10,9 +10,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.start.core.BaseActivity;
+import com.start.medical.health.wikipedial.HealthWikipediaActivity;
 import com.start.medical.personal.LoginActivity;
 import com.start.widget.SlidingLayout;
 
@@ -33,12 +35,20 @@ public class MainActivity extends BaseActivity{
 			R.drawable.default_banner_4,
 			R.drawable.default_banner_5 };
 	
+	private RelativeLayout left_head_nologin_frame;
+	private RelativeLayout left_head_login_frame;
+	private TextView txt_current_user;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		mSlidingLayout = (SlidingLayout) findViewById(R.id.main_slidingLayout);
 		mSlidingLayout.setScrollEvent(findViewById(R.id.main_content_sv));
+		
+		left_head_nologin_frame=(RelativeLayout)findViewById(R.id.left_head_nologin_frame);
+		left_head_login_frame=(RelativeLayout)findViewById(R.id.left_head_login_frame);
+		txt_current_user=(TextView)findViewById(R.id.txt_current_user);
 		
 		//设置Left功能区
 		LinearLayout more_item_1=(LinearLayout)findViewById(R.id.more_item_1);
@@ -79,6 +89,21 @@ public class MainActivity extends BaseActivity{
 		BannerAdapter ba=new BannerAdapter(this);
 		ba.setItemDatas(imageViews);
 		bannerPager.setAdapter(ba);
+		
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		
+		if(getAppContext().currentUser().isLogin()){
+			left_head_nologin_frame.setVisibility(View.GONE);
+			left_head_login_frame.setVisibility(View.VISIBLE);
+			txt_current_user.setText("18368013123");
+		}else{
+			left_head_nologin_frame.setVisibility(View.VISIBLE);
+			left_head_login_frame.setVisibility(View.GONE);
+		}
 		
 	}
 
@@ -203,7 +228,7 @@ public class MainActivity extends BaseActivity{
 			Log.v(TAG,"科室医生");
 		}else if(v.getId()==R.id.main_function_7){
 			//健康百科
-			Log.v(TAG,"健康百科");
+			startActivity(new Intent(this,HealthWikipediaActivity.class));
 		}else if(v.getId()==R.id.main_function_8){
 			//健康资讯
 			Log.v(TAG,"健康资讯");

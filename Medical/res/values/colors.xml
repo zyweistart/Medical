@@ -2,6 +2,7 @@
 <resources>
 
     <color name="white">#ffffff</color>
+   	<color name="activity_gb">#f3f3f3</color>
    	<color name="activity_gb1">#f3f3f3</color>
    	<color name="activity_gb2">#eafeff</color>
    	<color name="line">#efefef</color>

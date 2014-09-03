@@ -30,6 +30,7 @@ public class RefreshListServer implements IXListViewListener,HandleContextListen
 	private RefreshListServerListener mRefreshListServerListener;
 	private BaseListAdapter mBaseListAdapter;
 	private List<Map<String,String>> mItemDatas = new ArrayList<Map<String,String>>();
+	private String listTag,infoTag;
 	
 	public RefreshListServer(BaseActivity activity,XListView listView,BaseListAdapter listAdapter){
 		this.mActivity=activity;
@@ -127,8 +128,8 @@ public class RefreshListServer implements IXListViewListener,HandleContextListen
 			}
 			getItemDatas().clear();
 		}
-		setCurrentPage(Integer.parseInt(response.getPageInfoMapData().get("pageNo")));
-		getItemDatas().addAll(response.getListMapData());
+		setCurrentPage(Integer.parseInt(response.getPageInfoMapData().get("currentpage")));
+		getItemDatas().addAll(response.getListMapData(listTag,infoTag));
 	}
 	
 	public interface RefreshListServerListener{
@@ -182,6 +183,14 @@ public class RefreshListServer implements IXListViewListener,HandleContextListen
 
 	public BaseListAdapter getBaseListAdapter() {
 		return mBaseListAdapter;
+	}
+
+	public void setListTag(String listTag) {
+		this.listTag = listTag;
+	}
+
+	public void setInfoTag(String infoTag) {
+		this.infoTag = infoTag;
 	}
 	
 }

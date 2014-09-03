@@ -63,6 +63,13 @@
             android:name=".personal.ChangePassWordActivity"
         	android:screenOrientation="portrait"/>
         
+        <activity
+            android:name=".health.wikipedial.HealthWikipediaActivity"
+        	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".health.wikipedial.HealthWikipediaDetailActivity"
+        	android:screenOrientation="portrait"/>
+        
     </application>
 
 </manifest>

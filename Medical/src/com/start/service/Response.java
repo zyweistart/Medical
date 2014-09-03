@@ -25,7 +25,7 @@ public class Response {
 	public static final String MSGTAG="msg";
 	public static final String CONTENTTAG="content";
 	public static final String DATATAG="data";
-	public static final String PAGEINFOTAG="page";
+	public static final String PAGEINFOTAG="pageinfo";
 	public static final String LISTTAG="list";
 	
 	private String mCode;
@@ -51,7 +51,7 @@ public class Response {
 		return mMsg;
 	}
 	
-	public JSONObject getResponseData() throws AppException {
+	private JSONObject getResponseData() throws AppException {
 		if(mResponseData==null){
 			try {
 				if(this.mJsonObject!=null){
@@ -64,7 +64,7 @@ public class Response {
 		return mResponseData;
 	}
 	
-	public JSONObject getResponseData(String tag) throws AppException {
+	private JSONObject getResponseData(String tag) throws AppException {
 		if(mResponseData==null){
 			try {
 				if(this.mJsonObject!=null){
@@ -77,7 +77,7 @@ public class Response {
 		return mResponseData;
 	}
 	
-	public JSONObject getResponsePageInfo() throws AppException {
+	private JSONObject getResponsePageInfo() throws AppException {
 		if(mResponsePageInfo==null){
 			try {
 				if(this.mJsonObject!=null){
@@ -92,7 +92,7 @@ public class Response {
 		return mResponsePageInfo;
 	}
 	
-	public JSONArray getResponseDataArray() throws AppException {
+	private JSONArray getResponseDataArray() throws AppException {
 		if(mResponseDataArray==null){
 			try {
 				if(this.mJsonObject!=null){
@@ -112,26 +112,6 @@ public class Response {
 		if(mMapData==null){
 			try {
 				JSONObject obj=getResponseData();
-				if(obj!=null){
-					mMapData=new HashMap<String,String>();
-					Iterator<String> i=obj.keys();
-					while(i.hasNext()){
-						String key=i.next();
-						mMapData.put(key,obj.getString(key));
-					}
-				}
-			} catch (JSONException e) {
-				throw AppException.json(e);
-			}
-		}
-		return mMapData;
-	}
-	
-	@SuppressWarnings("unchecked")
-	public Map<String,String> getMapData(String tag) throws AppException {
-		if(mMapData==null){
-			try {
-				JSONObject obj=getResponseData(tag);
 				if(obj!=null){
 					mMapData=new HashMap<String,String>();
 					Iterator<String> i=obj.keys();
@@ -175,6 +155,56 @@ public class Response {
 					mListMapData=new ArrayList<Map<String,String>>();
 					for(int i=0;i<dataArray.length();i++){
 						JSONObject current=dataArray.getJSONObject(i);
+						Map<String,String> datas=new HashMap<String,String>();
+						JSONArray names=current.names();
+						for(int j=0;j<names.length();j++){
+							String name=names.getString(j);
+							datas.put(name, current.getString(name));
+						}
+						mListMapData.add(datas);
+					}
+				}
+			} catch (JSONException e) {
+				throw AppException.json(e);
+			}
+		}
+		return mListMapData;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Map<String,String> getMapData(String tag) throws AppException {
+		if(mMapData==null){
+			try {
+				JSONObject obj=getResponseData(tag);
+				if(obj!=null){
+					mMapData=new HashMap<String,String>();
+					Iterator<String> i=obj.keys();
+					while(i.hasNext()){
+						String key=i.next();
+						mMapData.put(key,obj.getString(key));
+					}
+				}
+			} catch (JSONException e) {
+				throw AppException.json(e);
+			}
+		}
+		return mMapData;
+	}
+	
+	public List<Map<String,String>> getListMapData(String tag,String chinaTag) throws AppException {
+		if(mListMapData==null){
+			try {
+				if(mResponseDataArray==null){
+					if(this.mJsonObject!=null){
+						if(getResponsePageInfo()!=null){
+							mResponseDataArray=this.mJsonObject.getJSONArray(tag);
+						}
+					}
+				}
+				if(mResponseDataArray!=null){
+					mListMapData=new ArrayList<Map<String,String>>();
+					for(int i=0;i<mResponseDataArray.length();i++){
+						JSONObject current=mResponseDataArray.getJSONObject(i).getJSONObject(chinaTag);
 						Map<String,String> datas=new HashMap<String,String>();
 						JSONArray names=current.names();
 						for(int j=0;j<names.length();j++){

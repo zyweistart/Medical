@@ -47,29 +47,13 @@ public final class Constant {
 		 */
 		public static final String userpwdMod="userpwdMod";
 		/**
-		 * 个人资料编辑
+		 * 健康百科-疾病查询
 		 */
-		public static final String userinfoEdit="userinfoEdit";
+		public static final String htwikidisQuery="htwikidisQuery";
 		/**
-		 * 就诊人列表
+		 * 健康百科-疾病详情
 		 */
-		public static final String userpatientList="userpatientList";
-		/**
-		 * 就诊人详情
-		 */
-		public static final String userpatientDetail="userpatientDetail";
-		/**
-		 * 就诊人增加
-		 */
-		public static final String userpatientAdd="userpatientAdd";
-		/**
-		 * 就诊人修改
-		 */
-		public static final String userpatientModify="userpatientModify";
-		/**
-		 * 就诊人删除
-		 */
-		public static final String userpatientDelete="userpatientDelete";
+		public static final String htwikidisDetail="htwikidisDetail";
 	}
 	
 	public final class Handler {

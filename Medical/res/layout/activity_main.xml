@@ -20,6 +20,7 @@
 	        android:layout_height="150.0dip"
 	        android:background="@drawable/sliding_layout_left_top_bg">
 	        <RelativeLayout 
+               android:id="@+id/left_head_nologin_frame"
                android:layout_width="match_parent"
                android:layout_height="100.0dip"
                android:layout_alignParentTop="true">
@@ -31,11 +32,23 @@
                    android:layout_centerVertical="true"
                    android:padding="3.0dip"
                    android:layout_margin="3.0dip"
-                   android:textColor="#ffffff"
+                   android:textColor="@color/white"
                    android:textSize="18.0dip"
                    android:onClick="onClick"
                    android:background="#08b2c9"
                    android:text="@string/login"/>
+               
+            </RelativeLayout>
+            <RelativeLayout 
+               android:id="@+id/left_head_login_frame"
+               android:layout_width="match_parent"
+               android:layout_height="100.0dip"
+               android:layout_alignParentTop="true"
+               android:visibility="gone">
+            
+                <TextView
+                    android:id="@+id/txt_current_user"
+                   	style="@style/textview1"/>
                
             </RelativeLayout>
 	        <RelativeLayout 
@@ -54,29 +67,19 @@
 			        android:layout_centerInParent="true"
 			        android:background="@drawable/line" />
 	           
-	           <Button 
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:drawableLeft="@drawable/ic_message"
-                   android:layout_centerVertical="true"
+	           <TextView 
+                   style="@style/textview1"
                    android:layout_toLeftOf="@id/personal_middle_bottom"
-                   android:background="@null"
-                   android:textColor="#ffffff"
-                   android:textSize="20.0dip"
+                   android:drawableLeft="@drawable/ic_message"
                    android:drawablePadding="5.0dip"
-                   android:text="消息"/>
+                   android:text="@string/message"/>
 	           
-               <Button 
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:drawableLeft="@drawable/ic_collect"
-                   android:layout_centerVertical="true"
+               <TextView 
+                   style="@style/textview1"
                    android:layout_toRightOf="@id/personal_middle_bottom"
-                   android:background="@null"
-                   android:textColor="#ffffff"
-                   android:textSize="20.0dip"
+                   android:drawableLeft="@drawable/ic_collect"
                    android:drawablePadding="5.0dip"
-                   android:text="收藏"/>
+                   android:text="@string/collection"/>
                
 	        </RelativeLayout>
             
@@ -109,7 +112,7 @@
         android:orientation="vertical"
         android:visibility="visible" >
 
-        <include layout="@layout/module_top" />
+        <include layout="@layout/module_header" />
 
         <ScrollView 
             android:id="@+id/main_content_sv"
