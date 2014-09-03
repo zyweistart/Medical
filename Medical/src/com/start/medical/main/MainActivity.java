@@ -119,19 +119,19 @@ public class MainActivity extends BaseActivity{
 		TextView txt_more=(TextView)layout.findViewById(R.id.txt_more);
 		switch(type){
 		case 1:
-			ic_more.setBackgroundResource(R.drawable.ic_more_aboutus);
+			ic_more.setBackgroundResource(R.drawable.ic_aboutus);
 			txt_more.setText(R.string.personal_center);
 			break;
 		case 2:
-			ic_more.setBackgroundResource(R.drawable.ic_more_change_password);
+			ic_more.setBackgroundResource(R.drawable.ic_change_password);
 			txt_more.setText(R.string.change_password);
 			break;
 		case 3:
-			ic_more.setBackgroundResource(R.drawable.ic_more_clear_cache);
+			ic_more.setBackgroundResource(R.drawable.ic_clear_cache);
 			txt_more.setText(R.string.mainfunctiontxt1);
 			break;
 		case 4:
-			ic_more.setBackgroundResource(R.drawable.ic_more_feedback);
+			ic_more.setBackgroundResource(R.drawable.ic_feedback);
 			txt_more.setText(R.string.login);
 			break;
 		}

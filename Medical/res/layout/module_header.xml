@@ -3,8 +3,8 @@
     android:layout_height="45dp"
     android:paddingLeft="0dip"
     android:paddingRight="0dip"
-    android:paddingTop="@dimen/spacing_1"
-    android:paddingBottom="@dimen/spacing_1"
+    android:paddingTop="18.0dip"
+    android:paddingBottom="18.0dip"
     android:background="#08b2c9">
     
     <Button 
@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/fontsize_h5"
+        android:textSize="23.0dip"
         android:layout_centerInParent="true" 
         android:text="@string/app_name"/>
     
