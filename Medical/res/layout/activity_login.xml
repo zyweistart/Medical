@@ -47,7 +47,7 @@
         android:textSize="20.0dip"
         android:textColor="@color/white"
         android:text="@string/login"
-        android:background="@drawable/selector_btn_2"/>
+        android:background="@drawable/selector_button_2"/>
     
     <Button 
 	    android:id="@+id/btn_register"
@@ -58,7 +58,7 @@
         android:textSize="20.0dip"
         android:textColor="@color/white"
         android:text="注册"
-        android:background="@drawable/selector_btn_2"/>
+        android:background="@drawable/selector_button_2"/>
     
     <Button 
 	    android:id="@+id/btn_reset_password"
@@ -69,6 +69,6 @@
         android:textSize="20.0dip"
         android:textColor="@color/white"
         android:text="重置密码"
-        android:background="@drawable/selector_btn_2"/>
+        android:background="@drawable/selector_button_2"/>
 
 </LinearLayout>
