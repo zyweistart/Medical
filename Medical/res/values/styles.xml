@@ -20,7 +20,7 @@
     
     <style name="edittext_style" parent="@android:style/Widget.EditText">
         <item name="android:layout_margin">5.0dip</item>
-        <item name="android:background">@drawable/edittext_selector</item>
+        <item name="android:background">@drawable/selector_edittext</item>
     </style>
 
     <style name="textview1">

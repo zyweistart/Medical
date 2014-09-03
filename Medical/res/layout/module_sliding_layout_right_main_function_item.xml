@@ -7,7 +7,7 @@
     android:onClick="onClick"
     android:gravity="center"
     android:orientation="horizontal" 
-    android:background="@drawable/main_function_selector">
+    android:background="@drawable/selector_main_function">
 
     <ImageView
         android:id="@+id/ic_main_function"

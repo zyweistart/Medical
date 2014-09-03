@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:onClick="onClick"
-        android:background="@drawable/module_top_left_1_selector"/>
+        android:background="@drawable/selector_module_top_left_1"/>
     
     <TextView
         android:id="@+id/module_header_title"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:onClick="onClick"
-        android:background="@drawable/module_top_right_1_selector"
+        android:background="@drawable/selector_module_top_right_1"
         android:visibility="gone"/>
     
 </RelativeLayout>
