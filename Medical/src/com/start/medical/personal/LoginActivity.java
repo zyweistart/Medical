@@ -26,7 +26,7 @@ import com.start.utils.StringUtils;
 import com.start.widget.CustomEditText;
 
 /**
- * 登陆
+ * 登录
  * @author start
  *
  */
@@ -36,7 +36,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 	 */
 	public static final String BUNLE_MESSAGE="BUNLE_MESSAGE";
 	/**
-	 * 自动登陆标记
+	 * 自动登录标记
 	 */
 	public static final String BUNLE_AUTOLOGINFLAG="BUNLE_AUTOLOGINFLAG";
 	
@@ -61,7 +61,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		super.onResume();
 		Bundle bundle=getIntent().getExtras();
 		if(bundle!=null){
-			//自动登陆
+			//自动登录
 			if(bundle.getBoolean(BUNLE_AUTOLOGINFLAG,true)){
 				String account=AppContext.getSharedPreferences().getString(Preferences.SP_ACCOUNT_CONTENT_DATA, Constant.EMPTYSTR);
 				if(StringUtils.isEmpty(account)){
@@ -132,7 +132,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 	}
 	
 	/**
-	 * 登陆
+	 * 登录
 	 * @param account
 	 * @param password MD5加密后的密码
 	 * @param autoLogin  

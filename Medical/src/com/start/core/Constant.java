@@ -135,7 +135,7 @@ public final class Constant {
 		 */
 		public static final int NODATA=430;
 		/**
-		 * 登陆信息过期，请重新登陆
+		 * 登录信息过期，请重新登录
 		 */
 		public static final int NOLOGIN=414;
 		
@@ -151,7 +151,7 @@ public final class Constant {
 		 */
 		public static final String SP_PASSWORD_CONTENT_DATA = "SP_PASSWORD_DATA";
 		/**
-		 * 自动登陆
+		 * 自动登录
 		 */
 		public static final String SP_AUTOLOGIN_CONTENT_DATA = "SP_AUTOLOGIN_CONTENT_DATA";
 		

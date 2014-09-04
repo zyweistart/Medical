@@ -136,12 +136,12 @@
 	                android:layout_height="@dimen/main_function_height"
 	                android:orientation="horizontal">
 	                
-                    <include android:id="@+id/main_function_1" layout="@layout/module_sliding_layout_right_main_function_item"/>
+                    <include android:id="@+id/main_function_1" layout="@layout/module_sliding_layout_right_item"/>
                     <View
 				        android:layout_width="1.0dip"
 				        android:layout_height="match_parent"
 				        android:background="@drawable/line" />
-                    <include android:id="@+id/main_function_2" layout="@layout/module_sliding_layout_right_main_function_item"/>
+                    <include android:id="@+id/main_function_2" layout="@layout/module_sliding_layout_right_item"/>
 	                
 	            </LinearLayout>
 	            <View
@@ -153,12 +153,12 @@
 	                android:layout_height="@dimen/main_function_height"
 	                android:orientation="horizontal">
 	                
-                    <include android:id="@+id/main_function_3" layout="@layout/module_sliding_layout_right_main_function_item"/>
+                    <include android:id="@+id/main_function_3" layout="@layout/module_sliding_layout_right_item"/>
                     <View
 				        android:layout_width="1.0dip"
 				        android:layout_height="match_parent"
 				        android:background="@drawable/line" />
-                    <include android:id="@+id/main_function_4" layout="@layout/module_sliding_layout_right_main_function_item"/>
+                    <include android:id="@+id/main_function_4" layout="@layout/module_sliding_layout_right_item"/>
 	                
 	            </LinearLayout>
 	            <View
@@ -170,12 +170,12 @@
 	                android:layout_height="@dimen/main_function_height"
 	                android:orientation="horizontal">
 	                
-                    <include android:id="@+id/main_function_5" layout="@layout/module_sliding_layout_right_main_function_item"/>
+                    <include android:id="@+id/main_function_5" layout="@layout/module_sliding_layout_right_item"/>
                     <View
 				        android:layout_width="1.0dip"
 				        android:layout_height="match_parent"
 				        android:background="@drawable/line" />
-                    <include android:id="@+id/main_function_6" layout="@layout/module_sliding_layout_right_main_function_item"/>
+                    <include android:id="@+id/main_function_6" layout="@layout/module_sliding_layout_right_item"/>
 	                
 	            </LinearLayout>
 	            <View
@@ -187,12 +187,12 @@
 	                android:layout_height="@dimen/main_function_height"
 	                android:orientation="horizontal">
 	                
-                    <include android:id="@+id/main_function_7" layout="@layout/module_sliding_layout_right_main_function_item"/>
+                    <include android:id="@+id/main_function_7" layout="@layout/module_sliding_layout_right_item"/>
                     <View
 				        android:layout_width="1.0dip"
 				        android:layout_height="match_parent"
 				        android:background="@drawable/line" />
-                    <include android:id="@+id/main_function_8" layout="@layout/module_sliding_layout_right_main_function_item"/>
+                    <include android:id="@+id/main_function_8" layout="@layout/module_sliding_layout_right_item"/>
 	                
 	            </LinearLayout>
                 

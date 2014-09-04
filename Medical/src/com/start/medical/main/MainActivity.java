@@ -48,6 +48,7 @@ public class MainActivity extends BaseActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		setMainHeadTitle(getString(R.string.app_name));
 		mSlidingLayout = (SlidingLayout) findViewById(R.id.main_slidingLayout);
 		mSlidingLayout.setScrollEvent(findViewById(R.id.main_content_sv));
 		

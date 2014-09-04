@@ -21,7 +21,7 @@ public class User {
 			"MDY4YmVmMDM2NGM0ODliMGVhYmQ1MDI1NzE5YzQwOWI=": "fUETGmOIiMujnipQnFm6rJIyO2wJDZSftsK4dwmmoSZ=";
 	
 	/**
-	 * 用户登陆标记
+	 * 用户登录标记
 	 */
 	private Boolean login;
 	private static User mUser;

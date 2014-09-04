@@ -14,7 +14,6 @@ import com.start.core.BaseActivity;
 import com.start.core.Constant;
 import com.start.core.Constant.Handler;
 import com.start.medical.R;
-import com.start.medical.health.wikipedial.HealthWikipediaAdapter;
 import com.start.service.HttpServer;
 import com.start.service.RefreshListServer;
 import com.start.service.RefreshListServer.RefreshListServerListener;
@@ -51,7 +50,7 @@ public class HealthInformationActivity extends BaseActivity implements RefreshLi
 				startActivity(intent);
 			}
 		});
-		mRefreshListServer = new RefreshListServer(this, mListView,new HealthWikipediaAdapter(this));
+		mRefreshListServer = new RefreshListServer(this, mListView,new HealthInformationAdapter(this));
 		mRefreshListServer.setCacheTag(TAG);
 		mRefreshListServer.setListTag("newslist");
 		mRefreshListServer.setInfoTag("newsinfo");

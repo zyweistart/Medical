@@ -7,7 +7,7 @@
     <!-- 个人 -->
     <string name="collection">收藏</string>
     <string name="message">消息</string>
-    <string name="login">登陆</string>
+    <string name="login">登录</string>
     <string name="register">注册</string>
     <string name="reset_password">重置密码</string>
     <string name="register_success">恭喜您，注册成功</string>
@@ -18,7 +18,7 @@
     <string name="accounthint">请输入账户</string>
     <string name="passwordhint">请输入密码</string>
     <string name="repasswordhint">请再次输入密码</string>
-    <string name="autologinttxt">自动登陆</string>
+    <string name="autologinttxt">自动登录</string>
     <string name="getauthcode">获取校验码</string>
     <string name="regetauthcode">重新获取校验码</string>
     <string name="phoneemptytip">手机号码不能为空</string>
@@ -34,7 +34,7 @@
     <string name="authcodehint">请输入校验码</string>
     <string name="next">下一步</string>
     <string name="haveaccount">已有账号</string>
-    <string name="gologin">马上去登陆</string>
+    <string name="gologin">马上去登录</string>
     
     <string name="mainfunctiontxt1">手机挂号</string>
     <string name="mainfunctionchiltxt1">手机实时挂号，叫号查询</string>

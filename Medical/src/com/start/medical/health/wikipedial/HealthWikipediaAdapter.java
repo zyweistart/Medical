@@ -2,6 +2,8 @@ package com.start.medical.health.wikipedial;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.start.core.BaseActivity;
 import com.start.core.BaseListAdapter;
@@ -19,32 +21,24 @@ public class HealthWikipediaAdapter extends BaseListAdapter{
 		if (convertView == null) {
 			convertView = mActivity.getLayoutInflater().inflate(R.layout.listitem_healthwikipedia, null);
 			holder = new HolderView();
-//			holder.title = (TextView) convertView.findViewById(R.id.listitem_sharerecord_manager_title);
+			holder.listitem_iv_header = (ImageView) convertView.findViewById(R.id.listitem_iv_header);
+			holder.listitem_main_title = (TextView) convertView.findViewById(R.id.listitem_main_title);
+			holder.listitem_child_title = (TextView) convertView.findViewById(R.id.listitem_child_title);
 			convertView.setTag(holder);
 		} else {
 			holder = (HolderView) convertView.getTag();
 		}
 //		Map<String,String> data=mItemDatas.get(position);
-//		holder.title.setText(data.get("voucherType"));
-//		holder.name.setText(data.get("debtorUserName"));
-//		holder.money.setText(data.get("money"));
-//		holder.type.setText(data.get("bizType"));
-//		holder.time.setText(TimeUtils.customerTimeConvert(data.get("bizTime")));
-//		holder.status.setText("分享渠道："+data.get("enjoyWay"));
-//		holder.no.setText("保全号："+data.get("recordNo"));
-//		holder.ntime.setText("分享时间："+TimeUtils.customerTimeConvert(data.get("enjoyTime")));
+		holder.listitem_iv_header.setBackground(mActivity.getResources().getDrawable(R.drawable.ic_expression_success));
+		holder.listitem_main_title.setText("习近平：日方应严肃妥善处理历史问题");
+		holder.listitem_child_title.setText("中共是抗战中流砥柱 摒弃对抗 铭记历史 光荣与梦想 批评与自我批评");
 		return convertView;
 	}
 	
 	private class HolderView {
-//		private TextView title;
-//		private TextView name;
-//		private TextView money;
-//		private TextView type;
-//		private TextView time;
-//		private TextView status;
-//		private TextView no;
-//		private TextView ntime;
+		private ImageView listitem_iv_header;
+		private TextView listitem_main_title;
+		private TextView listitem_child_title;
 	}
 	
 }
