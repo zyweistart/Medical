@@ -57,7 +57,7 @@ public final class Constant {
 		/**
 		 * 医生详情
 		 */
-		public static final String hisinfoDetail="hisinfoDetail";
+		public static final String hisdoctorDetail="hisdoctorDetail";
 		/**
 		 * 健康百科-疾病查询
 		 */

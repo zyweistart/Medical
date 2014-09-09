@@ -82,6 +82,12 @@
         <activity
             android:name=".department.DepartmentActivity"
         	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".department.DoctorsActivity"
+        	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".department.DoctorsDetailActivity"
+        	android:screenOrientation="portrait"/>
         <!-- 健康百科 -->
         <activity
             android:name=".health.wikipedial.HealthWikipediaActivity"

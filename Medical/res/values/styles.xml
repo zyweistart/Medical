@@ -16,6 +16,25 @@
         <item name="android:layout_centerVertical">true</item>
     </style>
     
+    <style name="textview2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">10.0dip</item>
+        <item name="android:textSize">16.0dip</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:background">#9dd4db</item>
+    </style>
+    
+     <style name="textview3">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">10.0dip</item>
+        <item name="android:textSize">16.0dip</item>
+        <item name="android:textColor">#ababab</item>
+    </style>
+    
     <style name="button1">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">45.0dip</item>
