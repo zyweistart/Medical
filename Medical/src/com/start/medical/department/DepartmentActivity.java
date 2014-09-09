@@ -42,12 +42,16 @@ public class DepartmentActivity extends BaseActivity implements RefreshListServe
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-				Map<String,String> data=mRefreshListServer.getBaseListAdapter().getItem(position-1);
-				Bundle bundle=new Bundle();
-				bundle.putString(DoctorsActivity.RECORDNO, data.get(DoctorsActivity.RECORDNO));
-				Intent intent=new Intent(getAppContext(),DoctorsActivity.class);
-				intent.putExtras(bundle);
-				startActivity(intent);
+				if(mRefreshListServer.getBaseListAdapter().getCount()>=position){
+					Map<String,String> data=mRefreshListServer.getBaseListAdapter().getItem(position-1);
+					Bundle bundle=new Bundle();
+					bundle.putString(DoctorsActivity.RECORDNO, data.get(DoctorsActivity.RECORDNO));
+					Intent intent=new Intent(getAppContext(),DoctorsActivity.class);
+					intent.putExtras(bundle);
+					startActivity(intent);
+				}else{
+					mRefreshListServer.getCurrentListView().startLoadMore();
+				}
 			}
 		});
 		mRefreshListServer = new RefreshListServer(this, mListView,new DepartmentAdapter(this));

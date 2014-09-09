@@ -42,12 +42,16 @@ public class HealthInformationActivity extends BaseActivity implements RefreshLi
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-				Map<String,String> data=mRefreshListServer.getBaseListAdapter().getItem(position-1);
-				Bundle bundle=new Bundle();
-				bundle.putString(HealthInformationDetailActivity.RECORDNO, data.get(HealthInformationDetailActivity.RECORDNO));
-				Intent intent=new Intent(getAppContext(),HealthInformationDetailActivity.class);
-				intent.putExtras(bundle);
-				startActivity(intent);
+				if(mRefreshListServer.getBaseListAdapter().getCount()>=position){
+					Map<String,String> data=mRefreshListServer.getBaseListAdapter().getItem(position-1);
+					Bundle bundle=new Bundle();
+					bundle.putString(HealthInformationDetailActivity.RECORDNO, data.get(HealthInformationDetailActivity.RECORDNO));
+					Intent intent=new Intent(getAppContext(),HealthInformationDetailActivity.class);
+					intent.putExtras(bundle);
+					startActivity(intent);
+				}else{
+					mRefreshListServer.getCurrentListView().startLoadMore();
+				}
 			}
 		});
 		mRefreshListServer = new RefreshListServer(this, mListView,new HealthInformationAdapter(this));

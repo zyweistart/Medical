@@ -1,5 +1,7 @@
 package com.start.medical.health.information;
 
+import java.util.Map;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -28,10 +30,10 @@ public class HealthInformationAdapter extends BaseListAdapter{
 		} else {
 			holder = (HolderView) convertView.getTag();
 		}
-//		Map<String,String> data=mItemDatas.get(position);
+		Map<String,String> data=mItemDatas.get(position);
 		holder.listitem_iv_header.setBackground(mActivity.getResources().getDrawable(R.drawable.ic_expression_success));
-		holder.listitem_main_title.setText("习近平：日方应严肃妥善处理历史问题");
-		holder.listitem_child_title.setText("中共是抗战中流砥柱 摒弃对抗 铭记历史 光荣与梦想 批评与自我批评");
+		holder.listitem_main_title.setText(data.get("title"));
+		holder.listitem_child_title.setText(data.get("submittime"));
 		return convertView;
 	}
 	

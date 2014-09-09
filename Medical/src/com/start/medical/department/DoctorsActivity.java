@@ -55,12 +55,16 @@ public class DoctorsActivity extends BaseActivity implements RefreshListServerLi
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-				Map<String,String> data=mRefreshListServer.getBaseListAdapter().getItem(position-1);
-				Bundle bundle=new Bundle();
-				bundle.putString(DoctorsDetailActivity.RECORDNO, data.get(DoctorsDetailActivity.RECORDNO));
-				Intent intent=new Intent(getAppContext(),DoctorsDetailActivity.class);
-				intent.putExtras(bundle);
-				startActivity(intent);
+				if(mRefreshListServer.getBaseListAdapter().getCount()>=position){
+					Map<String,String> data=mRefreshListServer.getBaseListAdapter().getItem(position-1);
+					Bundle bundle=new Bundle();
+					bundle.putString(DoctorsDetailActivity.RECORDNO, data.get(DoctorsDetailActivity.RECORDNO));
+					Intent intent=new Intent(getAppContext(),DoctorsDetailActivity.class);
+					intent.putExtras(bundle);
+					startActivity(intent);
+				}else{
+					mRefreshListServer.getCurrentListView().startLoadMore();
+				}
 			}
 		});
 		mRefreshListServer = new RefreshListServer(this, mListView,new DoctorsAdapter(this));

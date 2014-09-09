@@ -39,9 +39,6 @@ public class HealthInformationDetailActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_healthinformation_detail);
 		setMainHeadTitle(getString(R.string.mainfunctiontxt8));
-		detail_title=(TextView)findViewById(R.id.detail_title);
-		detail_source=(TextView)findViewById(R.id.detail_source);
-		detail_content=(TextView)findViewById(R.id.detail_content);
 		Bundle bundle=getIntent().getExtras();
 		if(bundle!=null){
 			recordno=bundle.getString(RECORDNO);
@@ -50,6 +47,10 @@ public class HealthInformationDetailActivity extends BaseActivity {
 		if(TextUtils.isEmpty(recordno)){
 			finish();
 		}
+
+		detail_title=(TextView)findViewById(R.id.detail_title);
+		detail_source=(TextView)findViewById(R.id.detail_source);
+		detail_content=(TextView)findViewById(R.id.detail_content);
 		
 		this.setDetailMore();
 		

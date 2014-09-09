@@ -42,11 +42,16 @@ public class HealthWikipediaActivity extends BaseActivity implements RefreshList
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-//				Map<String,String> data=mRefreshListServer.getBaseListAdapter().getItem(position-1);
-				Bundle bundle=new Bundle();
-				Intent intent=new Intent(getAppContext(),HealthWikipediaDetailActivity.class);
-				intent.putExtras(bundle);
-				startActivity(intent);
+				if(mRefreshListServer.getBaseListAdapter().getCount()>=position){
+					Map<String,String> data=mRefreshListServer.getBaseListAdapter().getItem(position-1);
+					Bundle bundle=new Bundle();
+					bundle.putString(HealthWikipediaDetailActivity.RECORDNO, data.get(HealthWikipediaDetailActivity.RECORDNO));
+					Intent intent=new Intent(getAppContext(),HealthWikipediaDetailActivity.class);
+					intent.putExtras(bundle);
+					startActivity(intent);
+				}else{
+					mRefreshListServer.getCurrentListView().startLoadMore();
+				}
 			}
 		});
 		mRefreshListServer = new RefreshListServer(this, mListView,new HealthWikipediaAdapter(this));

@@ -22,6 +22,7 @@ import com.start.widget.xlistview.XListView.IXListViewListener;
 
 public class RefreshListServer implements IXListViewListener,HandleContextListener {
 
+	private Boolean isDataLoadDone;
 	private int mCurrentPage;
 	private String cacheTag;
 	private BaseActivity mActivity;
@@ -90,8 +91,12 @@ public class RefreshListServer implements IXListViewListener,HandleContextListen
 				getItemDatas().clear();
 			case Handler.LOAD_END_PULLDOWN_REFRESH_DATA:
 			case Handler.LOAD_END_MORE_DATA:
-				this.mBaseListAdapter.setItemDatas(new ArrayList<Map<String,String>>(getItemDatas()	));
-				this.mBaseListAdapter.notifyDataSetChanged();
+				if(isDataLoadDone){
+					//数据加载完毕
+				}else{
+					this.mBaseListAdapter.setItemDatas(new ArrayList<Map<String,String>>(getItemDatas()	));
+					this.mBaseListAdapter.notifyDataSetChanged();
+				}
 				getHandlerContext().getHandler().sendEmptyMessage(Handler.LOAD_END);
 				break;
 			case Handler.LOAD_END:
@@ -128,7 +133,9 @@ public class RefreshListServer implements IXListViewListener,HandleContextListen
 			}
 			getItemDatas().clear();
 		}
-		setCurrentPage(Integer.parseInt(response.getPageInfoMapData().get("currentpage")));
+		int temp=Integer.parseInt(response.getPageInfoMapData().get("currentpage"));
+		isDataLoadDone=(temp==getCurrentPage());
+		setCurrentPage(temp);
 		getItemDatas().addAll(response.getListMapData(listTag,infoTag));
 	}
 	
