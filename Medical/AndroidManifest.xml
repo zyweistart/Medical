@@ -63,6 +63,9 @@
         <activity
             android:name=".personal.ChangePassWordActivity"
         	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".personal.AccountBindActivity"
+        	android:screenOrientation="portrait"/>
         <!-- 手机挂号 -->
         <activity
             android:name=".registered.RegisteredActivity"

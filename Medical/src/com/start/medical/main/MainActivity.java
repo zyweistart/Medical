@@ -199,7 +199,7 @@ public class MainActivity extends BaseActivity{
 		if(getAppContext().currentUser().isLogin()){
 			left_head_nologin_frame.setVisibility(View.GONE);
 			left_head_login_frame.setVisibility(View.VISIBLE);
-			txt_current_user.setText("18368013123");
+			txt_current_user.setText(getAppContext().currentUser().getInfo().get("mobile"));
 		}else{
 			left_head_nologin_frame.setVisibility(View.VISIBLE);
 			left_head_login_frame.setVisibility(View.GONE);

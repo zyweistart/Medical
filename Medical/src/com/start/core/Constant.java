@@ -74,6 +74,10 @@ public final class Constant {
 		 * 健康资讯-新闻详情
 		 */
 		public static final String htinfonewsDetail="htinfonewsDetail";
+		/**
+		 * 就诊信息绑定
+		 */
+		public static final String hisinfoBind="hisinfoBind";
 	}
 	
 	public final class Handler {
