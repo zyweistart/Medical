@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Message;
 import android.view.View.OnClickListener;
 
-import com.start.core.R;
 import com.umeng.analytics.MobclickAgent;
 
 public abstract class AppActivity extends Activity implements OnClickListener,HandleContextListener {

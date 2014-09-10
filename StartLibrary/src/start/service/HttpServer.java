@@ -14,11 +14,12 @@ import org.apache.http.params.CoreProtocolPNames;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import start.core.AppConstant;
+import start.core.AppConstant.Handler;
 import start.core.AppContext;
 import start.core.AppException;
-import start.core.AppConstant;
 import start.core.HandlerContext;
-import start.core.AppConstant.Handler;
+import start.core.R;
 import start.utils.MD5;
 import start.utils.NetConnectManager;
 import start.utils.StringUtils;
@@ -27,8 +28,6 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Message;
-
-import com.start.core.R;
 
 /**
  * @author Start   

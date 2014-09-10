@@ -1,13 +1,12 @@
 package start.service;
 
 import start.core.AppManager;
+import start.core.R;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.provider.Settings;
-
-import com.start.core.R;
 
 /**
  * 应用程序UI工具包：封装UI相关的一些操作
