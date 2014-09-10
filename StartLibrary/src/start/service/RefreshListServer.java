@@ -42,6 +42,13 @@ public class RefreshListServer implements IXListViewListener,HandleContextListen
 		this.mCurrentListView.setAdapter(this.mBaseListAdapter);
 	}
 	
+	/**
+	 * 初始化加载
+	 */
+	public void initLoad(){
+		getHandlerContext().getHandler().sendEmptyMessage(Handler.LOAD_INIT_DATA);
+	}
+	
 	@Override
 	public void onProcessMessage(Message msg) throws AppException {
 		switch (msg.what) {

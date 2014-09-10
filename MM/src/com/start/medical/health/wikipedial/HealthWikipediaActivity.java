@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import start.core.AppConstant;
-import start.core.AppConstant.Handler;
 import start.core.AppException;
 import start.service.HttpServer;
 import start.service.RefreshListServer;
@@ -61,7 +60,7 @@ public class HealthWikipediaActivity extends BaseActivity implements RefreshList
 		mRefreshListServer.setInfoTag("disinfo");
 		mRefreshListServer.setRefreshListServerListener(this);
 
-		mRefreshListServer.getHandlerContext().getHandler().sendEmptyMessage(Handler.LOAD_INIT_DATA);
+		mRefreshListServer.initLoad();
 	}
 
 	@Override
