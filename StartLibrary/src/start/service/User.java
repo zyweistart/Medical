@@ -66,9 +66,11 @@ public class User {
 		}
 	}
 	
+	/**
+	 * 修改存储的密码
+	 */
 	public void changeCacheUser(String password){
-		Boolean autoLogin=AppContext.getSharedPreferences().getBoolean(Preferences.SP_AUTOLOGIN_CONTENT_DATA, false);
-		if(autoLogin){
+		if(AppContext.getSharedPreferences().getBoolean(Preferences.SP_AUTOLOGIN_CONTENT_DATA, false)){
 			AppContext.getSharedPreferences().putString(Preferences.SP_PASSWORD_CONTENT_DATA, password);
 		}
 	}
