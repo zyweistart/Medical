@@ -3,6 +3,8 @@ package com.start.medical;
 import java.io.File;
 import java.util.List;
 
+import start.utils.FileUtils;
+import start.utils.TimeUtils;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -14,9 +16,6 @@ import android.widget.LinearLayout;
 
 import com.start.core.BaseActivity;
 import com.start.medical.main.MainActivity;
-
-import start.utils.FileUtils;
-import start.utils.TimeUtils;
 
 /**
  * 开始页

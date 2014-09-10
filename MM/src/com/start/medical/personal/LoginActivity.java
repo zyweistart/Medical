@@ -22,7 +22,6 @@ import com.start.core.BaseActivity;
 import com.start.core.Constant;
 import com.start.core.Constant.ResultCode;
 import com.start.medical.R;
-import com.start.medical.main.MainActivity;
 
 /**
  * 登录
@@ -151,7 +150,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 			public void run(Response response) throws AppException {
 				getAppContext().currentUser().addCacheUser(account, password, autoLogin);
 				getAppContext().currentUser().resolve(response.getMapData("userinfo"));
-				startActivity(new Intent(LoginActivity.this,MainActivity.class));
+				startActivity(new Intent(LoginActivity.this,PersonalCenterActivity.class));
 				finish();
 			}
 			

@@ -20,7 +20,7 @@
              android:drawableLeft="@drawable/ic_account"
         	 android:drawablePadding="5.0dip"
         	 android:padding="5.0dip"
-        	 android:hint="@string/accounthint" />
+        	 android:hint="请输入要绑定的账号" />
      </LinearLayout>
      
      <View

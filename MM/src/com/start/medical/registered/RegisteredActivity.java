@@ -18,19 +18,18 @@ public class RegisteredActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		if(!getAppContext().currentUser().isLogin()){
+			goLogin(getString(R.string.not_login_message));
+			return;
+		}
 		setContentView(R.layout.activity_registered);
 		setMainHeadTitle(getString(R.string.mainfunctiontxt1));
-		if(getAppContext().currentUser().isLogin()){
-			if(TextUtils.isEmpty(getAppContext().currentUser().getInfo().get("name"))){
-				//未绑定就诊信息
-				Intent intent=new Intent(this,AccountBindActivity.class);
-				startActivity(intent);
-				finish();
-			}
-		}else{
-			goLogin("请重新登录");
+		if(TextUtils.isEmpty(getAppContext().currentUser().getInfo().get("name"))){
+			//未绑定就诊信息
+			Intent intent=new Intent(this,AccountBindActivity.class);
+			startActivity(intent);
+			finish();
 		}
-		
 	}
 	
 }
