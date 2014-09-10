@@ -17,7 +17,6 @@ import android.database.sqlite.SQLiteDatabase;
 public abstract class AppContext extends Application {
     
     private User mUser;
-    private static Context mContext;
     private static AppContext mAppContext;
     private static SharedPreferencesUtils sharedPreferences; 
     private static AppDBManageDao dbManager;
@@ -31,13 +30,12 @@ public abstract class AppContext extends Application {
          	Thread.setDefaultUncaughtExceptionHandler(AppException.getAppExceptionHandler());
         }
         mAppContext=this;
-    	mContext = getApplicationContext();
     	sharedPreferences=new SharedPreferencesUtils(this);
         getDBManager();
     }
     
     public static Context getContext(){
-        return mContext;
+        return getInstance().getApplicationContext();
     }
     
     public static AppContext getInstance(){
