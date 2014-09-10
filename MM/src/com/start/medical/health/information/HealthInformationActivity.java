@@ -42,7 +42,7 @@ public class HealthInformationActivity extends BaseActivity implements RefreshLi
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-				if(mRefreshListServer.getBaseListAdapter().getCount()>=position){
+				if(id>=0){
 					Map<String,String> data=mRefreshListServer.getBaseListAdapter().getItem(position-1);
 					Bundle bundle=new Bundle();
 					bundle.putString(HealthInformationDetailActivity.RECORDNO, data.get(HealthInformationDetailActivity.RECORDNO));

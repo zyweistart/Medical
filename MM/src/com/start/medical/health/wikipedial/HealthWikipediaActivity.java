@@ -42,7 +42,7 @@ public class HealthWikipediaActivity extends BaseActivity implements RefreshList
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-				if(mRefreshListServer.getBaseListAdapter().getCount()>=position){
+				if(id>=0){
 					Map<String,String> data=mRefreshListServer.getBaseListAdapter().getItem(position-1);
 					Bundle bundle=new Bundle();
 					bundle.putString(HealthWikipediaDetailActivity.RECORDNO, data.get(HealthWikipediaDetailActivity.RECORDNO));
