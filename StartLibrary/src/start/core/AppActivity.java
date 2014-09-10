@@ -60,7 +60,7 @@ public abstract class AppActivity extends Activity implements OnClickListener,Ha
 			if(message!=null){
 				getHandlerContext().makeTextShort(String.valueOf(message));
 			}else{
-				getHandlerContext().makeTextLong(getString(R.string.error_try_again));
+				getHandlerContext().makeTextShort(getString(R.string.error_try_again));
 			}
 			break;
 		}
