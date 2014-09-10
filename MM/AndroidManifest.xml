@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.start.medical"
+    android:versionCode="2013080117"
+    android:versionName="v1.0.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+    
+	 <!-- 允许应用程序使用网络进行数据交换 -->
+  	<uses-permission android:name="android.permission.INTERNET" />
+  	<!-- 允许程序访问Wi-Fi网络状态信息 -->
+  	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  	<!-- 允许应用程序访问设备网络状态信息 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 允许应用程序对扩展存储设备（如SD卡）进行写入操作 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 获取用户设备的IMEI，通过IMEI和mac来唯一的标识用户 -->
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    
+    <application
+        android:name=".BaseContext"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.NoTitleBar"
+        android:allowBackup="true">
+        
+        <!-- 友盟统计 -->
+        <meta-data android:name="UMENG_APPKEY" android:value="52707c2a56240b904805ff9e"/>
+		<meta-data android:name="UMENG_CHANNEL" android:value="WebSite"/>
+        
+        <activity
+            android:name=".StartActivity"
+        	android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name=".main.MainActivity"
+        	android:screenOrientation="portrait"
+        	android:launchMode="singleTask"/>
+        <!-- 个人 -->
+         <activity
+            android:name=".personal.LoginActivity"
+        	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".personal.RegisterActivity"
+        	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".personal.ResetPassWordActivity"
+        	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".personal.PersonalCenterActivity"
+        	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".personal.EditPersonalActivity"
+        	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".personal.ChangePassWordActivity"
+        	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".personal.AccountBindActivity"
+        	android:screenOrientation="portrait"/>
+        <!-- 手机挂号 -->
+        <activity
+            android:name=".registered.RegisteredActivity"
+        	android:screenOrientation="portrait"/>
+        <!-- 妇保中心 -->
+        
+        <!-- 报告单 -->
+        <activity
+            android:name=".report.TakeReportActivity"
+        	android:screenOrientation="portrait"/>
+        <!-- 疫苗接种 -->
+        
+        <!-- 医院导航 -->
+        <activity
+            android:name=".navigation.NavigationActivity"
+        	android:screenOrientation="portrait"/>
+        <!-- 科室医生 -->
+        <activity
+            android:name=".department.DepartmentActivity"
+        	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".department.DoctorsActivity"
+        	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".department.DoctorsDetailActivity"
+        	android:screenOrientation="portrait"/>
+        <!-- 健康百科 -->
+        <activity
+            android:name=".health.wikipedial.HealthWikipediaActivity"
+        	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".health.wikipedial.HealthWikipediaDetailActivity"
+        	android:screenOrientation="portrait"/>
+        <!-- 健康资讯 -->
+        <activity
+            android:name=".health.information.HealthInformationActivity"
+        	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".health.information.HealthInformationDetailActivity"
+        	android:screenOrientation="portrait"/>
+        
+    </application>
+
+</manifest>
