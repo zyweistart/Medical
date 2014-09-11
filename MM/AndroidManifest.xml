@@ -121,17 +121,17 @@
         	android:screenOrientation="portrait"/>
         <!-- 健康百科 -->
         <activity
-            android:name=".health.HealthWikipediaActivity"
+            android:name=".wikipedia.HealthWikipediaActivity"
         	android:screenOrientation="portrait"/>
         <activity
-            android:name=".health.HealthWikipediaDetailActivitytivity"
+            android:name=".wikipedia.HealthWikipediaDetailActivity"
         	android:screenOrientation="portrait"/>
         <!-- 健康资讯 -->
         <activity
-            android:name=".health.HealthInformationActivity"
+            android:name=".information.HealthInformationActivity"
         	android:screenOrientation="portrait"/>
         <activity
-            android:name=".health.HealthInformationDetailActivity"
+            android:name=".information.HealthInformationDetailActivity"
         	android:screenOrientation="portrait"/>
         <!-- 更多 -->
         <activity

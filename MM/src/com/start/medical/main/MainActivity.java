@@ -16,12 +16,12 @@ import android.widget.TextView;
 import com.start.core.BaseActivity;
 import com.start.medical.R;
 import com.start.medical.department.DepartmentActivity;
-import com.start.medical.health.HealthInformationActivity;
-import com.start.medical.health.HealthWikipediaActivity;
+import com.start.medical.information.HealthInformationActivity;
 import com.start.medical.navigation.NavigationActivity;
 import com.start.medical.personal.LoginActivity;
 import com.start.medical.registered.RegisteredActivity;
 import com.start.medical.report.TakeReportActivity;
+import com.start.medical.wikipedia.HealthWikipediaActivity;
 
 /**
  * 主界面
