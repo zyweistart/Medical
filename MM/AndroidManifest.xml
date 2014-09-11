@@ -55,17 +55,29 @@
             android:name=".personal.ResetPassWordActivity"
         	android:screenOrientation="portrait"/>
         <activity
-            android:name=".personal.PersonalCenterActivity"
-        	android:screenOrientation="portrait"/>
-        <activity
-            android:name=".personal.EditPersonalActivity"
-        	android:screenOrientation="portrait"/>
-        <activity
             android:name=".personal.ChangePassWordActivity"
         	android:screenOrientation="portrait"/>
         <activity
             android:name=".personal.AccountBindActivity"
         	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".personal.PersonalCenterActivity"
+        	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".personal.EditPersonalActivity"
+        	android:screenOrientation="portrait"/>
+        <!-- 健康档案 -->
+        <activity
+            android:name="com.start.medical.personal.healthrecords.HealthRecordsActivity"
+        	android:screenOrientation="portrait"/>
+        <!-- 我的挂号 -->
+        
+        <!-- 我的预约 -->
+        
+        <!-- 我的报告单 -->
+        
+        <!-- 我的咨询 -->
+        
         <!-- 手机挂号 -->
         <activity
             android:name=".registered.RegisteredActivity"
@@ -106,11 +118,9 @@
         <activity
             android:name=".health.information.HealthInformationDetailActivity"
         	android:screenOrientation="portrait"/>
-        <!-- 健康档案 -->
-        <activity
-            android:name=".health.records.HealthRecordsActivity"
-        	android:screenOrientation="portrait"/>
-        
+        <!-- 更多 -->
+        <!-- 关于我们 -->
+        <!-- 意见反馈 -->
     </application>
 
 </manifest>

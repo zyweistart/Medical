@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.start.core.BaseActivity;
 import com.start.medical.R;
-import com.start.medical.health.records.HealthRecordsActivity;
+import com.start.medical.personal.healthrecords.HealthRecordsActivity;
 
 /**
  * 个人中心
