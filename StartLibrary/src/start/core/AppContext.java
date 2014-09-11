@@ -3,7 +3,6 @@ package start.core;
 import start.utils.SharedPreferencesUtils;
 import android.app.Application;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 
 /**
  * 
@@ -17,8 +16,6 @@ public abstract class AppContext extends Application {
     
     private static AppContext mAppContext;
     private static SharedPreferencesUtils sharedPreferences; 
-    private static AppDBManageDao dbManager;
-    private static  SQLiteDatabase mSQLiteDatabase;
 	
     @Override
     public void onCreate() {
@@ -29,7 +26,6 @@ public abstract class AppContext extends Application {
         }
         mAppContext=this;
     	sharedPreferences=new SharedPreferencesUtils(this);
-        getDBManager();
     }
     
     public static Context getContext(){
@@ -42,26 +38,6 @@ public abstract class AppContext extends Application {
     
     public static SharedPreferencesUtils getSharedPreferences() {
 		return sharedPreferences;
-	}
-    
-    /**
-     * 获取数据库管理对象
-     */
-    public static AppDBManageDao getDBManager(){
-		if(dbManager == null){
-			dbManager = new AppDBManageDao(getContext());
-		}
-		return dbManager;
-	}
-    
-    /**
-     * 获取数据库操作类 
-     */
-    public static SQLiteDatabase getSQLiteDatabase() {
-    	if(null == mSQLiteDatabase){
-    		mSQLiteDatabase = getDBManager().getSQLiteDatabase();
-    	}
-    	return mSQLiteDatabase;
 	}
     
     /**

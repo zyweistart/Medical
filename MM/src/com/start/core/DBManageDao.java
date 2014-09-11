@@ -7,17 +7,17 @@
  * @version V1.0 
  * @说明  代码版权归 杭州反盗版中心有限公司 所有
  */ 
-package start.core;
+package com.start.core;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-public  class AppDBManageDao {
+public  class DBManageDao {
 
 	private SQLiteDBHelper mDBHelper;
 	private SQLiteDatabase mSQLiteDatabase;
 	
-	public AppDBManageDao(Context context) {
+	public DBManageDao(Context context) {
 		this.mDBHelper = new SQLiteDBHelper(context);
 		this.mSQLiteDatabase = this.mDBHelper.getWritableDatabase();
 	}

@@ -1,4 +1,4 @@
-package start.core;
+package com.start.core;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

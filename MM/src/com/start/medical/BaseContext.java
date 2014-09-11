@@ -1,8 +1,10 @@
 package com.start.medical;
 
 import start.core.AppContext;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.start.core.Constant;
+import com.start.core.DBManageDao;
 import com.start.service.User;
 
 /**
@@ -15,7 +17,15 @@ import com.start.service.User;
 public class BaseContext extends AppContext {
 
 	private User mUser;
+    private static DBManageDao dbManager;
+    private static  SQLiteDatabase mSQLiteDatabase;
 	
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        getDBManager();
+    }
+    
 	@Override
 	public Boolean isTestEnvironmental() {
 		return Constant.ISSYSTEMTEST;
@@ -26,6 +36,26 @@ public class BaseContext extends AppContext {
 		return Constant.RESTURL;
 	}
 
+	/**
+     * 获取数据库管理对象
+     */
+    public static DBManageDao getDBManager(){
+		if(dbManager == null){
+			dbManager = new DBManageDao(getContext());
+		}
+		return dbManager;
+	}
+    
+    /**
+     * 获取数据库操作类 
+     */
+    public static SQLiteDatabase getSQLiteDatabase() {
+    	if(null == mSQLiteDatabase){
+    		mSQLiteDatabase = getDBManager().getSQLiteDatabase();
+    	}
+    	return mSQLiteDatabase;
+	}
+	
 	/**
      * 获取当前用户信息
      */
