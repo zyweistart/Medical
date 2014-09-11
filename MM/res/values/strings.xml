@@ -3,7 +3,9 @@
 
     <!-- App -->
     <string name="app_name">彭卫医疗</string>
-    
+    <string name="empty"></string>
+    <string name="ok">好</string>
+    <string name="not_login_message">你还没有登录请先登录</string>
     <!-- 个人 -->
     <string name="collection">收藏</string>
     <string name="message">消息</string>

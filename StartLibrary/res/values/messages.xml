@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <string name="empty"></string>
-    <string name="ok">好</string>
     <string name="sure">确定</string>
     <string name="cancle">取消</string>
     <string name="setting">设置</string>
@@ -19,7 +17,6 @@
     <string name="app_error">应用程序错误</string>
     <string name="app_error_message">很抱歉，应用程序出现错误，即将退出。\n请提交错误报告，我们会尽快修复这个问题！</string>
     <string name="submit_report">提交报告</string>
-    <string name="not_login_message">你还没有登录请先登录</string>
     <string name="error_try_again">糟糕出错了，请稍候再试！</string>
     
     <!-- widget -->
