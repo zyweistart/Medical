@@ -5,10 +5,7 @@ import start.core.AppContext;
 import com.start.core.Constant;
 import com.start.service.User;
 
-
-
 /**
- * 
  * @author Start   
  * @Description: 全局application 
  * @ClassName: AppContext.java   

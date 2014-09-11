@@ -116,8 +116,11 @@ public class HttpServer {
 							}
 						}
 					}catch(AppException e){
-						mHandler.sendEmptyMessage(Handler.LOAD_END);
-						mHandler.makeTextShort(e.getErrorString(mContext));
+						//发送HTTP请求信息
+						Message message=new Message();
+						message.what=Handler.HTTP_APPEXCEPTION_MESSAGE;
+						message.obj=e.getErrorString(mContext);
+						mHandler.sendMessage(message);
 					}finally{
 						if (mPDialog != null) {
 							mPDialog.dismiss();

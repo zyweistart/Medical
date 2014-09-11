@@ -39,6 +39,10 @@ public class AppConstant {
 		 * 无法加载数据时清除数据
 		 */
 		public static final int LOAD_DATA_FAIL_CLEAR_DATA=0x1118;
+		/**
+		 * HTTP加载结束出现的出错信息
+		 */
+		public static final int HTTP_APPEXCEPTION_MESSAGE=0x1119;
 		
 	}
 
