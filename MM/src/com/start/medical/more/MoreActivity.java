@@ -15,8 +15,8 @@ public class MoreActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_navigation);
-		setMainHeadTitle(getString(R.string.mainfunctiontxt5));
+		setContentView(R.layout.activity_more);
+		setMainHeadTitle(getString(R.string.more));
 	}
 	
 }

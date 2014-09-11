@@ -68,14 +68,29 @@
         	android:screenOrientation="portrait"/>
         <!-- 健康档案 -->
         <activity
-            android:name="com.start.medical.personal.healthrecords.HealthRecordsActivity"
+            android:name=".personal.healthrecords.HealthRecordsActivity"
         	android:screenOrientation="portrait"/>
         <!-- 我的挂号 -->
-        
+        <activity
+            android:name=".personal.registered.MyRegisteredActivity"
+        	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".personal.registered.MyRegisteredDetailActivity"
+        	android:screenOrientation="portrait"/>
         <!-- 我的预约 -->
-        
+        <activity
+            android:name=".personal.appointment.MyAppointmentActivity"
+        	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".personal.appointment.MyAppointmentDetailActivity"
+        	android:screenOrientation="portrait"/>
         <!-- 我的报告单 -->
-        
+        <activity
+            android:name=".personal.report.MyReportActivity"
+        	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".personal.report.MyReportDetailActivity"
+        	android:screenOrientation="portrait"/>
         <!-- 我的咨询 -->
         
         <!-- 手机挂号 -->
@@ -119,8 +134,17 @@
             android:name=".health.information.HealthInformationDetailActivity"
         	android:screenOrientation="portrait"/>
         <!-- 更多 -->
+        <activity
+            android:name=".more.MoreActivity"
+        	android:screenOrientation="portrait"/>
         <!-- 关于我们 -->
+        <activity
+            android:name=".more.AboutUsActivity"
+        	android:screenOrientation="portrait"/>
         <!-- 意见反馈 -->
+        <activity
+            android:name=".more.FeedbackActivity"
+        	android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

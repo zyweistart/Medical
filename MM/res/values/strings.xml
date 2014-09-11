@@ -65,4 +65,10 @@
     
     <!-- 健康资讯 -->
     
+    <!-- 更多 -->
+    <string name="more">更多</string>
+    <string name="aboutus">关于我们</string>
+    <string name="feedback">意见反馈</string>
+    <string name="checkver">版本检测</string>
+    
 </resources>

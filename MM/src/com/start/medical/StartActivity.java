@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 
 import com.start.core.BaseActivity;
 import com.start.medical.main.MainActivity;
+import com.start.medical.personal.PersonalCenterActivity;
 
 /**
  * 开始页
@@ -47,7 +48,7 @@ public class StartActivity extends BaseActivity{
 			@Override
 			public void onAnimationEnd(Animation arg0) {
 //				goLogin(true);
-				Intent intent=new Intent(StartActivity.this,MainActivity.class);
+				Intent intent=new Intent(StartActivity.this,PersonalCenterActivity.class);
 				startActivity(intent);
 				finish();
 			}

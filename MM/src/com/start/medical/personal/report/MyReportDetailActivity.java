@@ -1,4 +1,4 @@
-package com.start.medical.more;
+package com.start.medical.personal.report;
 
 import android.os.Bundle;
 
@@ -6,17 +6,18 @@ import com.start.core.BaseActivity;
 import com.start.medical.R;
 
 /**
- * 关于我们
+ * 报告单详情
  * @author start
  *
  */
-public class AboutUsActivity extends BaseActivity {
+public class MyReportDetailActivity extends BaseActivity {
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_aboutus);
-		setMainHeadTitle(getString(R.string.aboutus));
+		setContentView(R.layout.activity_myreport_detail);
+		setMainHeadTitle("报告单详情");
 	}
 	
 }

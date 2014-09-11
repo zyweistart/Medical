@@ -36,10 +36,5 @@
 	    android:id="@+id/btn_my_consultation"
 	    style="@style/button1"
         android:text="我的咨询"/>
-    
-    <Button 
-	    android:id="@+id/btn_exit_login"
-	    style="@style/button1"
-        android:text="退出登录"/>
 
 </LinearLayout>
