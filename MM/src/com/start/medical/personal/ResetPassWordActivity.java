@@ -6,7 +6,6 @@ import java.util.Map;
 import start.service.HttpServer;
 import start.service.Response;
 import start.service.UIRunnable;
-import start.service.User;
 import start.utils.MD5;
 import start.utils.StringUtils;
 import android.os.Bundle;
@@ -15,6 +14,7 @@ import android.view.View;
 import com.start.core.Constant;
 import com.start.core.Constant.Handler;
 import com.start.medical.R;
+import com.start.service.User;
 
 /**
  * 重置密码

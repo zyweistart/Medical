@@ -10,7 +10,6 @@ import start.service.RefreshListServer;
 import start.service.RefreshListServer.RefreshListServerListener;
 import start.service.Response;
 import start.service.UIRunnable;
-import start.service.User;
 import start.widget.xlistview.XListView;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,6 +21,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import com.start.core.BaseActivity;
 import com.start.core.Constant;
 import com.start.medical.R;
+import com.start.service.User;
 
 /**
  * 科室医生

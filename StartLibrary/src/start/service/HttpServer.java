@@ -16,6 +16,7 @@ import org.json.JSONObject;
 
 import start.core.AppConstant;
 import start.core.AppConstant.Handler;
+import start.core.AppConstant.ResultCode;
 import start.core.AppContext;
 import start.core.AppException;
 import start.core.HandlerContext;
@@ -96,19 +97,16 @@ public class HttpServer {
 						if(mHeaders==null){
 							mHeaders=new HashMap<String,String>();
 						}
-						if(mHeaders.containsKey("sign")){
-							mHeaders.put("sign","".equals(mHeaders.get("sign"))?
-									MD5.md5(requestContent):StringUtils.signatureHmacSHA1(MD5.md5(requestContent),mHeaders.get("sign")));
-						}else{
-							mHeaders.put("sign",StringUtils.signatureHmacSHA1(MD5.md5(requestContent),User.ACCESSKEY));
-						}
+						mHeaders.put("sign",AppConstant.EMPTYSTR.equals(mHeaders.get("sign"))?
+								MD5.md5(requestContent):
+									StringUtils.signatureHmacSHA1(MD5.md5(requestContent),mHeaders.get("sign")));
 						HttpResponse httpResponse=getResponse(requestContent);
 						Response response=new Response(httpResponse);
 						if(isDownload()){
 							//TODO:文件下载处理
 						}else{
 							response.resolveJson();
-							if(Response.SUCCESS.equals(response.getCode())){
+							if(ResultCode.SUCCESS.equals(response.getCode())){
 								runnable.run(response);
 							}else{
 								Message msg = new Message();

@@ -7,7 +7,6 @@ import start.core.AppException;
 import start.service.HttpServer;
 import start.service.Response;
 import start.service.UIRunnable;
-import start.service.User;
 import start.utils.MD5;
 import start.utils.StringUtils;
 import android.os.Bundle;
@@ -18,6 +17,7 @@ import android.widget.EditText;
 import com.start.core.BaseActivity;
 import com.start.core.Constant;
 import com.start.medical.R;
+import com.start.service.User;
 
 /**
  * 更改密码

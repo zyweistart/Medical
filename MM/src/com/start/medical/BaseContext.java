@@ -3,6 +3,7 @@ package com.start.medical;
 import start.core.AppContext;
 
 import com.start.core.Constant;
+import com.start.service.User;
 
 
 
@@ -16,12 +17,26 @@ import com.start.core.Constant;
  */
 public class BaseContext extends AppContext {
 
+	private User mUser;
+	
+	@Override
 	public Boolean isTestEnvironmental() {
 		return Constant.ISSYSTEMTEST;
 	}
 
+	@Override
 	public String getServerURL() {
 		return Constant.RESTURL;
 	}
 
+	/**
+     * 获取当前用户信息
+     */
+    public User currentUser(){
+    	if(mUser==null){
+    		mUser=User.getInstance();
+    	}
+    	return mUser;
+    }
+	
 }

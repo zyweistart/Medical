@@ -7,7 +7,6 @@ import start.core.AppException;
 import start.service.HttpServer;
 import start.service.Response;
 import start.service.UIRunnable;
-import start.service.User;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.ImageView;
@@ -16,6 +15,7 @@ import android.widget.TextView;
 import com.start.core.BaseActivity;
 import com.start.core.Constant;
 import com.start.medical.R;
+import com.start.service.User;
 
 /**
  * 科室医生

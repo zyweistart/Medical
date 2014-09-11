@@ -109,10 +109,11 @@ public class RefreshListServer implements IXListViewListener,HandleContextListen
 				break;
 			default:
 				getHandlerContext().getHandler().sendEmptyMessage(Handler.LOAD_END);
+				//其它消息发送至外部Activity消息队列中
 				Message message=new Message();
 				message.what=msg.what;
 				message.obj=msg.obj;
-				getHandlerContext().getHandler().sendMessage(message);
+				mActivity.getHandlerContext().getHandler().sendMessage(message);
 				break;
 		}
 	}

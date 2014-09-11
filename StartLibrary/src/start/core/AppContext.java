@@ -1,6 +1,5 @@
 package start.core;
 
-import start.service.User;
 import start.utils.SharedPreferencesUtils;
 import android.app.Application;
 import android.content.Context;
@@ -16,7 +15,6 @@ import android.database.sqlite.SQLiteDatabase;
  */
 public abstract class AppContext extends Application {
     
-    private User mUser;
     private static AppContext mAppContext;
     private static SharedPreferencesUtils sharedPreferences; 
     private static AppDBManageDao dbManager;
@@ -45,16 +43,6 @@ public abstract class AppContext extends Application {
     public static SharedPreferencesUtils getSharedPreferences() {
 		return sharedPreferences;
 	}
-    
-    /**
-     * 获取当前用户信息
-     */
-    public User currentUser(){
-    	if(mUser==null){
-    		mUser=User.getInstance();
-    	}
-    	return mUser;
-    }
     
     /**
      * 获取数据库管理对象

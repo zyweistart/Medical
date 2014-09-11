@@ -14,11 +14,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import start.core.AppConstant.ResultCode;
 import start.core.AppException;
 
 public class Response {
 	
-	public static final String SUCCESS="100000";
 	public static final String RESPONSETAG="response";
 	public static final String INFOTAG="info";
 	public static final String CODETAG="code";
@@ -272,7 +272,7 @@ public class Response {
 				this.mCode=info.getString(CODETAG);
 				this.mMsg=info.getString(MSGTAG);
 			}
-			if(SUCCESS.equals(this.mCode)){
+			if(ResultCode.SUCCESS.equals(this.mCode)){
 				if(response.has(CONTENTTAG)){
 					this.mJsonObject=response.getJSONObject(CONTENTTAG);
 				}

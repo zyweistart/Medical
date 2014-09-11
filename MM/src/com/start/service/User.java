@@ -1,11 +1,12 @@
-package start.service;
+package com.start.service;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import start.core.AppConstant;
-import start.core.AppConstant.Preferences;
 import start.core.AppContext;
+
+import com.start.core.Constant.Preferences;
 
 public class User {
 

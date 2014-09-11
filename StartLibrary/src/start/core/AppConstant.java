@@ -44,29 +44,13 @@ public class AppConstant {
 
 	public final class ResultCode{
 		/**
-		 * 成功
+		 * 成功返回的编码
 		 */
-		public static final int SUCCESS=100000;
+		public static final String SUCCESS="100000";
 		/**
-		 * 暂无记录
+		 * 列表数据暂无记录返回的编码
 		 */
 		public static final int NODATA=430;
-		
-	}
-	
-	public final class Preferences {
-		/**
-		 * 用户账户
-		 */
-		public static final String SP_ACCOUNT_CONTENT_DATA = "SP_ACCOUNT_DATA";
-		/**
-		 * 用户密码
-		 */
-		public static final String SP_PASSWORD_CONTENT_DATA = "SP_PASSWORD_DATA";
-		/**
-		 * 自动登录
-		 */
-		public static final String SP_AUTOLOGIN_CONTENT_DATA = "SP_AUTOLOGIN_CONTENT_DATA";
 		
 	}
 	

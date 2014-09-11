@@ -7,7 +7,6 @@ import start.core.AppException;
 import start.service.HttpServer;
 import start.service.Response;
 import start.service.UIRunnable;
-import start.service.User;
 import start.widget.CustomEditText;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -16,6 +15,7 @@ import android.view.View;
 import com.start.core.BaseActivity;
 import com.start.core.Constant;
 import com.start.medical.R;
+import com.start.service.User;
 
 /**
  * 就诊信息绑定
