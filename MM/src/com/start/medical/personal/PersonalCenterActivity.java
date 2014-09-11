@@ -49,6 +49,8 @@ public class PersonalCenterActivity extends BaseActivity {
 		}else if(v.getId()==R.id.btn_my_consultation){
 			//我的咨询
 			getHandlerContext().makeTextLong("即将上线");
+		}else{
+			super.onClick(v);
 		}
 	}
 	
