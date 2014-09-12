@@ -9,7 +9,7 @@ public final class Constant {
 	public static final boolean ISSYSTEMTEST =true;
 
 	public static final String RESTURL = ISSYSTEMTEST ?
-			"http://account.chinacloudapp.cn:82/hzpbws/http/HttpService":"http://account.chinacloudapp.cn:82/http/HttpService";
+			"http://account.chinacloudapp.cn:81/pwyl/http/HttpService":"http://account.chinacloudapp.cn:82/http/HttpService";
 
 	/**
 	 * 用户接口
