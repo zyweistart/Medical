@@ -54,7 +54,7 @@ public class AppConstant {
 		/**
 		 * 列表数据暂无记录返回的编码
 		 */
-		public static final int NODATA=430;
+		public static final int NODATA=110042;
 		
 	}
 	

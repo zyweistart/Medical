@@ -33,7 +33,7 @@ public class PersonalCenterActivity extends BaseActivity {
 	public void onClick(View v) {
 		if(v.getId()==R.id.btn_edit_personal){
 			//编辑个人中心
-			startActivity(new Intent(this,EditPersonalActivity.class));
+			startActivity(new Intent(this,AccountBindActivity.class));
 		}else if(v.getId()==R.id.btn_health_records){
 			//健康档案
 			startActivity(new Intent(this,HealthRecordsActivity.class));

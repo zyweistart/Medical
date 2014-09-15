@@ -11,7 +11,8 @@ import com.start.medical.R;
  *
  */
 public class MyReportDetailActivity extends BaseActivity {
-	
+
+	public static final String RECORDNO="recordno";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
