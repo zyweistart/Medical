@@ -21,7 +21,7 @@ public class MyRegisteredAdapter extends AppListAdapter{
 	public View getView(int position, View convertView, ViewGroup parent) {
 		HolderView holder;
 		if (convertView == null) {
-			convertView = mActivity.getLayoutInflater().inflate(R.layout.listitem_healthinformation, null);
+			convertView = mActivity.getLayoutInflater().inflate(R.layout.listitem_myregistered, null);
 			holder = new HolderView();
 			holder.listitem_iv_header = (ImageView) convertView.findViewById(R.id.listitem_iv_header);
 			holder.listitem_main_title = (TextView) convertView.findViewById(R.id.listitem_main_title);

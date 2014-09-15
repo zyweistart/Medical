@@ -60,7 +60,7 @@ public class RefreshListServer implements IXListViewListener,HandleContextListen
 					getItemDatas().clear();
 				}
 				getHandlerContext().getHandler().sendEmptyMessage(Handler.LOAD_END);
-				getHandlerContext().makeTextShort(String.valueOf(msg.obj));
+//				getHandlerContext().makeTextShort(String.valueOf(msg.obj));
 				break;
 			case Handler.LOAD_INIT_DATA:
 				if(!TextUtils.isEmpty(getCacheTag())){
