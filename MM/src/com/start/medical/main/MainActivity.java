@@ -233,6 +233,10 @@ public class MainActivity extends BaseActivity{
 			startActivity(new Intent(this,MoreActivity.class));
 		}else if(v.getId()==R.id.main_function_1){
 			//手机挂号
+			if(!getAppContext().currentUser().isLogin()){
+				goLogin(getString(R.string.not_login_message));
+				return;
+			}
 			startActivity(new Intent(this,RegisteredActivity.class));
 		}else if(v.getId()==R.id.main_function_2){
 			//妇保中心
