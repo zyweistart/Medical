@@ -17,8 +17,9 @@ import com.start.core.BaseActivity;
 import com.start.medical.R;
 import com.start.medical.department.DepartmentActivity;
 import com.start.medical.information.HealthInformationActivity;
+import com.start.medical.more.MoreActivity;
 import com.start.medical.navigation.NavigationActivity;
-import com.start.medical.personal.LoginActivity;
+import com.start.medical.personal.PersonalCenterActivity;
 import com.start.medical.registered.RegisteredActivity;
 import com.start.medical.report.TakeReportActivity;
 import com.start.medical.wikipedia.HealthWikipediaActivity;
@@ -215,24 +216,44 @@ public class MainActivity extends BaseActivity{
 				mSlidingLayout.scrollToLeftLayout();
 			}
 		}else if(v.getId()==R.id.more_item_1){
-			
+			//个人中心
+			if(!getAppContext().currentUser().isLogin()){
+				goLogin(getString(R.string.not_login_message));
+				return;
+			}
+			startActivity(new Intent(this,PersonalCenterActivity.class));
 		}else if(v.getId()==R.id.more_item_2){
-			
+			//我的预约
 		}else if(v.getId()==R.id.more_item_3){
-			
+			//电子病例
 		}else if(v.getId()==R.id.more_item_4){
-			
+			//切换医院
+		}else if(v.getId()==R.id.more_item_5){
+			//更多
+			startActivity(new Intent(this,MoreActivity.class));
 		}else if(v.getId()==R.id.main_function_1){
 			//手机挂号
 			startActivity(new Intent(this,RegisteredActivity.class));
 		}else if(v.getId()==R.id.main_function_2){
 			//妇保中心
+			if(!getAppContext().currentUser().isLogin()){
+				goLogin(getString(R.string.not_login_message));
+				return;
+			}
 			getHandlerContext().makeTextLong("妇保中心-即将上线");
 		}else if(v.getId()==R.id.main_function_3){
 			//报告单
+			if(!getAppContext().currentUser().isLogin()){
+				goLogin(getString(R.string.not_login_message));
+				return;
+			}
 			startActivity(new Intent(this,TakeReportActivity.class));
 		}else if(v.getId()==R.id.main_function_4){
 			//疫苗接种
+			if(!getAppContext().currentUser().isLogin()){
+				goLogin(getString(R.string.not_login_message));
+				return;
+			}
 			getHandlerContext().makeTextLong("疫苗接种-即将上线");
 		}else if(v.getId()==R.id.main_function_5){
 			//医院导航
@@ -247,8 +268,7 @@ public class MainActivity extends BaseActivity{
 			//健康资讯
 			startActivity(new Intent(this,HealthInformationActivity.class));
 		}else if(v.getId()==R.id.btn_login){
-			Intent intent=new Intent(this,LoginActivity.class);
-			startActivity(intent);
+			goLogin(true);
 		}
 	}
 		

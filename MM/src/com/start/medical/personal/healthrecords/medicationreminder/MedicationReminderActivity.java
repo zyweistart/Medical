@@ -10,7 +10,7 @@ public class MedicationReminderActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_healthrecords);
+		setContentView(R.layout.activity_medicationreminder);
 		setMainHeadTitle("用药提醒");
 	}
 	

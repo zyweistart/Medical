@@ -22,6 +22,7 @@ import com.start.core.BaseActivity;
 import com.start.core.Constant;
 import com.start.core.Constant.ResultCode;
 import com.start.medical.R;
+import com.start.medical.main.MainActivity;
 
 /**
  * 登录
@@ -49,9 +50,6 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 		et_login_account=(CustomEditText)findViewById(R.id.et_login_account);
 		et_login_password=(CustomEditText)findViewById(R.id.et_login_password);
 		cb_login_autologin=(CheckBox)findViewById(R.id.cb_login_autologin);
-		
-		et_login_account.setText("13738873386");
-		et_login_password.setText("123456");
 	}
 	
 	@Override
@@ -150,7 +148,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener {
 			public void run(Response response) throws AppException {
 				getAppContext().currentUser().addCacheUser(account, password, autoLogin);
 				getAppContext().currentUser().resolve(response.getMapData("userinfo"));
-				startActivity(new Intent(LoginActivity.this,PersonalCenterActivity.class));
+				startActivity(new Intent(LoginActivity.this,MainActivity.class));
 				finish();
 			}
 			
