@@ -35,7 +35,7 @@ public class DepartmentActivity extends BaseActivity implements RefreshListServe
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_department);
+		setContentView(R.layout.activity_common_listview);
 		setMainHeadTitle(getString(R.string.mainfunctiontxt6));
 		mListView = (XListView) findViewById(R.id.xlv_listview);
 		mListView.setOnItemClickListener(new OnItemClickListener() {

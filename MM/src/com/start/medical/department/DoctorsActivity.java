@@ -40,7 +40,7 @@ public class DoctorsActivity extends BaseActivity implements RefreshListServerLi
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_doctor);
+		setContentView(R.layout.activity_common_listview);
 		setMainHeadTitle(getString(R.string.mainfunctiontxt6));
 		Bundle bundle=getIntent().getExtras();
 		if(bundle!=null){
