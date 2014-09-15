@@ -58,17 +58,47 @@
             android:name=".personal.ChangePassWordActivity"
         	android:screenOrientation="portrait"/>
         <activity
-            android:name=".personal.AccountBindActivity"
-        	android:screenOrientation="portrait"/>
-        <activity
             android:name=".personal.PersonalCenterActivity"
         	android:screenOrientation="portrait"/>
         <activity
             android:name=".personal.EditPersonalActivity"
         	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".personal.AccountBindActivity"
+        	android:screenOrientation="portrait"/>
         <!-- 健康档案 -->
         <activity
             android:name=".personal.healthrecords.HealthRecordsActivity"
+        	android:screenOrientation="portrait"/>
+        <!--不适记录  -->
+        <activity
+            android:name=".personal.healthrecords.discomfortrecord.DiscomfortRecordActivity"
+        	android:screenOrientation="portrait"/>
+        <!--健康跟踪 -->
+        <activity
+            android:name=".personal.healthrecords.healthtracking.HealthTrackingActivity"
+        	android:screenOrientation="portrait"/>
+        <!--检查  -->
+        <activity
+            android:name=".personal.healthrecords.inspect.InspectActivity"
+        	android:screenOrientation="portrait"/>
+        <!--病史  -->
+        <activity
+            android:name=".personal.healthrecords.medicalhistory.MedicalHistoryActivity"
+        	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".personal.healthrecords.medicalhistory.MedicalHistoryDetailActivity"
+        	android:screenOrientation="portrait"/>
+        <activity
+            android:name=".personal.healthrecords.medicalhistory.MedicalHistoryUpdateActivity"
+        	android:screenOrientation="portrait"/>
+        <!--服药  -->
+        <activity
+            android:name=".personal.healthrecords.medication.MedicationActivity"
+        	android:screenOrientation="portrait"/>
+        <!--用药提醒  -->
+        <activity
+            android:name=".personal.healthrecords.medicationreminder.MedicationReminderActivity"
         	android:screenOrientation="portrait"/>
         <!-- 我的挂号 -->
         <activity
